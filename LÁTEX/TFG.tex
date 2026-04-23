@@ -1,0 +1,590 @@
+\documentclass[12pt,a4paper]{article}
+
+% --------------------------------------------------
+% PAQUETES BÁSICOS
+% --------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{csquotes}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+% --------------------------------------------------
+% FORMATO DE PÁGINA
+% --------------------------------------------------
+\usepackage[
+a4paper,
+left=3.5cm,
+right=3.5cm,
+top=2.5cm,
+bottom=2.5cm,
+marginparsep=0.3cm,
+marginparwidth=3.5cm
+]{geometry}
+\usepackage{setspace}
+\singlespacing
+\setlength{\parindent}{1.25em}
+\setlength{\parskip}{0.3em}
+
+% --------------------------------------------------
+% MATEMÁTICAS Y FÍSICA
+% --------------------------------------------------
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{physics}
+\usepackage{siunitx}
+\sisetup{detect-all}
+
+% --------------------------------------------------
+% FIGURAS, TABLAS Y LISTADOS
+% --------------------------------------------------
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{array}
+\usepackage{multirow}
+
+% --------------------------------------------------
+% NOTAS AL MARGEN Y RECUADROS
+% --------------------------------------------------
+\usepackage{marginnote}
+\usepackage[most]{tcolorbox}
+
+% --------------------------------------------------
+% COMANDOS PARA NOTAS AL MARGEN
+% --------------------------------------------------
+\newcommand{\refmargen}[2]{%
+  \marginnote{\footnotesize\raggedright\textbf{#1}\\ #2}%
+}
+
+% --------------------------------------------------
+% RECUADROS TIPO DEFINICIÓN / OBSERVACIÓN
+% --------------------------------------------------
+\newtcolorbox{cajadefinicion}{
+  colback=white,
+  colframe=black,
+  boxrule=0.4pt,
+  arc=0pt,
+  left=8pt,
+  right=8pt,
+  top=8pt,
+  bottom=8pt
+}
+
+% --------------------------------------------------
+% ENLACES
+% --------------------------------------------------
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,capitalise,noabbrev]{cleveref}
+
+% --------------------------------------------------
+% CABECERAS
+% --------------------------------------------------
+\usepackage{fancyhdr}
+\setlength{\headheight}{16pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Trabajo de Fin de Grado}
+\fancyhead[R]{\leftmark}
+\fancyfoot[C]{\thepage}
+
+% --------------------------------------------------
+% BIBLIOGRAFÍA
+% --------------------------------------------------
+\usepackage[
+backend=biber,
+style=numeric,
+sorting=none
+]{biblatex}
+\addbibresource{bibliografia.bib}
+
+% --------------------------------------------------
+% DATOS DEL TFG
+% --------------------------------------------------
+\newcommand{\tituloTFG}{Simulación Monte Carlo de procesos de desintegración radiactiva aplicada a la datación radiométrica}
+\newcommand{\autorTFG}{Diego Solís Ingelmo}
+\newcommand{\tutorTFG}{Teresa Fernández Caramés}
+\newcommand{\gradoTFG}{Grado en Física}
+\newcommand{\universidadTFG}{Universidad de Salamanca}
+\newcommand{\facultadTFG}{Facultad de Ciencias}
+\newcommand{\cursoTFG}{2025--2026}
+
+\hypersetup{
+    pdftitle={\tituloTFG},
+    pdfauthor={\autorTFG},
+    pdfsubject={Trabajo de Fin de Grado},
+    pdfkeywords={Monte Carlo, desintegración radiactiva, física nuclear}
+}
+
+% --------------------------------------------------
+% DOCUMENTO
+% --------------------------------------------------
+\begin{document}
+
+% ==================================================
+% PORTADA
+% ==================================================
+\begin{titlepage}
+    \centering
+
+    {\Large \universidadTFG \par}
+    \vspace{0.3cm}
+    {\large \facultadTFG \par}
+    \vspace{0.3cm}
+    {\large \gradoTFG \par}
+
+    \vspace{2.5cm}
+
+    {\Huge \bfseries \tituloTFG \par}
+
+    \vspace{2.5cm}
+
+    {\Large Trabajo de Fin de Grado \par}
+
+    \vfill
+
+    \begin{flushleft}
+        \textbf{Autor:} \autorTFG \\[0.3cm]
+        \textbf{Tutor:} \tutorTFG \\[0.3cm]
+        \textbf{Curso académico:} \cursoTFG
+    \end{flushleft}
+
+    \vfill
+
+\end{titlepage}
+
+% ==================================================
+% PÁGINA INICIAL
+% ==================================================
+\pagenumbering{roman}
+
+% --------------------------------------------------
+% RESUMEN
+% --------------------------------------------------
+\section*{Resumen}
+
+\bigskip
+
+% --------------------------------------------------
+% AGRADECIMIENTOS (OPCIONAL)
+% --------------------------------------------------
+\section*{Agradecimientos}
+
+
+% --------------------------------------------------
+% ÍNDICE
+% --------------------------------------------------
+\tableofcontents
+\newpage
+
+% --------------------------------------------------
+% LISTA DE FIGURAS Y TABLAS (OPCIONAL)
+% --------------------------------------------------
+\listoffigures
+\newpage
+
+\listoftables
+\newpage
+
+% ==================================================
+% CUERPO DEL TRABAJO
+% ==================================================
+\pagenumbering{arabic}
+
+% --------------------------------------------------
+\section{Introducción}
+
+
+% --------------------------------------------------
+\section{Objetivos}
+
+% --------------------------------------------------
+\section{Fundamento teórico}
+
+
+
+\subsection{Distribuciones de probabilidad constante sin memoria}
+
+En ciertos procesos físicos, como las desintegraciones radiactivas, la probabilidad de que ocurra un evento en un intervalo de tiempo no depende del tiempo previamente transcurrido. Este comportamiento se conoce como ausencia de memoria.
+
+\begin{cajadefinicion}
+Sea $X$ el tiempo hasta que ocurre un evento. Consideremos un instante $b$ tal que el evento no ha ocurrido todavía, es decir, $X>b$. En esta situación, nos interesa describir el tiempo restante hasta que ocurra el evento. \refmargen{Sheffield \cite{mit_poisson_notes}:}{Lecture 19, Memoryless ~~~~property}
+Definimos la variable $Y = X - b$, que representa el tiempo restante hasta la ocurrencia del evento, condicionado a que $X > b$. Para cualquier valor $a$, se puede calcular
+
+$$
+P(Y > a \mid X > b),
+$$
+
+es decir,
+
+$$
+P(X - b > a \mid X > b) = P(X > b + a \mid X > b).
+$$
+
+Si $X$ sigue una distribución exponencial, se obtiene que
+
+$$
+P(X > b + a \mid X > b) = \frac{P(X > b + a)}{P(X > b)} = \frac{e^{-\lambda (b+a)}}{e^{-\lambda b}} = e^{-\lambda a}.
+$$
+
+Por tanto,
+
+$$
+P(Y > a \mid X > b) = P(X > a),
+$$
+
+lo que implica que la distribución del tiempo restante es la misma que la distribución original. Esta propiedad se conoce como ausencia de memoria. 
+\end{cajadefinicion}
+
+De hecho, la distribución exponencial es la única distribución continua que presenta la propiedad de ausencia de memoria, lo que explica su relevancia en la modelización de procesos físicos como las desintegraciones radiactivas.
+
+
+\subsubsection{Densidad de probabilidad}
+\begin{cajadefinicion} 
+Sea $X$ una variable aleatoria. Decimos que $X$ es una variable contínua aleatoria si existe una función no negativa $f_X(x)$, definida para todos los reales $x\in [-\infty, \infty]$, con la propiedad de que para cualquier intervalo B de números reales \refmargen{Ross \cite{ross1993probabilitymodels}:}{\S~2.3}
+\begin{equation}
+  P\{X \in B\} = \int_B f_X(x)\,dx
+  \label{eq:P(X in B)}
+\end{equation}
+
+siendo $f_X(x)$ la función densidad de probabilidad de la variable aleatoria $X$. 
+\end{cajadefinicion}
+
+La ecuación (\ref{eq:P(X in B)}) muestra que la probabilidad de que $X$ se encuentre en $B$ se puede obtener integrando la función densidad de probabilidad ``$f_X(x)$'' en ese intervalo.
+
+Si $f_X(x)$ es evaluada en $[-\infty, \infty]$ debe satisfacer
+
+\begin{equation}
+  1= P \{X \in (-\infty, \infty) \} = \int_{-\infty}^{\infty} f_X(x)\,dx
+\end{equation}
+
+\begin{cajadefinicion}
+  La densidad de probabilidad de desintegración $f_X(x)$ en su forma exponencial para la variable aleatoria $X$ con parámetro $\lambda$ \refmargen{Sheffield \cite{mit_poisson_notes}:}{Lecture 19; Exponential ~~~~~random variables}
+
+\begin{equation}
+f(x) =
+\begin{cases}
+\lambda e^{-\lambda x}, & x \geq 0 \\
+0, & x < 0
+\end{cases}
+\label{eq:densidadpropexponencial}
+\end{equation}
+
+\end{cajadefinicion}
+
+Considerando B como un intervalo cerrado $[0, b]$, entonces, si en (\ref{eq:P(X in B)}) introducimos (\ref{eq:densidadpropexponencial}): 
+
+\begin{equation}
+  \rightarrow P\{X \leq b\}=1-e^{-\lambda b} \label{eq:probabilidadintervalocerrado}
+\end{equation}
+\begin{equation}
+  \rightarrow P\{X  > b\}=e^{-\lambda b}~~~~~
+  \label{eq:probabilidadintervaloabierto}
+\end{equation}
+
+La ecuación (\ref{eq:probabilidadintervalocerrado}) es la probabilidad individual de que un núcleo se desintegre en un intervalo cerrado $[0, b]$, mientras qué, la ecuación (\ref{eq:probabilidadintervaloabierto}) es la probabilidad de que un núcleo individual no se haya desintegrado en ese mismo intervalo.
+
+\begin{center}
+  \textbf{SIGNIFICADO FÍSICO}
+\end{center}
+
+\begin{cajadefinicion}
+  La densidad de probabilidad de desintegración $f(t)=\lambda e^{-\lambda t}$ describe como se distribuye en el tiempo la probabilidad de que un núcleo se desintegre, de modo que $f(t)dt$ representa la probabilidad de que la desintegración ocurra entre los instantes $t$ y $t+dt$.
+\end{cajadefinicion}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Gráficas/f(t).jpg}
+    \caption{Densidad de probabilidad de desintegración para distintos valores de $\lambda$. Las líneas discontinuas indican el valor medio $\langle t \rangle = 1/\lambda$.}
+    \label{fig:densidadpropexponencial}
+\end{figure}
+
+\begin{itemize}
+  \item $f(t)$ tiene un máximo en $t=0$ con valor $\lambda$, la constante de desintegración. Esto indica que la probabilidad instantánea de desintegración es máxima al inicio. Sin embargo, debido al carácter sin memoria del proceso, esta tasa de desintegración permanece constante en todo instante, siendo $\lambda$ la probabilidad por unidad de tiempo de desintegración para un núcleo que ha sobrevivido hasta ese momento.
+  \item Tiempo medio 
+  \begin{equation}
+     \langle t \rangle = \int_{0}^{\infty} t \lambda e^{-\lambda t} \,dt = \frac{1}{\lambda}
+  \end{equation}
+  \item Varianza 
+  \begin{equation}
+    \sigma^2 = \int_{0}^{\infty} (t-\langle t \rangle)^2 \lambda e^{-\lambda t} \,dt = \frac{1}{\lambda^2}
+  \end{equation}
+  \item Desviación típica 
+  \begin{equation}
+    \sigma = \sqrt{\sigma^2} = \frac{1}{\lambda}
+  \end{equation}
+\end{itemize}
+
+
+
+
+
+\subsubsection{Ley de probabilidad de supervivencia}
+Uno de los requisitos para entender las desintegraciones radiactivas, es conocer la ley de probabilidad de supervivencia $S(t)$. Esta nos permitirá describir el comportamiento de las desintegraciones radiactivas en el tiempo.
+
+La probabilidad de sobrevivir en un intervalo de tiempo $dt$ es $1- \lambda dt$, así podemos derivar la ley de probabilidad de supervivencia $S(t)$ a partir de su forma discreta:
+
+$$
+  S(t+dt) = S(t)(1-\lambda dt)  \rightarrow S(t+dt)-S(t)=-S(t)\lambda dt
+$$
+
+Tomándo el límite en $dt \rightarrow 0$:
+
+$$
+  \lim_{dt \rightarrow 0} \frac{S(t+dt) - S(t)}{dt}  = \lim_{dt \rightarrow 0} -S(t)\lambda
+$$
+
+Obtenemos:
+
+\begin{equation}
+  \frac{dS}{dt}= -\lambda S
+  \label{eq:diferencial_leysupervivencia}
+\end{equation}
+
+Llegando finalmente a la ley de probabilidad de supervivencia(función de supervivencia):
+\begin{equation}
+  S(t) = e^{-\lambda t}
+\end{equation}
+
+En relación con la función densidad de propabiblidad (\ref{eq:densidadpropexponencial}):
+
+\begin{cajadefinicion}
+  La función de supervivencia $S(t)$, definida como la probabilidad de que el núcleo no se haya desintegrado hasta el instante $t$, puede expresarse como \refmargen{Lawless \cite{lawless2011lifetime}: }{eq 1.2.1}
+
+\begin{equation}
+  S(t) = P(T \geq t) = \int_t ^{\infty} f(t)\,dt
+  \label{eq:defsupervivencia}
+\end{equation}
+
+\end{cajadefinicion}
+
+$S(t)$ es una función contínua monótona decreciente con $S(0) = 1$, es decir, el máximo de la función densidad de probabilidad ($t=0$) en el caso de un núcleo se traduce a que lo más probable es que se desintegre lo antes posible; y $lim_{t \rightarrow \infty} S(t) = 0$. Algunas veces se debe considerar $S(\infty)>0$ pues algunos núcleos nunca decaen.
+
+De la ecuación que define la ley de supervivencia (\ref{eq:defsupervivencia}), se obtiene la relación:
+
+\begin{equation}
+  f(t)=-\frac{dS(t)}{dt}
+\end{equation}
+
+\subsection{Hipótesis fundamental de las desintegraciones radiactivas}
+\begin{cajadefinicion}
+  La probabilidad de desintegración de un núcleo en un intervalo de tiempo no depende del instante inicial $t$, sino únicamente de la duración del intervalo considerado $dt$, es decir, la probabilidad de que un núcleo se desintegre en un intervalo de tiempo es constante y no depende ni de su historia ni de su edad. 
+\end{cajadefinicion}
+
+En particular, para intervalos infinitesimales se cumple que la probabilidad de desintegración es proporcional a $dt$, siendo la constante de proporcionalidad la constante de desintegración $\lambda$.
+
+\begin{equation}
+p(t, t+dt) = \lambda \Delta t
+\end{equation}
+
+Para comprobar esta hipótesis se debe comparar la probabilidad exacta $p_{exacta}=1-e^{-\lambda \Delta t}$ con la probabilidad aproximada $p_{aprox}=\lambda \Delta t$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Gráficas/exacta_vs_aprox.jpg}
+    \caption{Probabilidad de desintegración exacta y aproximada}
+    \label{fig:exacta_vs_aprox}
+\end{figure}
+
+La comparación muestra que la aproximación  $p \thickapprox  \lambda \Delta t$ es válida en el régimen $\lambda \Delta t \ll 1 $ donde la expansión de la exponencial a primer orden resulta adecuada.
+
+
+\subsection{Ley de desintegración radiactiva}
+
+Como consecuencia de la hipótesis fundametal, si $N$ núcleos radiactivos están presentes a tiempo t y no se introducen nuevos,  entonces el número de  núcleos decayendo en un tiempo $dt$, $dN$, es proporcional a $N$.  \refmargen{Krane \cite{krane}:}{\S~6.1}
+
+\begin{equation}
+\frac{dN}{dt} = - \lambda N
+\label{eq:desintegración}
+\end{equation}
+
+Esta ecuación es, en realidad, la forma diferencial de la ley de supervivencia (\ref{eq:diferencial_leysupervivencia}) empleando la variable aleatoria $N(t)$(número de núcleos a tiempo t). 
+
+De la ecuación (\ref{eq:desintegración}) llegamos a:
+
+\begin{equation}
+N(t) = N_0 e^{-\lambda t}
+\label{eq:Nuclear_decay}
+\end{equation}
+
+Lo que nos permite obtener:
+
+\begin{equation}
+  t = \frac{1}{\lambda} \ln(\frac{N_0}{N})
+\end{equation}
+
+\subsubsection{Descripción probabilística del proceso de desintegración}
+
+La ley de desintegración obtenida (\ref{eq:desintegración}) no describe un proceso determinista, es un comportamiento promedio.
+
+Partiendo de $N_0$ núcleos independientes, cada núcleo individual tiene una probabilidad $p(t)= 1-e^{-\lambda t}$ de desintegrarse en un intervalo de tiempo $[0,t]$ (\ref{eq:probabilidadintervalocerrado}). El resto de núcleos que no se desintegran se almacenan en la variable aleatoria $N(t)$,  la cual sigue la \textbf{distribución binomial}:
+
+\begin{equation}
+  P(N(t)=n) = \binom{N_0}{n} (e^{-\lambda t})^n (1-e^{-\lambda t})^{N_0-n}
+  \label{eq:binomial}
+\end{equation}
+
+
+Cuando el número inicial de núcleos $N_0$ es grande y la probabilidad de desintegración en el intervalo $[0,t]$ es pequeña, es decir, $t$ es pequeño comparado con la vida media, la distribución binomial se aproxima a la \textbf{distribución de Poisson}. Concretamente para el número de núcleos desintegrados en el intervalo $[0,t]$
+
+\begin{equation}
+  D(t)=N_0-N(t)
+  \label{eq:núcleosdesintegrados}
+\end{equation}
+
+se tiene que
+
+\begin{equation}
+  P(D(t)=n)\approx \frac{(\mu)^n}{n!} e^{-\mu},~~~~~~~\mu= N_0(1-e^{-\lambda t}) \approx N_0\lambda t
+  \label{eq:poisson}
+\end{equation}
+
+\begin{cajadefinicion}
+  Un proceso de Poisson, con tasa $\lambda$, es un proceso $N=\{ N(t):t \geq 0 \}$ que toma valores en $S=\{ 0,1,2,... \}$ tal que:
+  \begin{enumerate}
+    \item Comienza en 0:$N(0)=0$ 
+    \item No decrece: $N(s) \leq N(t)$ si $s < t$
+    \item Si $s < t$, el número de emisiones $N(t)-N(s)$ en un intervalo $(s,t]$ no afecta a lo que ocurre en otro intervalo $[0,s]$ que no se solapa. \refmargen{Grimmett \cite{grimmett2020probability}:}{\S~6.8}
+    \item En un intervalo muy pequeño de duración $h$ , la probabilidad de que ocurra exactamente una desintegración es aproximadamente $ \lambda h$, la probabilidad de que ocurra más de una es prácticamente cero ($o(h)$), y la probabilidad de que no ocurra ninguna es $1 - \lambda h + o(h)$.
+  \end{enumerate}
+  \label{def:procesodepoisson}
+\end{cajadefinicion}
+
+
+
+El proceso de Poisson solo es válido para intervalos cortos. Conforme el tiempo avanza, el número de núcleos que quedan se reduce y la tasa de desintegración deja de ser constante, quitándole el carácter de homogeneidad al proceso de Poisson.
+
+Para obtener la ley de desintegración promedio exacta se debe considerar el valor esperado de la variable aleatoria $N(t)$. Si el valor esperado del número de núcleos desintegrados en el intervalo $[0,t]$ es $E[D(t)]=N_0(1-e^{-\lambda t})$ 
+
+
+$$E[N(t)] = N_0-E[D(t)]= N_0-N_0(1-e^{-\lambda t})=N_0e^{-\lambda t}$$
+
+Finalmente, llegamos a ley exponencial de desintegración:
+
+\begin{equation}
+  E[N(t)] = N_0e^{-\lambda t}
+  \label{eq:valorpromedioexponential}
+\end{equation}
+
+\begin{cajadefinicion}
+  \begin{itemize}
+    \item La \textbf{distribución binomial} describe la distribución exacta de la variable aleatoria $N(t)$.
+    \item La \textbf{aproximación de Poisson} homogénea es adecauda para fuentes muy activas o con pocos núcleos iniciales, tiempos cortos y tasa ($\lambda$) constante.
+    \item El valor esperado de la variable aleatoria $N(t)$ se aproxima a la ley exponencial de desintegración.
+  \end{itemize} 
+\end{cajadefinicion}
+
+
+\subsubsection{Obtención Visual de la ley exponencial}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth]{Gráficas/binomial.jpg}
+  \caption{Representación gráfica de la distribución binomialvarios tiempos señalizando el valor central para cada tiempo.}
+  \label{fig:distribucionbinomial}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.81\textwidth]{Gráficas/exponencial_bin.jpg}
+   \caption{Unión de los valores centrales de la figura \ref{fig:distribucionbinomial}.}
+  \label{fig:leyexponencial}
+\end{figure}
+
+%%COMENTAR LAS GRÁFICAS
+
+\subsubsection{Desintegraciones en intervalo corto}
+Sea $D_{\Delta t}$ (\ref{eq:núcleosdesintegrados}) el número de núcleos desintegrados en el intervalo $[t,t+\Delta t]$, tomando $N$ como el número de núcleos en $t$.
+
+\begin{itemize}
+  \item \textbf{Caso exacto(binomial)}
+  
+  Cada núcleo tiene una probabilidad de desintegrarse $p=1-e^{-\lambda \Delta t}$ en ese intervalo. 
+
+  $$D_{\Delta t} \sim Bin(N,p)$$
+
+  Valor esperado $\rightarrow E[D_{\Delta t}]=Np$
+
+  Varianza $\rightarrow Var(D_{\Delta t})= Np(1-p)$
+  
+  Desviación típica $\rightarrow \sigma=\sqrt{Var(D_{\Delta t})}= \sqrt{Np(1-p)}$
+
+  \item \textbf{Caso aproximado(Poisson)} Empleando (\ref{eq:poisson}):
+  
+  Valor esperado $\rightarrow E[D_{\Delta t}]=N\lambda \Delta t$
+  
+  Varianza $\rightarrow Var(D_{\Delta t})= N\lambda \Delta t$
+
+  Desviación típica $\rightarrow \sigma=\sqrt{Var(D_{\Delta t})}= \sqrt{N\lambda \Delta t}$
+
+\end{itemize}
+
+
+
+\subsubsection{Magnitudes resultantes de la ley de desintegración radiactiva}
+
+La \textbf{semivida} es el tiempo necesario para que se desintegren la mitad de los núcleos de una muestra y está relacionada con la constante de desintegración $\lambda$ mediante la ecuación:
+
+\begin{equation}
+t_{1/2} = \frac{\ln2}{\lambda}
+\label{eq:half-life}
+\end{equation}
+
+El \textbf{tiempo medio de vida} de un núcleo es:
+
+\begin{equation}
+\tau = \frac{\int_{0}^{\infty} t|dN/dt| \,dt }{\int_{0}^{\infty} |dN/dt|\,dt}
+\end{equation}
+
+Resolviendo:
+
+\begin{equation}
+\tau = \frac{\int_{0}^{\infty} t|dN/dt| \,dt }{N_0} = \frac{\lambda \int_{0}^{\infty} t N_0 e^{-\lambda t} \,dt}{N_0} = \frac{\lambda}{\lambda^2}= \frac{1}{\lambda}
+\end{equation}
+
+Es decir que el tiempo medio de vida de un núcleo es la inversa de la constante de desintegración.
+
+La \textbf{actividad} es el número de desintegraciones radiactivas por unidad de tiempo:
+
+\begin{equation}
+A = \lambda N(t) = \lambda N_0 e^{-\lambda t} = A_0 e^{-\lambda t}
+\label{eq:activity}
+\end{equation}
+
+Obtener el número de núcleos en un tiempo $t$ es bastante complidado si $\lambda$ no es conocido. Sin embargo, sí se puede medir la radiación emitida por una fuente en un intervalo de tiempo $t$, es decir, el número de desintegraciones que tienen lugar en dicho intervalo:
+
+\begin{equation}
+|\Delta N| = N(t) - N(t + \Delta t) = N_0 e^{-\lambda t}(1-e^{-\lambda \Delta t})
+\end{equation}
+
+Esta magnitud está directamente relacionada con la actividad (\ref{eq:activity}) de la muestra, lo que permite acceder experimentalmente a la constante de desintegración $\lambda$.
+
+
+
+% --------------------------------------------------
+\section{Metodología}
+
+% --------------------------------------------------
+\section{Resultados}
+
+% --------------------------------------------------
+\section{Conclusiones}
+
+% --------------------------------------------------
+\printbibliography
+
+% ==================================================
+% ANEXOS
+% ==================================================
+\appendix
+
+\section{Código empleado}
+
+\section{Resultados adicionales}
+
+\section{Derivaciones matemáticas}
+.
+
+\end{document}

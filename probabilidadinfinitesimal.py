@@ -1,0 +1,62 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Personalización
+plt.rcParams.update({
+    'font.size': 18,
+    'axes.titlesize': 16,
+    'axes.labelsize': 18,
+    'xtick.labelsize': 18,
+    'ytick.labelsize': 18,
+    'legend.fontsize': 18
+})
+
+# Variable Δt
+dt = np.linspace(0, 3, 1000)
+
+# Parámetro lambda
+lam = 1.0
+
+# Probabilidades
+p_exacta = 1 - np.exp(-lam * dt)
+p_aprox = lam * dt
+
+# Punto donde deja de ser buena aproximación
+dt_lim = 0.1 / lam
+p_lim = lam * dt_lim
+
+# Crear figura
+plt.figure()
+
+# Curvas
+plt.plot(dt, p_exacta, label=r'$p = 1 - e^{-\lambda \Delta t}$')
+plt.plot(dt, p_aprox, '--', label=r'$p = \lambda \Delta t$')
+
+# Punto crítico
+plt.scatter(dt_lim, p_lim, zorder=5)
+plt.axvline(dt_lim, linestyle=':', color='gray')
+plt.axhline(p_lim, linestyle=':', color='gray')
+
+# Texto del punto
+plt.text(dt_lim*1.05, p_lim*0.9,
+         r'$\lambda \Delta t \approx 0.1$',
+         fontsize=16)
+
+# Etiquetas
+plt.xlabel(r'$\Delta t\ (\mathrm{s})$')
+plt.ylabel(r'$p(t, t + \Delta t)$')
+
+# Título en dos líneas 🔥
+plt.title(rf'COMPARACIÓN ENTRE PROBABILIDAD EXACTA Y APROXIMADA' '\n'
+          rf'($\lambda={lam}\ \mathrm{{s^{{-1}}}}$)')
+
+plt.xlim(0, 0.25)
+plt.ylim(0, 0.25)
+plt.grid()
+plt.legend()
+
+# Guardar
+plt.savefig('comparacion_probabilidades.png', dpi=300, bbox_inches='tight')
+
+# Mostrar
+plt.show()
