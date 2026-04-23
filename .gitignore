@@ -13,4 +13,5 @@
 *.snm
 *.vrb
 /*.png
-
+*.lof
+*.lot
