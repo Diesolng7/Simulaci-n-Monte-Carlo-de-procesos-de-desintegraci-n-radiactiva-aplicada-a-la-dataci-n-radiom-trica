@@ -496,14 +496,19 @@ Finalmente, llegamos a ley exponencial de desintegración:
 %%COMENTAR LAS GRÁFICAS
 
 \subsubsection{Desintegraciones en intervalo corto}
-Sea $D_{\Delta t}$ (\ref{eq:núcleosdesintegrados}) el número de núcleos desintegrados en el intervalo $[t,t+\Delta t]$, tomando $N$ como el número de núcleos en $t$.
+Sea $D_{\Delta t}$ (\ref{eq:núcleosdesintegrados}) la variable aleatoria que representa el número de núcleos desintegrados en el intervalo $[t,t+\Delta t]$, tomando $N$ como el número de núcleos en $t$.
 
 \begin{itemize}
   \item \textbf{Caso exacto(binomial)}
   
-  Cada núcleo tiene una probabilidad de desintegrarse $p=1-e^{-\lambda \Delta t}$ en ese intervalo. 
+  Cada núcleo tiene una probabilidad de desintegrarse $p=1-e^{-\lambda \Delta t}$ en ese intervalo siguiendo una distribución binomial.
 
   $$D_{\Delta t} \sim Bin(N,p)$$
+
+  \begin{equation}
+  P(D_{\Delta t}=n)=\binom{N}{n}p^n(1-p)^{N-n},
+  \qquad n=0,1,\dots,N.
+  \end{equation}
 
   Valor esperado $\rightarrow E[D_{\Delta t}]=Np$
 
@@ -512,6 +517,10 @@ Sea $D_{\Delta t}$ (\ref{eq:núcleosdesintegrados}) el número de núcleos desin
   Desviación típica $\rightarrow \sigma=\sqrt{Var(D_{\Delta t})}= \sqrt{Np(1-p)}$
 
   \item \textbf{Caso aproximado(Poisson)} Empleando (\ref{eq:poisson}):
+  
+  \begin{equation}
+  P(D_{\Delta t}=n)\approx \frac{(N\lambda \Delta t)^n}{n!} e^{-N\lambda \Delta t}
+  \end{equation}
   
   Valor esperado $\rightarrow E[D_{\Delta t}]=N\lambda \Delta t$
   
