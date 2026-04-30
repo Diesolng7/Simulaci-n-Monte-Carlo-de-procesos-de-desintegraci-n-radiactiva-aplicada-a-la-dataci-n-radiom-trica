@@ -6,10 +6,10 @@ import numpy as np
 T12 = 5730.0
 Lambda = np.log(2)/T12
 
-n0 = 10**2 #número de núcleos a tiempo 0
+n0 = 10**3 #número de núcleos a tiempo 0
 
-t = 10000 #tiempo que vamos a simular
-dt = 150  #intervalo de tiempo
+t = 30000 #tiempo que vamos a simular
+dt =2000  #intervalo de tiempo
 u = int(t/dt) #número de intervalos
 
 N=n0 #número de núcleos supervivientes
