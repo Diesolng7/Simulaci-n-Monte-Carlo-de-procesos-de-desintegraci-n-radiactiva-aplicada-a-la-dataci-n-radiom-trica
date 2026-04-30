@@ -31,7 +31,6 @@ marginparwidth=3.5cm
 % MATEMÁTICAS Y FÍSICA
 % --------------------------------------------------
 \usepackage{amsmath,amssymb,amsthm,mathtools}
-\usepackage{physics}
 \usepackage{siunitx}
 \sisetup{detect-all}
 
@@ -519,9 +518,9 @@ Sea $D_{\Delta t}$ (\ref{eq:núcleosdesintegrados}) la variable aleatoria que re
   \item \textbf{Caso aproximado(Poisson)} Empleando (\ref{eq:poisson}):
   
   \begin{equation}
-  P(D_{\Delta t}=n)\approx \frac{(N\lambda \Delta t)^n}{n!} e^{-N\lambda \Delta t}
+  P(D_{\Delta t}=n)\approx \frac{(N\lambda \Delta t)^n}{n!} e^{-N\lambda \Delta t}, \qquad n=0,1,\dots,N
   \end{equation}
-  
+
   Valor esperado $\rightarrow E[D_{\Delta t}]=N\lambda \Delta t$
   
   Varianza $\rightarrow Var(D_{\Delta t})= N\lambda \Delta t$
