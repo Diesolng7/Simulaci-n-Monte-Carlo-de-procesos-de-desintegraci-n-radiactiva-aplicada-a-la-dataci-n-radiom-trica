@@ -324,7 +324,25 @@ La ecuación (\ref{eq:probabilidadintervalocerrado}) es la probabilidad individu
 \subsubsection{Ley de probabilidad de supervivencia}
 Uno de los requisitos para entender las desintegraciones radiactivas, es conocer la ley de probabilidad de supervivencia $S(t)$. Esta nos permitirá describir el comportamiento de las desintegraciones radiactivas en el tiempo.
 
-La probabilidad de sobrevivir en un intervalo de tiempo $dt$ es $1- \lambda dt$, así podemos derivar la ley de probabilidad de supervivencia $S(t)$ a partir de su forma discreta:
+La probabilidad de supervivencia de un núcleo en un tiempo $t$ es (\ref{eq:probabilidadintervaloabierto}):
+
+
+\begin{equation}
+  p(t) = P\{X > t\} = e^{-\lambda t}
+\end{equation}
+
+Si consideramos un intervalo de tiempo infinitesimal $dt$, la probabilidad de supervivencia de un núcleo en el intervalo $[t, t+dt]$ es
+
+$$
+  p(dt)= P\{X > t + dt \mid X > t\} = \frac{P\{X > t + dt\}}{P\{X > t\}} = \frac{e^{-\lambda (t+dt)}}{e^{-\lambda t}} = e^{-\lambda dt} 
+$$
+
+\begin{equation}
+  p(dt) \approx 1 - \lambda dt
+  \label{eq:probabilidaddesupervivenciaintervalodt}
+\end{equation}
+
+De esta manera, podemos derivar la ley de probabilidad de supervivencia $S(t)$ a partir de su forma discreta:
 
 $$
   S(t+dt) = S(t)(1-\lambda dt)  \rightarrow S(t+dt)-S(t)=-S(t)\lambda dt
@@ -370,16 +388,17 @@ De la ecuación que define la ley de supervivencia (\ref{eq:defsupervivencia}), 
 
 \subsection{Hipótesis fundamental de las desintegraciones radiactivas}
 \begin{cajadefinicion}
-  La probabilidad de desintegración de un núcleo en un intervalo de tiempo no depende del instante inicial $t$, sino únicamente de la duración del intervalo considerado $dt$, es decir, la probabilidad de que un núcleo se desintegre en un intervalo de tiempo es constante y no depende ni de su historia ni de su edad. 
+  La probabilidad de desintegración de un núcleo en un intervalo de tiempo no depende del instante inicial $t$, sino únicamente de la duración del intervalo considerado $\Delta t$, es decir, la probabilidad de que un núcleo se desintegre en un intervalo de tiempo es constante y no depende ni de su historia ni de su edad. 
 \end{cajadefinicion}
 
-En particular, para intervalos infinitesimales se cumple que la probabilidad de desintegración es proporcional a $dt$, siendo la constante de proporcionalidad la constante de desintegración $\lambda$.
+En particular, para intervalos infinitesimales se cumple que la probabilidad de desintegración es proporcional a $\Delta t$, siendo la constante de proporcionalidad la constante de desintegración $\lambda$. Emplenado (\ref{eq:probabilidaddesupervivenciaintervalodt}):
 
 \begin{equation}
-p(t, t+dt) = \lambda \Delta t
+p_d = 1 - p =\lambda \Delta t
 \end{equation}
 
-Para comprobar esta hipótesis se debe comparar la probabilidad exacta $p_{exacta}=1-e^{-\lambda \Delta t}$ con la probabilidad aproximada $p_{aprox}=\lambda \Delta t$.
+
+Para comprobar esta hipótesis se debe comparar la probabilidad de desintegración exacta $p_{exacta}=1-e^{-\lambda \Delta t}$ con la probabilidad de desintegración aproximada $p_{aprox}=\lambda \Delta t$.
 
 \begin{figure}[H]
     \centering
@@ -456,17 +475,10 @@ se tiene que
 
 El proceso de Poisson solo es válido para intervalos cortos. Conforme el tiempo avanza, el número de núcleos que quedan se reduce y la tasa de desintegración deja de ser constante, quitándole el carácter de homogeneidad al proceso de Poisson.
 
-Para obtener la ley de desintegración promedio exacta se debe considerar el valor esperado de la variable aleatoria $N(t)$. Si el valor esperado del número de núcleos desintegrados en el intervalo $[0,t]$ es $E[D(t)]=N_0(1-e^{-\lambda t})$ 
+\begin{center}
+\textbf{RESUMEN}
+\end{center}
 
-
-$$E[N(t)] = N_0-E[D(t)]= N_0-N_0(1-e^{-\lambda t})=N_0e^{-\lambda t}$$
-
-Finalmente, llegamos a ley exponencial de desintegración:
-
-\begin{equation}
-  E[N(t)] = N_0e^{-\lambda t}
-  \label{eq:valorpromedioexponential}
-\end{equation}
 
 \begin{cajadefinicion}
   \begin{itemize}
@@ -476,60 +488,31 @@ Finalmente, llegamos a ley exponencial de desintegración:
   \end{itemize} 
 \end{cajadefinicion}
 
+\subsubsection{Obtención ley de supervivencia partiendo de un intervalo corto}
 
-\subsubsection{Obtención Visual de la ley exponencial}
+La probabilidad de supervivencia en un intervalo corto es $p(dt) \approx 1 - \lambda dt$ (\ref{eq:probabilidaddesupervivenciaintervalodt}). La probabilidad de supervivencia $S(t)$. Para ``$n$'' intervalos cortos de duración $dt$ se tiene que:
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.95\textwidth]{Gráficas/binomial.jpg}
-  \caption{Representación gráfica de la distribución binomialvarios tiempos señalizando el valor central para cada tiempo.}
-  \label{fig:distribucionbinomial}
-\end{figure}
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.81\textwidth]{Gráficas/exponencial_bin.jpg}
-   \caption{Unión de los valores centrales de la figura \ref{fig:distribucionbinomial}.}
-  \label{fig:leyexponencial}
-\end{figure}
+\begin{equation}
+  p = (1 - \lambda dt)^n = \left (1 - \lambda \frac{t}{n}\right )^n= e^{-\lambda t}
+\end{equation}
+
+
+%%%\subsubsection{Obtención Visual de la ley exponencial}
+
+%%%%\begin{figure}[H]
+  %\centering
+  %\includegraphics[width=0.95\textwidth]{Gráficas/binomial.jpg}
+  %\caption{Representación gráfica de la distribución binomialvarios tiempos señalizando el valor central para cada tiempo.}
+  %\label{fig:distribucionbinomial}
+%%%%\end{figure}
+%%%%\begin{figure}[H]
+  %\centering
+  %\includegraphics[width=0.81\textwidth]{Gráficas/exponencial_bin.jpg}
+   %\caption{Unión de los valores centrales de la figura \ref{fig:distribucionbinomial}.}
+  %\label{fig:leyexponencial}
+%%%%\end{figure}
 
 %%COMENTAR LAS GRÁFICAS
-
-\subsubsection{Desintegraciones en intervalo corto}
-Sea $D_{\Delta t}$ (\ref{eq:núcleosdesintegrados}) la variable aleatoria que representa el número de núcleos desintegrados en el intervalo $[t,t+\Delta t]$, tomando $N$ como el número de núcleos en $t$.
-
-\begin{itemize}
-  \item \textbf{Caso exacto(binomial)}
-  
-  Cada núcleo tiene una probabilidad de desintegrarse $p=1-e^{-\lambda \Delta t}$ en ese intervalo siguiendo una distribución binomial.
-
-  $$D_{\Delta t} \sim Bin(N,p)$$
-
-  \begin{equation}
-  P(D_{\Delta t}=n)=\binom{N}{n}p^n(1-p)^{N-n},
-  \qquad n=0,1,\dots,N.
-  \end{equation}
-
-  Valor esperado $\rightarrow E[D_{\Delta t}]=Np$
-
-  Varianza $\rightarrow Var(D_{\Delta t})= Np(1-p)$
-  
-  Desviación típica $\rightarrow \sigma=\sqrt{Var(D_{\Delta t})}= \sqrt{Np(1-p)}$
-
-  \item \textbf{Caso aproximado(Poisson)} Empleando (\ref{eq:poisson}):
-  
-  \begin{equation}
-  P(D_{\Delta t}=n)\approx \frac{(N\lambda \Delta t)^n}{n!} e^{-N\lambda \Delta t}, \qquad n=0,1,\dots,N
-  \end{equation}
-
-  Valor esperado $\rightarrow E[D_{\Delta t}]=N\lambda \Delta t$
-  
-  Varianza $\rightarrow Var(D_{\Delta t})= N\lambda \Delta t$
-
-  Desviación típica $\rightarrow \sigma=\sqrt{Var(D_{\Delta t})}= \sqrt{N\lambda \Delta t}$
-
-\end{itemize}
-
-
 
 \subsubsection{Magnitudes resultantes de la ley de desintegración radiactiva}
 

@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import time
+
 
 #### CONSTANTES FÍSICAS 
 ## Vamos a trabajar en años
@@ -16,6 +18,8 @@ N=n0 #número de núcleos supervivientes
 D = 0 #número de núcleos desintegrados
 
 p= 1- np.exp(-Lambda*dt)
+
+inicio = time.perf_counter()
 
 def simulacion():
     tiempos = []
@@ -37,6 +41,8 @@ tiempos, N1 = simulacion()
 _, N2 = simulacion()
 _, N3 = simulacion()
 
+fin = time.perf_counter()
+
 # Guardar todo junto
 datos = np.column_stack((tiempos, N1, N2, N3))
 np.savetxt("simulaciones/binomial.txt", datos)
@@ -54,3 +60,8 @@ plt.ylabel("NÚCLEOS SUPERVIVIENTES")
 plt.legend()
 plt.savefig("simulaciones/binomial.png")
 plt.show()
+
+costeaprox = 3*(u+1) #3 simulaciones, cada una con u+1 intervalos
+
+print("Coste aproximado:", costeaprox)
+print("Tiempo de ejecución:", fin - inicio , "segundos")

@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import time
+
 
 #### CONSTANTES FÍSICAS 
 ## Vamos a trabajar en años
@@ -21,13 +23,14 @@ p= 1- np.exp(-Lambda*dt)
 tiempos = []
 supervivientes = []
 
-
-## SIMULACION 1
+inicio = time.perf_counter()
+## SIMULACION MICROSCÓPICA (núcleo a núcleo)
 def simulacion():
     tiempos = []
     supervivientes = []
     
     N = n0
+    interacciones = 0
     
     for j in range(u + 1):
         tiempos.append(j*dt)
@@ -35,21 +38,27 @@ def simulacion():
         
         D = 0
         for i in range(N):
+            interacciones += 1
+            
             if np.random.random() < p:
                 D += 1
                 
         N -= D
     
-    return tiempos, supervivientes
+    return tiempos, supervivientes, interacciones
 
 # Ejecutar 3 simulaciones
-tiempos, N1 = simulacion()
-_, N2 = simulacion()
-_, N3 = simulacion()
+tiempos, N1, interacciones1 = simulacion()
+_, N2, interacciones2 = simulacion()
+_, N3, interacciones3 = simulacion()
+
+fin = time.perf_counter()
 
 # Guardar todo junto
 datos = np.column_stack((tiempos, N1, N2, N3))
 np.savetxt("simulaciones/microscopic.txt", datos)
+
+
 
 tiempos = np.array(tiempos) #para graficar la solución exacta
 
@@ -64,3 +73,7 @@ plt.ylabel("NÚCLEOS SUPERVIVIENTES")
 plt.legend()
 plt.savefig("simulaciones/microscopic.png")
 plt.show()
+
+
+print("Tiempo de ejecución:", fin - inicio , "segundos")
+print("Número de interacciones:", interacciones1 + interacciones2 + interacciones3)
