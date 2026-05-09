@@ -5,10 +5,12 @@ import matplotlib.pyplot as plt
 # CONSTANTES FÍSICAS
 # ==========================
 
-T12 = 5730.0
-Lambda = np.log(2) / T12
+#T12 = 5730.0
+#Lambda = np.log(2) / T12
 
-N0 = 1000
+Lambda = 1
+
+N0 = 10**3
 
 # ==========================
 # CARGAR DATOS

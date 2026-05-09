@@ -5,13 +5,15 @@ import time
 
 #### CONSTANTES FÍSICAS 
 ## Vamos a trabajar en años
-T12 = 5730.0
-Lambda = np.log(2)/T12
+#T12 = 5730.0
+#Lambda = np.log(2)/T12
+
+Lambda = 1 
 
 n0 = 10**3 #número de núcleos a tiempo 0
 
-t = 30000 #tiempo que vamos a simular
-dt = 2000  #intervalo de tiempo
+t = 5 #tiempo que vamos a simular
+dt = 0.1  #intervalo de tiempo
 u = int(t/dt) #número de intervalos
 
 N=n0 #número de núcleos supervivientes
