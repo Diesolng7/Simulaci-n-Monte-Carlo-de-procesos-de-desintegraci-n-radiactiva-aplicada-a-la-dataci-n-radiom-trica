@@ -58,7 +58,7 @@ fin = time.perf_counter()
 
 # Guardar todo junto
 datos = np.column_stack((tiempos, N1, N2, N3))
-np.savetxt("simulaciones/microscopic.txt", datos)
+np.savetxt("simulaciones_iniciales/microscopic.txt", datos)
 
 
 
@@ -73,7 +73,7 @@ plt.plot(tiempos, n0*np.exp(-Lambda*tiempos), label="Solución exacta")
 plt.xlabel("TIEMPO (años)")
 plt.ylabel("NÚCLEOS SUPERVIVIENTES")
 plt.legend()
-plt.savefig("simulaciones/microscopic.png")
+plt.savefig("simulaciones_iniciales/microscopic.png")
 plt.show()
 
 
