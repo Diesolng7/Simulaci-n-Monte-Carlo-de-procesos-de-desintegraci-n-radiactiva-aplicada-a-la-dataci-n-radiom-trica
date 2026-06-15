@@ -1,0 +1,319 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{iaea_radiation_everyday_life}{online}{}
+      \name{author}{1}{}{%
+        {{hash=a120b3091ba982e2e21b4d053f5ff51e}{%
+           family={{International Atomic Energy Agency}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{a120b3091ba982e2e21b4d053f5ff51e}
+      \strng{fullhash}{a120b3091ba982e2e21b4d053f5ff51e}
+      \strng{bibnamehash}{a120b3091ba982e2e21b4d053f5ff51e}
+      \strng{authorbibnamehash}{a120b3091ba982e2e21b4d053f5ff51e}
+      \strng{authornamehash}{a120b3091ba982e2e21b4d053f5ff51e}
+      \strng{authorfullhash}{a120b3091ba982e2e21b4d053f5ff51e}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{IAEA Factsheet}
+      \field{title}{Radiation in Everyday Life}
+      \field{urlday}{28}
+      \field{urlmonth}{5}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.iaea.org/Publications/Factsheets/English/radlife
+      \endverb
+      \verb{url}
+      \verb https://www.iaea.org/Publications/Factsheets/English/radlife
+      \endverb
+    \endentry
+    \entry{mit_poisson_notes}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=2a517ad13d6bc4134df15f961271a209}{%
+           family={Sheffield},
+           familyi={S\bibinitperiod},
+           given={Scott},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Massachusetts Institute of Technology (MIT)}%
+      }
+      \strng{namehash}{2a517ad13d6bc4134df15f961271a209}
+      \strng{fullhash}{2a517ad13d6bc4134df15f961271a209}
+      \strng{bibnamehash}{2a517ad13d6bc4134df15f961271a209}
+      \strng{authorbibnamehash}{2a517ad13d6bc4134df15f961271a209}
+      \strng{authornamehash}{2a517ad13d6bc4134df15f961271a209}
+      \strng{authorfullhash}{2a517ad13d6bc4134df15f961271a209}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Lecture notes for course 18.600: Probability and Random Variables}
+      \field{title}{Exponential Random Variables and Poisson Processes}
+      \field{year}{2013}
+    \endentry
+    \entry{ross1993probabilitymodels}{book}{}
+      \name{author}{1}{}{%
+        {{hash=bf5f2440b50cd085a0515d2dd4c3cf92}{%
+           family={Ross},
+           familyi={R\bibinitperiod},
+           given={Sheldon\bibnamedelima M.},
+           giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Academic Press}%
+      }
+      \strng{namehash}{bf5f2440b50cd085a0515d2dd4c3cf92}
+      \strng{fullhash}{bf5f2440b50cd085a0515d2dd4c3cf92}
+      \strng{bibnamehash}{bf5f2440b50cd085a0515d2dd4c3cf92}
+      \strng{authorbibnamehash}{bf5f2440b50cd085a0515d2dd4c3cf92}
+      \strng{authornamehash}{bf5f2440b50cd085a0515d2dd4c3cf92}
+      \strng{authorfullhash}{bf5f2440b50cd085a0515d2dd4c3cf92}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{5}
+      \field{isbn}{9780125984553}
+      \field{title}{Introduction to Probability Models}
+      \field{year}{1993}
+    \endentry
+    \entry{lawless2011lifetime}{book}{}
+      \name{author}{1}{}{%
+        {{hash=9c8522a82bdbffcb9e6b888b265dd0d3}{%
+           family={Lawless},
+           familyi={L\bibinitperiod},
+           given={Jerald\bibnamedelima F.},
+           giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {John Wiley \& Sons}%
+      }
+      \strng{namehash}{9c8522a82bdbffcb9e6b888b265dd0d3}
+      \strng{fullhash}{9c8522a82bdbffcb9e6b888b265dd0d3}
+      \strng{bibnamehash}{9c8522a82bdbffcb9e6b888b265dd0d3}
+      \strng{authorbibnamehash}{9c8522a82bdbffcb9e6b888b265dd0d3}
+      \strng{authornamehash}{9c8522a82bdbffcb9e6b888b265dd0d3}
+      \strng{authorfullhash}{9c8522a82bdbffcb9e6b888b265dd0d3}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2}
+      \field{isbn}{9781118031254}
+      \field{title}{Statistical Models and Methods for Lifetime Data}
+      \field{year}{2011}
+    \endentry
+    \entry{krane}{book}{}
+      \name{author}{1}{}{%
+        {{hash=64da2dfacb552fdff861e21b3e047ea6}{%
+           family={Krane},
+           familyi={K\bibinitperiod},
+           given={Kenneth\bibnamedelima S.},
+           giveni={K\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley}%
+      }
+      \strng{namehash}{64da2dfacb552fdff861e21b3e047ea6}
+      \strng{fullhash}{64da2dfacb552fdff861e21b3e047ea6}
+      \strng{bibnamehash}{64da2dfacb552fdff861e21b3e047ea6}
+      \strng{authorbibnamehash}{64da2dfacb552fdff861e21b3e047ea6}
+      \strng{authornamehash}{64da2dfacb552fdff861e21b3e047ea6}
+      \strng{authorfullhash}{64da2dfacb552fdff861e21b3e047ea6}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Introductory Nuclear Physics}
+      \field{year}{1987}
+    \endentry
+    \entry{bevington}{book}{}
+      \name{author}{2}{}{%
+        {{hash=3af7fac3e5ffc763bb2cfa87639c0823}{%
+           family={Bevington},
+           familyi={B\bibinitperiod},
+           given={Philip\bibnamedelima R.},
+           giveni={P\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=2eac1b7bdc675e68adcd0c934422c86a}{%
+           family={Robinson},
+           familyi={R\bibinitperiod},
+           given={D.\bibnamedelimi Keith},
+           giveni={D\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {McGraw-Hill}%
+      }
+      \strng{namehash}{0c1cf78c11001c2873f6ac5cbc682fdd}
+      \strng{fullhash}{0c1cf78c11001c2873f6ac5cbc682fdd}
+      \strng{bibnamehash}{0c1cf78c11001c2873f6ac5cbc682fdd}
+      \strng{authorbibnamehash}{0c1cf78c11001c2873f6ac5cbc682fdd}
+      \strng{authornamehash}{0c1cf78c11001c2873f6ac5cbc682fdd}
+      \strng{authorfullhash}{0c1cf78c11001c2873f6ac5cbc682fdd}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{3}
+      \field{title}{Data Reduction and Error Analysis for the Physical Sciences}
+      \field{year}{2003}
+    \endentry
+    \entry{grimmett2020probability}{book}{}
+      \name{author}{2}{}{%
+        {{hash=8fa381371b3d28505cca914043697f43}{%
+           family={Grimmett},
+           familyi={G\bibinitperiod},
+           given={Geoffrey\bibnamedelima R.},
+           giveni={G\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=74a40c861fa2f2141d0e5558120c508f}{%
+           family={Stirzaker},
+           familyi={S\bibinitperiod},
+           given={David\bibnamedelima R.},
+           giveni={D\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{352ab620b7266638ec6051c33f6b708b}
+      \strng{fullhash}{352ab620b7266638ec6051c33f6b708b}
+      \strng{bibnamehash}{352ab620b7266638ec6051c33f6b708b}
+      \strng{authorbibnamehash}{352ab620b7266638ec6051c33f6b708b}
+      \strng{authornamehash}{352ab620b7266638ec6051c33f6b708b}
+      \strng{authorfullhash}{352ab620b7266638ec6051c33f6b708b}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{4}
+      \field{isbn}{9780198847601}
+      \field{title}{Probability and Random Processes}
+      \field{year}{2020}
+    \endentry
+    \entry{Hauf2013}{article}{}
+      \name{author}{10}{}{%
+        {{hash=b03f0a425a194cf3217df8488918ffe7}{%
+           family={Hauf},
+           familyi={H\bibinitperiod},
+           given={Steffen},
+           giveni={S\bibinitperiod}}}%
+        {{hash=d543a4e3d3e2d57e5e0eb0f912ed63e6}{%
+           family={Kuster},
+           familyi={K\bibinitperiod},
+           given={Markus},
+           giveni={M\bibinitperiod}}}%
+        {{hash=b858e1333f456730967a0e0c6fee2527}{%
+           family={Batič},
+           familyi={B\bibinitperiod},
+           given={Matej},
+           giveni={M\bibinitperiod}}}%
+        {{hash=6d11c251d7662f80420926ccbda68bc6}{%
+           family={Bell},
+           familyi={B\bibinitperiod},
+           given={Zane\bibnamedelima W.},
+           giveni={Z\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=d9baf6ea8dec1683e33c71aa9900611c}{%
+           family={Hoffmann},
+           familyi={H\bibinitperiod},
+           given={Dieter\bibnamedelimb H.\bibnamedelimi H.},
+           giveni={D\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=c034309d5835e5eb7182c0dee097e6bb}{%
+           family={Lang},
+           familyi={L\bibinitperiod},
+           given={Philipp\bibnamedelima M.},
+           giveni={P\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=8dece316409524dcab60ef36bd632a29}{%
+           family={Neff},
+           familyi={N\bibinitperiod},
+           given={Stephan},
+           giveni={S\bibinitperiod}}}%
+        {{hash=27bc38c7fb46c7ef7b2d396e753cfa9d}{%
+           family={Pia},
+           familyi={P\bibinitperiod},
+           given={Maria\bibnamedelima Grazia},
+           giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=f56c579ce549adb404454ce77cfcdfd0}{%
+           family={Weidenspointner},
+           familyi={W\bibinitperiod},
+           given={Georg},
+           giveni={G\bibinitperiod}}}%
+        {{hash=38c7183ff15fcd319f76551c94616bc2}{%
+           family={Zoglauer},
+           familyi={Z\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{667cbf6bd3639f431ebb7b19d1f2f0ea}
+      \strng{fullhash}{09000c590a263af13b75ad9a428df7a6}
+      \strng{bibnamehash}{667cbf6bd3639f431ebb7b19d1f2f0ea}
+      \strng{authorbibnamehash}{667cbf6bd3639f431ebb7b19d1f2f0ea}
+      \strng{authornamehash}{667cbf6bd3639f431ebb7b19d1f2f0ea}
+      \strng{authorfullhash}{09000c590a263af13b75ad9a428df7a6}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Nuclear Science}
+      \field{number}{4}
+      \field{title}{Radioactive Decays in Geant4}
+      \field{volume}{60}
+      \field{year}{2013}
+      \field{pages}{2966\bibrangedash 2983}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1109/TNS.2013.2270894
+      \endverb
+    \endentry
+    \entry{scott1979histograms}{article}{}
+      \name{author}{1}{}{%
+        {{hash=09b4c58a8242257ec372275150912e64}{%
+           family={Scott},
+           familyi={S\bibinitperiod},
+           given={David\bibnamedelima W.},
+           giveni={D\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{09b4c58a8242257ec372275150912e64}
+      \strng{fullhash}{09b4c58a8242257ec372275150912e64}
+      \strng{bibnamehash}{09b4c58a8242257ec372275150912e64}
+      \strng{authorbibnamehash}{09b4c58a8242257ec372275150912e64}
+      \strng{authornamehash}{09b4c58a8242257ec372275150912e64}
+      \strng{authorfullhash}{09b4c58a8242257ec372275150912e64}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Biometrika}
+      \field{number}{3}
+      \field{title}{On Optimal and Data-Based Histograms}
+      \field{volume}{66}
+      \field{year}{1979}
+      \field{pages}{605\bibrangedash 610}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1093/biomet/66.3.605
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

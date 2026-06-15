@@ -16,9 +16,9 @@ N0 = 10**3
 # CARGAR DATOS
 # ==========================
 
-microscopico = np.loadtxt("simulaciones/microscopic.txt")
-binomial = np.loadtxt("simulaciones/binomial.txt")
-poisson = np.loadtxt("simulaciones/poisson.txt")
+microscopico = np.loadtxt("LÁTEX/TAREA2/microscopic.txt")
+binomial = np.loadtxt("LÁTEX/TAREA2/binomial.txt")
+poisson = np.loadtxt("LÁTEX/TAREA2/poisson.txt")
 
 # Primera columna: tiempos
 tiempos = microscopico[:, 0]
@@ -26,11 +26,13 @@ tiempos = microscopico[:, 0]
 # Curva teórica
 N_teorica = N0 * np.exp(-Lambda * tiempos)
 
+
+
 # ==========================
 # GRÁFICA
 # ==========================
 
-plt.figure(figsize=(10, 6))
+
 
 # --- Microscópico ---
 for i in range(1, 4):
@@ -77,11 +79,10 @@ plt.plot([], [], color="blue", label="Microscópico")
 plt.plot([], [], color="green", label="Binomial")
 plt.plot([], [], color="red", label="Poisson")
 
-plt.xlabel("Tiempo (años)")
-plt.ylabel("Núcleos supervivientes")
-plt.title("Comparación entre simulaciones")
+plt.xlabel("TIEMPO (años)")
+plt.ylabel("NÚCLEOS SUPERVIVIENTES")
+plt.title("COMPARACIÓN DE MODELOS DE SIMULACIÓN")
 plt.legend()
-plt.grid(True)
-plt.savefig("simulaciones/comparacion.png")
+plt.savefig("LÁTEX/TAREA2/comparacion.png")
 
 plt.show()

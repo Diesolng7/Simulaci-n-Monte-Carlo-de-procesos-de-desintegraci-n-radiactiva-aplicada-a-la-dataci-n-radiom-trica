@@ -10,16 +10,16 @@ import time
 
 Lambda = 1 
 
-n0 = 10**3 #número de núcleos a tiempo 0
+n0 = 10**2 #número de núcleos a tiempo 0
 
 t = 5 #tiempo que vamos a simular
-dt = 0.1  #intervalo de tiempo
+dt = 0.05  #intervalo de tiempo
 u = int(t/dt) #número de intervalos
 
-N=n0 #número de núcleos supervivientes
+N = n0 #número de núcleos supervivientes
 D = 0 #número de núcleos desintegrados
 
-p= 1- np.exp(-Lambda*dt)
+q= 1- np.exp(-Lambda*dt)
 
 ##Listas de resultados
 tiempos = []
@@ -42,7 +42,7 @@ def simulacion():
         for i in range(N):
             interacciones += 1
             
-            if np.random.random() < p:
+            if np.random.random() < q:
                 D += 1
                 
         N -= D
@@ -58,14 +58,14 @@ fin = time.perf_counter()
 
 # Guardar todo junto
 datos = np.column_stack((tiempos, N1, N2, N3))
-np.savetxt("simulaciones_iniciales/microscopic.txt", datos)
+np.savetxt("LÁTEX/TAREA2/TESTmicroscopic.txt", datos)
 
 
 
 tiempos = np.array(tiempos) #para graficar la solución exacta
 
 # Graficar
-plt.title("SIMULACIÓN MICROSCÓPICA(Núcleo a núcleo)")
+plt.title("SIMULACIÓN MICROSCÓPICA (Núcleo a núcleo)")
 plt.plot(tiempos, N1, label="Simulación 1")
 plt.plot(tiempos, N2, label="Simulación 2")
 plt.plot(tiempos, N3, label="Simulación 3")
@@ -73,7 +73,7 @@ plt.plot(tiempos, n0*np.exp(-Lambda*tiempos), label="Solución exacta")
 plt.xlabel("TIEMPO (años)")
 plt.ylabel("NÚCLEOS SUPERVIVIENTES")
 plt.legend()
-plt.savefig("simulaciones_iniciales/microscopic.png")
+plt.savefig("LÁTEX/TAREA2/TESTmicroscopic.png")
 plt.show()
 
 
