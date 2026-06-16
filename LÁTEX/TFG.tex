@@ -15,17 +15,17 @@
 % --------------------------------------------------
 \usepackage[
 a4paper,
-left=3.5cm,
-right=3.5cm,
-top=2.5cm,
-bottom=2.5cm,
-marginparsep=0.3cm,
-marginparwidth=3.5cm
+left=2.5cm,
+right=2.5cm,
+top=2cm,
+bottom=2cm,
+marginparsep=0.2cm,
+marginparwidth=2.1cm
 ]{geometry}
 \usepackage{setspace}
 \singlespacing
 \setlength{\parindent}{1.25em}
-\setlength{\parskip}{0.3em}
+\setlength{\parskip}{0pt}
 
 % --------------------------------------------------
 % MATEMÁTICAS Y FÍSICA
@@ -194,11 +194,13 @@ sorting=none
 \pagenumbering{arabic}
 
 % --------------------------------------------------
-\section{Introducción}
-
+\section{Resumen}
 
 % --------------------------------------------------
-\section{Objetivos}
+\section{Abstract}
+
+% --------------------------------------------------
+\section{Introducción}
 
 % --------------------------------------------------
 \section{Fundamento teórico}
@@ -429,7 +431,7 @@ Lo que nos permite obtener:
 
 \begin{equation}
   t = \frac{1}{\lambda} \ln(\frac{N_0}{N})
-  \label{eq:tiempo_estimado}
+  \label{eq:tiempo_desintegracion}
 \end{equation}
 
 \subsubsection{Magnitudes resultantes de la ley de desintegración radiactiva}
@@ -623,6 +625,7 @@ Por tanto, la \textbf{media de una distribución binomial} es:
 \end{equation}
 
 \subsubsection{Varianza y desviación típica de una distribución binomial}
+\label{sec:varianza_desviación_binomial}
 
 La varianza de una variable aleatoria $X$ puede escribirse como:
 
@@ -889,15 +892,14 @@ El proceso de Poisson solo es válido para intervalos cortos. Conforme el tiempo
 
 % --------------------------------------------------
 
+\newpage
 \section{Metodología}
 
 \subsection{Simulaciones iniciales}
 Antes de comenzar con la datación radiométrica, es necesario escoger un modelo de simulación que permita describir el proceso de desintegración radiactiva. Para ello, se han elegido tres modelos de simulación distintos que emplean la técnica o modelo de Monte Carlo.
 
 
-De cara a estas primeras simulaciones, se ha empleado los valores para la constante de desintegración $\lambda = 1$, el número inicial de núcleos $N_0 = 1000$, un tiempo total de simulación $t=5$ años, suficiente para que se desintegren todos los núcleos y un intervalo de tiempo $dt=0.05$ años.
-
-%%% TENGO QUE MOSTRAR QUE LAS SIMULACIONES SON ÚNICAS
+De cara a estas primeras simulaciones, se han empleado los valores $\lambda = 1$ para la constante de desintegración, $N_0 = 1000$ núcleos iniciales, un tiempo total de simulación $t = 5$ años y un intervalo temporal $dt = 0,05$ años. Este tiempo total permite observar prácticamente toda la evolución del sistema, ya que la población de núcleos supervivientes se reduce a una fracción muy pequeña de la inicial.
 
 
 \subsubsection{Simulación núcleo a núcleo}
@@ -908,11 +910,11 @@ En este modelo se representa explícitamente cada uno de los núcleos iniciales 
   \label{eq:probabilidad_desintegración}
 \end{equation}
 
-Con el fin de conocer el destino de cada núcleo, se genera un número aleatorio ``$r$'' para cada uno de ellos, el cual estará uniformemente distribuido entre 0 y 1, \refmargen{Hauf2013 \cite{Hauf2013}}{\S~III.B}. Si el número aleatorio generado es menor que la probabilidad de desintegración ($r < q$), se considmera que ese núcleo se ha desintegrado, en caso contrario, el núcleo sobrevivirá. Este proceso se repite para cada núcleo presente en cada intervalo de tiempo $dt$ hasta alcanzar el tiempo total de simulación $t$. 
+Con el fin de conocer el destino de cada núcleo, se genera un número aleatorio ``$r$'' para cada uno de ellos, el cual estará uniformemente distribuido entre 0 y 1 \refmargen{Hauf2013 \cite{Hauf2013}}{\S~III.B}. Si el número aleatorio generado es menor que la probabilidad de desintegración ($r < q$), se considmera que ese núcleo se ha desintegrado, en caso contrario, el núcleo sobrevivirá. Este proceso se repite para cada núcleo presente en cada intervalo de tiempo $dt$ hasta alcanzar el tiempo total de simulación $t$. 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\textwidth]{TAREA2/microscopic.png}
+  \includegraphics[width=0.9\textwidth]{TAREA2/microscopic.png}
   \caption{3 simulaciones realizadas con el modelo microscópico núcleo a núcleo.}
 \end{figure}
 
@@ -930,22 +932,31 @@ El número de núcleos supervivientes al final del intervalo, queda determinado 
 N_{i+1} \sim \operatorname{Bin}(N_i,p)
 \end{equation}
 
-De esta forma, se genera un único número aleatorio para cada paso temporal, el cual, representa el número de núcleos supervivientes al final del intervalo. Es decir, estes valor se emplea como población incial al comienzo del siguiente intervalo. Este proceso se repite hasta alcanzar el tiempo total de simulación $t$.
+De esta forma, se genera un único número aleatorio para cada paso temporal, el cual, representa el número de núcleos supervivientes al final del intervalo. Es decir, este valor se emplea como población incial al comienzo del siguiente intervalo. El proceso se repite hasta alcanzar el tiempo total de simulación ($t$).
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=1\textwidth]{TAREA2/binomial.png}
-  \caption{3 simulaciones realizadas con la modelo de distribución binomial.}
+  \caption{3 simulaciones realizadas con el modelo de distribución binomial.}
 \end{figure}
 
 \subsubsection{Simulación con aproximación de Poisson}
-Cuando la probabilidad de desintegración durante el intervalo es pequeña, se puede conocer el número de núcleos desintegrados aproximando la distribución binomial a la distribución de Poisson (\ref{eq:poisson}).
+
+Cuando la probabilidad de desintegración durante un intervalo temporal es pequeña, el número de núcleos desintegrados puede aproximarse mediante una distribución de Poisson (\ref{eq:poisson}).
+
+En este caso, si en el instante $t_i$ quedan $N_i$ núcleos supervivientes, el número de núcleos que se desintegran durante el intervalo $[t_i,t_i+dt]$ se genera como
 
 \begin{equation}
 D_i\sim\operatorname{Poi}(\mu_i).
 \end{equation}
 
-donde $\mu_i = N_i(1-e^{-\lambda dt})$ es el número medio de núcleos que se desintegran en el intervalo $[t_i, t_i + dt]$.
+donde
+
+\begin{equation}
+\mu_i = N_i(1-e^{-\lambda dt}) \approx N_i\lambda dt
+\end{equation}
+
+es el número medio de núcleos que se desintegran en dicho intervalo.
 
 Una vez generado el número de desintegraciones, la población de núcleos supervivientes se actualiza según
 
@@ -953,7 +964,7 @@ Una vez generado el número de desintegraciones, la población de núcleos super
 N_{i+1}=N_i-D_i.
 \end{equation}
 
-De esta forma, en cada paso temporal se genera un único número aleatorio que representa el número total de núcleos desintegrados. La tasa media se recalcula a partir de la población presente $N_i$, y el proceso se repite hasta alcanzar el tiempo total de simulación $t$.
+De esta forma, en cada paso temporal se genera un único número aleatorio que representa el número total de núcleos desintegrados. La media de la distribución de Poisson se recalcula a partir de la población presente $N_i$, y el proceso se repite hasta alcanzar el tiempo total de simulación ($t$).
 
 \begin{figure}[H]
   \centering
@@ -969,7 +980,7 @@ De esta forma, en cada paso temporal se genera un único número aleatorio que r
   \caption{Comparación de las 3 simulaciones de cada modelo frente a la solución exacta.}
 \end{figure}
 
-El modelo núcleo a núcleo y el modelo binomial muestran el mismo comportamiento estadístico, aunque difieren en la forma de simular el proceso. Esto permite descartar uno de ellos y conservar únicamente el modelo binomial, ya que realiza menos de 1000 operaciones por simulación, mientras que el modelo núcleo a núcleo puede requerir decenas de miles. Esta diferencia también se refleja en el tiempo de ejecución, que resulta notablemente mayor para el modelo núcleo a núcleo.
+El modelo núcleo a núcleo y el modelo binomial muestran el mismo comportamiento estadístico, aunque difieren en la forma de simular el proceso. Esto permite descartar uno de ellos y conservar únicamente el modelo binomial, ya que en cada paso temporal genera un único número aleatorio, mientras que el modelo núcleo a núcleo debe evaluar individualmente la posible desintegración de cada núcleo superviviente. Esta diferencia, que depende del número inicial de núcleos y del número de pasos temporales, también se refleja en el tiempo de ejecución, que resulta notablemente mayor para el modelo núcleo a núcleo.
 
 La aproximación de la distribución binomial a la distribución de Poisson es una buena aproximación para intervalos cortos y muchos núcleos. En este caso, 1000 núcleos y un intervalo de 0.05, la aproximación es notablemente buena. No obstante, esta aproximación pierde precisión a medida que aumente el intervalo temporal, ya que también crece la probabilidad de desintegración en cada paso (\ref{eq:probabilidad_desintegración}).
 La distribución binomial y de poisson presentan el mismo valor esperado pero no la misma varianza. La varianza de la distribución binomial es $np(1-p)$, mientras que la de la distribución de Poisson es $n p$. En este caso, con un paso de 0.05, el factor $1-p\approx 1$. A partir del $10\%$ de diferencia entre varianzas
@@ -982,7 +993,7 @@ Para un intervalo de 0.2 años y 1000 núcleos.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\textwidth]{TAREA2/0.2poisson.png}
+  \includegraphics[width=0.85\textwidth]{TAREA2/0.2poisson.png}
   \caption{3 simulaciones realizadas con la aproximación de Poisson para un paso de 0.2 años.}
 \end{figure}
 
@@ -990,13 +1001,20 @@ Para el caso de pocos núcleos, 100 núcleos, manteniendo el paso de 0.05 años,
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\textwidth]{TAREA2/100poisson.png}
+  \includegraphics[width=0.85\textwidth]{TAREA2/100poisson.png}
   \caption{3 simulaciones realizadas con la aproximación de poisson para un paso de 0.05 años y 100 núcleos.}
 \end{figure}
 
 \subsection{Validación estadística del modelo binomial}
 
 Una vez seleccionado el modelo binomial como modelo de simulación, se debe comprobar si reproduce correctamente la ley macroscópica de desintegración radiactiva. Para ello, se repite la simulación $M=50$ veces, manteniendo fijos los parámetros $N_0$, $\lambda$, $dt$ y el tiempo total de simulación. Cada repetición representa una posible trayectoria temporal del número de núcleos supervivientes.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{TAREA4/figura1_trayectorias.png}
+\caption{Cuatro trayectorias escogidas aleatoriamente entre un total de 50 simulaciones, comparadas con el valor medio y la desviación típica del número de núcleos supervivientes en cada intervalo temporal.}
+\label{fig:trayectorias_binomial}
+\end{figure}
 
 A partir de estas $M$ simulaciones se calcula, para cada instante temporal ($t_i$), el valor medio del número de núcleos supervivientes,
 
@@ -1005,16 +1023,16 @@ A partir de estas $M$ simulaciones se calcula, para cada instante temporal ($t_i
 \label{eq:valor_medio_Msimulaciones}
 \end{equation}
 
-así como la desviación típica asociada,
+así como la desviación típica muestral,
 
 \begin{equation}
-\sigma_i=
+s_i=
 \sqrt{
 \frac{1}{M-1}
 \sum_{j=1}^{M}
 \left(N_i^{(j)}-\overline{N}_i\right)^2
 }.
-\label{eq:desviación_típica_Msimulaciones}
+\label{eq:desviación_típica_muestral}
 \end{equation}
 
 De esta forma, se puede comparar el comportamiento promedio de la simulación con la ley teórica de desintegración,
@@ -1023,82 +1041,39 @@ $$
 N(t)=N_0e^{-\lambda t}.
 $$
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\textwidth]{TAREA4/figura1_trayectorias.png}
-\caption{Cuatro trayectorias escogidas aleatoriamente entre un total de 50 simulaciones, comparadas con el valor medio y la desviación típica del número de núcleos supervivientes en cada intervalo temporal.}
-\label{fig:trayectorias_binomial}
-\end{figure}
 
 En la Figura~\ref{fig:trayectorias_binomial} se observa que las trayectorias individuales presentan fluctuaciones alrededor de la ley exponencial teórica. Estas fluctuaciones son consecuencia directa de la naturaleza aleatoria del proceso de desintegración. Sin embargo, al considerar el promedio de las 50 simulaciones, el resultado se aproxima de forma clara al comportamiento macroscópico esperado. Por tanto, aunque una trayectoria individual no reproduce exactamente la ley exponencial, el promedio estadístico del modelo binomial sí converge hacia ella.
 
 \subsubsection{Convergencia con el número de simulaciones}
 
-Una vez comprobado que el promedio de varias simulaciones reproduce la ley exponencial, se estudia cómo mejora esta aproximación al aumentar el número de las mismas. Para ello, se calcula la discrepancia relativa entre el valor medio simulado y el valor teórico en el tiempo de semivida ($t=T_{1/2}$).
+Una vez comprobado que el promedio de varias simulaciones reproduce la ley exponencial de desintegración, se estudia cómo mejora esta aproximación al aumentar el número de simulaciones. Para ello, se calcula la discrepancia relativa entre el valor medio simulado y el valor teórico en el tiempo de semivida, es decir, en $t=T_{1/2}$.
 
 En este instante, la ley de desintegración radiactiva predice
 
-$$
+\begin{equation}
 N(T_{1/2})=\frac{N_0}{2}.
-$$
+\end{equation}
 
 Por tanto, se define el error relativo como
 
-$$
+\begin{equation}
 \Delta(T_{1/2})=
 \frac{
 \left|\overline{N}(T_{1/2})-N(T_{1/2})\right|
 }{
 N(T_{1/2})
 }.
-$$
+\end{equation}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth]{TAREA4/figura2_convergencia_t12.png}
-\caption{Error relativo entre el valor medio simulado y el valor teórico en el tiempo de semivida $T_{1/2}$, en función del número de simulaciones (M).}
+\includegraphics[width=0.9\textwidth]{TAREA4/figura2_convergencia_t12.png}
+\caption{Error relativo entre el valor medio simulado y el valor teórico en el tiempo de semivida $T_{1/2}$, en función del número de simulaciones $M$.}
 \label{fig:convergencia_semivida}
 \end{figure}
 
-En la Figura~\ref{fig:convergencia_semivida} se observa que la discrepancia relativa disminuye al aumentar el número de simulaciones. Esto indica que el promedio estadístico obtenido mediante el modelo binomial converge hacia el valor predicho por la ley macroscópica de desintegración radiactiva.
+En la Figura~\ref{fig:convergencia_semivida} se aprecia una disminución progresiva de la discrepancia relativa conforme aumenta el número de simulaciones. Este resultado muestra que el valor medio obtenido con el modelo binomial se aproxima cada vez más al comportamiento esperado según la ley macroscópica de desintegración radiactiva.
 
-\begin{cajadefinicion}
-  La reducción de esta discrepancia al aumentar $M$ está relacionada con el comportamiento estadístico de la media muestral. Si se considera un instante fijo $t_i$, cada simulación proporciona un valor $N_i^{(j)}$. Al tratarse de realizaciones independientes, si la varianza asociada a una trayectoria individual es $\sigma_i^2$, la varianza del valor medio viene dada por
-
-\begin{equation}
-\mathrm{Var}(\overline{N}_i)
-=
-\mathrm{Var}\left(
-\frac{1}{M}\sum_{j=1}^{M}N_i^{(j)}
-\right).
-\end{equation}
-
-Como las simulaciones son independientes, la varianza de la suma es la suma de las varianzas. Por tanto,
-
-\begin{equation}
-\mathrm{Var}(\overline{N}_i)
-=
-\frac{1}{M^2}
-\sum_{j=1}^{M}
-\mathrm{Var}\left(N_i^{(j)}\right)
-=
-\frac{1}{M^2}M\sigma_i^2
-=
-\frac{\sigma_i^2}{M}.
-\end{equation}
-
-La desviación típica asociada al valor medio será entonces
-
-\begin{equation}
-\sigma_{\overline{N}_i}
-=
-\sqrt{\mathrm{Var}(\overline{N}_i)}
-=
-\frac{\sigma_i}{\sqrt{M}}.
-\end{equation}
-
-Esto indica que la incertidumbre estadística del promedio disminuye como $1/\sqrt{M}$. Por ello, al aumentar el número de simulaciones, se espera que el valor medio simulado se aproxime progresivamente al valor teórico, aunque el error relativo $\Delta$ no tenga por qué decrecer de forma perfectamente monótona para todos los valores de $M$.
-\end{cajadefinicion}
 
 
 \subsubsection{Error relativo máximo}
@@ -1120,12 +1095,12 @@ N(t_i)
 y posteriormente se toma el valor máximo de dicha discrepancia,
 
 \begin{equation}
-\Delta_{\max}=
-\max(\Delta_i).
+\Delta_{max}=
+\max_i(\Delta_i).
 \label{eq:error_relativo_maximo}
 \end{equation}
 
-De esta forma, $\Delta_{\max}$ representa el mayor error relativo cometido por la simulación a lo largo de todo el intervalo temporal estudiado.
+De esta forma, $\Delta_{max}$ representa el mayor error relativo cometido por la simulación a lo largo de todo el intervalo temporal estudiado.
 
 \begin{figure}[H]
 \centering
@@ -1136,7 +1111,7 @@ De esta forma, $\Delta_{\max}$ representa el mayor error relativo cometido por l
 
 En la Figura \ref{fig:error_relativo_maximo} se observa que el error relativo máximo disminuye de forma notable al aumentar el número de simulaciones. Para $M=100$, la discrepancia máxima es superior al $1\%$, lo que indica que el promedio obtenido todavía no reproduce con suficiente precisión la ley teórica en todos los instantes temporales. Sin embargo, a partir de $M=500$, el error relativo máximo queda por debajo del límite del $1\%$ en la realización mostrada.
 
-Debido a la naturaleza aleatoria del método Monte Carlo, esta tendencia no tiene por qué reproducirse de forma idéntica en todas las ejecuciones. Al repetir el análisis pueden aparecer oscilaciones puntuales, incluso para valores de $M$ superiores a 500. No obstante, la tendencia general observada es estable: al aumentar $M$, el error relativo máximo tiende a reducirse, y el valor $M=500$ se sitúa en torno al umbral del $1\%$. Por ello, este valor puede tomarse como una estimación razonable del número mínimo de simulaciones necesario para obtener una precisión global del orden del $1\%$.
+Debido a la naturaleza aleatoria del método Monte Carlo, esta tendencia no tiene por qué reproducirse de forma idéntica en todas las ejecuciones. Al repetir el análisis pueden aparecer oscilaciones puntuales, incluso para valores de $M$ superiores a 500. No obstante, la tendencia general observada es clara: al aumentar $M$, el error relativo máximo tiende a reducirse. En la realización mostrada, el valor $M=500$ marca aproximadamente la entrada en la región en la que el error relativo máximo se sitúa por debajo del $1\%$, por lo que puede tomarse como un valor orientativo.
 
 
 \subsection{Dependencia estadística con el número inicial de núcleos}
@@ -1220,7 +1195,7 @@ Para comprobar numéricamente este comportamiento, se realiza la simulación en 
 
 Las representaciones en escala doble logarítmica muestran un comportamiento lineal, lo que confirma que ambas magnitudes siguen aproximadamente una ley de potencia con $N_0$. El ajuste realizado para la desviación típica proporciona un exponente próximo a $1/2$, mientras que el ajuste correspondiente a la desviación típica relativa da un exponente próximo a $-1/2$, dando consistencia a las dependencias teóricas obtenidas anteriormente.
 
-Además, el análisis permite cuantificar la reducción de las fluctuaciones relativas al aumentar $N_0$. En el caso particular $t=T_{1/2}$, la desviación típica relativa viene dada por
+Además, el análisis permite cuantificar la reducción de las fluctuaciones relativas al aumentar $N_0$. En el caso particular $t=T_{1/2}$ ($p=\frac{1}{2}$), la desviación típica relativa viene dada por
 
 \begin{equation}
 \frac{\sigma_N}{\overline{N}}=\frac{1}{\sqrt{N_0}}.
@@ -1291,34 +1266,18 @@ D_i^{(j)}=N_0-N_i^{(j)}.
 El número de intervalos del histograma se determina mediante la regla de Scott, que fija la anchura de los bines como
 
 \begin{equation}
-h=3.5\cdot\sigma\cdot M^{-1/3} \refmargen{Scott \cite{scott1979histograms}}{}
+h=3.5\cdot s_i \cdot M^{-1/3} \refmargen{Scott \cite{scott1979histograms}}{}
 \label{eq:regla_scott}
 \end{equation}
 
-donde $\sigma$ es la desviación típica de la muestra y $M$ el número de datos.
+donde $s_i$ es la desviación típica de la muestra (\ref{eq:desviación_típica_muestral}) y $M$ el número de datos (simulaciones).
 \end{cajadefinicion}
 
 Sobre cada histograma se superponen la distribución binomial teórica y la aproximación de Poisson, lo que permite comparar visualmente los resultados simulados con las distribuciones esperadas. Asimismo, se incluye en cada caso la media teórica (\ref{eq:media_distribucion_binomial}) y la media muestral (\ref{eq:valor_medio_Msimulaciones}) calculada a partir de la simulación.
 
+\subsubsection{Análisis de los Histogramas de núcleos supervivientes y dedesintegrados}
 
-
-\subsubsection{Histogramas de núcleos supervivientes}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1\textwidth]{TAREA5/histogramas_supervivientes_vertical.png}
-  \label{fig:Histograma_supervivientes}
-  \caption{Histogramas de núcleos supervivientes.}
-\end{figure}
-
-\subsubsection{Histogramas de núcleos desintegrados}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1\textwidth]{TAREA5/histogramas_desintegrados_vertical.png}
-  \label{fig:Histograma_desintegrados}
-  \caption{Histogramas de núcleos desintegrados.}
-\end{figure}
+Los histogramas correspondientes a los tres instantes temporales consideradospara el número de núcleos supervivientes y desintegrados, se recogen en el Apéndice \ref{ap:histogramas}.
 
 La distribución binomial reproduce adecuadamente las distribuciones de núcleos supervivientes y desintegrados. Esto se comprueba observando la proximidad entre las medias teóricas y muestrales, así como la forma de los histogramas.
 
@@ -1351,7 +1310,7 @@ Las líneas verticales asociadas a la media más y menos una desviación típica
 \end{table}
 
 
-Para la distribución binomial (\ref{tab:comparacion_binomial}), los valores teóricos de la esperanza $E(X)$ y de la desviación típica $\sigma$ son próximos a la media muestral $\overline{X}$ y a la desviación típica muestral $\overline{\sigma}$, respectivamente. Esto indica que la binomial reproduce correctamente tanto el valor central como la dispersión estadística de las simulaciones.
+Para la distribución binomial (\ref{tab:comparacion_binomial}), los valores teóricos de la esperanza $E(X)$ y de la desviación típica $\sigma$ son próximos a la media muestral $\overline{X}$ y a la desviación típica muestral $s_i$, respectivamente. Esto indica que la binomial reproduce correctamente tanto el valor central como la dispersión estadística de las simulaciones.
 
 \begin{cajadefinicion}
 
@@ -1387,16 +1346,16 @@ En los apartados anteriores se ha seleccionado el modelo binomial como modelo de
 
 A partir de estos resultados, se puede estudiar cómo las fluctuaciones estadísticas del número de núcleos supervivientes se propagan a la estimación del tiempo transcurrido.
 
-Partiendo de la ley macroscópica de desintegración (\ref{eq:ley_desintegracion}) se obtiene la ecuación (\ref{eq:tiempo_estimado}):
+Partiendo de la ley macroscópica de desintegración (\ref{eq:ley_desintegracion}) se obtiene la ecuación (\ref{eq:tiempo_desintegración}):
 
-$$
+\begin{equation}
 t_{\mathrm{est}}=
 -\frac{1}{\lambda}
-\ln\left(\frac{N}{N_0}\right).
-$$
+\ln\left(\frac{N}{N_0}\right)
+\label{eq:tiempo_estimado}
+\end{equation}
 
 Esta expresión permite interpretar cada resultado de la simulación como una estimación de la edad de la muestra. En particular, si $N$ representa el número de núcleos supervivientes obtenido en una simulación concreta, entonces $t_{\mathrm{est}}$ es el tiempo que se deduciría aplicando directamente la ley exponencial determinista(\ref{eq:ley_desintegracion}).
-
 
 Sin embargo, debido a la naturaleza estocástica del proceso de desintegración, el número de núcleos supervivientes no toma siempre el mismo valor, sino que presenta fluctuaciones alrededor de su valor medio. Por tanto, la edad estimada mediante la ecuación (\ref{eq:tiempo_estimado}) también presenta una incertidumbre estadística.
 
@@ -1428,7 +1387,7 @@ resulta
 \label{eq:sigma_t_general}
 \end{equation}
 
-La desviación típica de la distribución binomial (\ref{eq:desviación_típica_binomial}) obtenida en la sección de la sección 3.2.3
+La desviación típica de la distribución binomial (\ref{eq:desviación_típica_binomial}) obtenida en la sección de la sección \ref{sec:varianza_desviación_binomial}
 
 $$
 \sigma_N=\sqrt{N_0p(1-p)}.
@@ -1437,14 +1396,14 @@ $$
 Sustituyendo esta expresión en la ecuación (\ref{eq:sigma_t_general}) y tomando $N=N_0p$, se obtiene
 
 \begin{equation}
-\sigma_t=
+\sigma_{teo}=
 \frac{\sqrt{N_0p(1-p)}}{\lambda N_0p}.
 \end{equation}
 
 Por tanto,
 
 \begin{equation}
-\sigma_t=
+\sigma_{teo}=
 \frac{1}{\lambda}
 \sqrt{
 \frac{1-p}{N_0p}
@@ -1454,7 +1413,7 @@ Por tanto,
 Finalmente, usando \(p=e^{-\lambda t}\), queda
 
 \begin{equation}
-\sigma_t=
+\sigma_{teo}=
 \frac{1}{\lambda}
 \sqrt{
 \frac{e^{\lambda t}-1}{N_0}
@@ -1466,20 +1425,18 @@ Esta expresión muestra que la incertidumbre en la estimación temporal depende 
 
 \subsubsection{Precisión estadística de la estimación temporal}
 
-
 % --------------------------------------------------
 
 \section{Datación}
 
 \subsection{Datación radiométrica del Carbono 14}
 
-
-
-
-\section{Resultados}
-
 % --------------------------------------------------
 \section{Conclusiones}
+
+% --------------------------------------------------
+
+\section{Conclusions}
 
 % --------------------------------------------------
 \printbibliography
@@ -1488,6 +1445,24 @@ Esta expresión muestra que la incertidumbre en la estimación temporal depende 
 % ANEXOS
 % ==================================================
 \appendix
+
+\section{Figuras complementarias}
+\subsection{Histogramas de núcleos supervivientes y desintegrados}
+\label{ap:histogramas}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{TAREA5/histogramas_supervivientes_vertical.png}
+  \label{fig:Histograma_supervivientes}
+  \caption{Histogramas de núcleos supervivientes.}
+\end{figure}
+
+\begin{figure}[H]figuras
+  \centering
+  \includegraphics[width=0.9\textwidth]{TAREA5/histogramas_desintegrados_vertical.png}
+  \label{fig:Histograma_desintegrados}
+  \caption{Histogramas de núcleos desintegrados.}
+\end{figure}
 
 \section{Código empleado}
 

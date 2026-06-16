@@ -313,6 +313,58 @@
       \verb 10.1093/biomet/66.3.605
       \endverb
     \endentry
+    \entry{nist_chi_square}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=11756b698b3000879fd0247e9fa769f8}{%
+           family={{NIST/SEMATECH}},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{11756b698b3000879fd0247e9fa769f8}
+      \strng{fullhash}{11756b698b3000879fd0247e9fa769f8}
+      \strng{bibnamehash}{11756b698b3000879fd0247e9fa769f8}
+      \strng{authorbibnamehash}{11756b698b3000879fd0247e9fa769f8}
+      \strng{authornamehash}{11756b698b3000879fd0247e9fa769f8}
+      \strng{authorfullhash}{11756b698b3000879fd0247e9fa769f8}
+      \field{extraname}{1}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.itl.nist.gov/div898/handbook/eda/section3/eda35f.htm}}
+      \field{note}{Engineering Statistics Handbook}
+      \field{title}{Chi-Square Goodness-of-Fit Test}
+      \field{urlday}{14}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{year}{2012}
+      \field{urldateera}{ce}
+    \endentry
+    \entry{nist_pvalue}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=11756b698b3000879fd0247e9fa769f8}{%
+           family={{NIST/SEMATECH}},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{11756b698b3000879fd0247e9fa769f8}
+      \strng{fullhash}{11756b698b3000879fd0247e9fa769f8}
+      \strng{bibnamehash}{11756b698b3000879fd0247e9fa769f8}
+      \strng{authorbibnamehash}{11756b698b3000879fd0247e9fa769f8}
+      \strng{authornamehash}{11756b698b3000879fd0247e9fa769f8}
+      \strng{authorfullhash}{11756b698b3000879fd0247e9fa769f8}
+      \field{extraname}{2}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.itl.nist.gov/div898/handbook/prc/section1/prc131.htm}}
+      \field{note}{Engineering Statistics Handbook}
+      \field{title}{Critical values and p values}
+      \field{urlday}{14}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{year}{2012}
+      \field{urldateera}{ce}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput
