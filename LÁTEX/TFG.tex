@@ -430,8 +430,8 @@ N(t) = N_0 e^{-\lambda t}
 Lo que nos permite obtener:
 
 \begin{equation}
-  t = \frac{1}{\lambda} \ln(\frac{N_0}{N})
-  \label{eq:tiempo_desintegracion}
+  t = \frac{1}{\lambda} \ln \left(\frac{N_0}{N}\right)
+  \label{eq:tiempo_desintegración}
 \end{equation}
 
 \subsubsection{Magnitudes resultantes de la ley de desintegración radiactiva}
@@ -1424,6 +1424,92 @@ Finalmente, usando \(p=e^{-\lambda t}\), queda
 Esta expresión muestra que la incertidumbre en la estimación temporal depende del número inicial de núcleos y del instante considerado. En particular, al aumentar $N_0$, la incertidumbre disminuye como $1/\sqrt{N_0}$, lo que refleja que muestras con mayor número de núcleos permiten estimaciones temporales estadísticamente más precisas.
 
 \subsubsection{Precisión estadística de la estimación temporal}
+
+Para comprobar la precisión de la estimación temporal se toma como tiempo de referencia
+
+\begin{equation}
+t_{\mathrm{ref}} = 0.70~\text{años},
+\end{equation}
+
+manteniendo los parámetros $N_0=5000$ núcleos iniciales y $\lambda=1~\text{año}^{-1}$. Con estos valores, la incertidumbre teórica obtenida mediante la ecuación \eqref{eq:sigma_t_propagacion} es
+
+\begin{equation}
+\sigma_{\mathrm{teo}} = 0.0142~\text{años}.
+\end{equation}
+
+A continuación, se realizan $M=500$ simulaciones independientes. En cada simulación se registra el número de núcleos supervivientes en el instante $t_{ref}$, denotado como $N_i(t_{\mathrm{ref}})$. A partir de este valor se calcula una edad estimada mediante la ecuación \eqref{eq:tiempo_estimado}:
+
+\begin{equation}
+t_{est.i}
+=-\frac{1}{\lambda}
+\ln\left(
+\frac{N_i(t_{\mathrm{ref}})}{N_0}
+\right),
+\qquad i=1,\dots,M.
+\end{equation}
+
+De este modo se obtiene un conjunto de 500 valores de $t_{est}$, uno por cada simulación. La media muestral de estos valores se calcula como
+
+\begin{equation}
+\overline{t_{est}}
+=\frac{1}{M}
+\sum_{i=1}^{M}
+t_{est.i}
+\end{equation}
+
+Para las simulaciones realizadas se obtiene
+
+\begin{equation}
+\overline{t_{est}}
+=0.69989~\text{años}.
+\end{equation}
+
+Este valor es muy próximo al tiempo de referencia $t_{ref}=0.70~\text{años}$, con una diferencia
+
+\begin{equation}
+\left|
+\overline{t_{est}}-t_{ref}
+\right|
+=1.1\times 10^{-4}~\text{años}.
+\end{equation}
+
+Por tanto, la media de las edades estimadas reproduce correctamente la edad real de la muestra dentro de las fluctuaciones estadísticas esperadas.
+
+La dispersión de los valores de $t_{est}$ se cuantifica mediante la desviación típica muestral, definida en la ecuación \eqref{eq:desviación_típica_muestral}. En este caso se obtiene
+
+\begin{equation}
+s = 0.0141~\text{años}.
+\end{equation}
+
+Este resultado es muy cercano al valor teórico $\sigma_{\mathrm{teo}}=0.0142~\text{años}$, lo que confirma que la propagación de incertidumbres describe adecuadamente la dispersión estadística observada en las simulaciones.
+
+La distribución de los valores de $t_{est}$ se representa mediante el histograma de la figura \ref{fig:histograma_tiempo_estimado}. Este histograma permite visualizar que las edades estimadas se concentran alrededor de $t_{ref}$, así como la dispersión de dichas estimaciones.
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{TAREA7/histograma_tiempo_estimado.png}
+\caption{Histograma de los valores de tiempo estimado obtenidos a partir de (M=500) simulaciones independientes, con $N_0=5000$ y $t_{ref}=0.70~\text{años}$.}
+\label{fig:histograma_tiempo_estimado}
+\end{figure}
+
+Finalmente, se calcula la incertidumbre relativa asociada a la estimación temporal. Para el valor teórico se obtiene
+
+\begin{equation}
+\frac{\sigma_{{teo}}}{t_{ref}}
+=\frac{0.0142}{0.70}=0.0203
+\end{equation}
+
+mientras que para el resultado muestral se obtiene
+
+\begin{equation}
+\frac{s}{t_{ref}}
+=\frac{0.0143}{0.70}=0.0204
+\end{equation}
+
+Ambos valores son aproximadamente del $2\%$. Sabiendo que la incertidumbre teórica disminuye como $N_0^{-1/2}$, para muestras reales de datación radiométrica, en las que intervienen números de núcleos mucho mayores, cabe esperar una incertidumbre relativa menor que la obtenida en esta simulación. Además, la coincidencia entre la incertidumbre relativa teórica y la obtenida mediante simulación refuerza la validez del modelo binomial y de la propagación de incertidumbres empleada.
+
+
 
 % --------------------------------------------------
 
