@@ -26,7 +26,7 @@ dt_lim = 0.1 / lam
 p_lim = lam * dt_lim
 
 # Crear figura
-plt.figure()
+plt.figure(figsize=(8, 5))
 
 # Curvas
 plt.plot(dt, p_exacta, label=r'$p = 1 - e^{-\lambda \Delta t}$')
@@ -46,7 +46,7 @@ plt.text(dt_lim*1.05, p_lim*0.9,
 plt.xlabel(r'$\Delta t\ (\mathrm{s})$')
 plt.ylabel(r'$p(t, t + \Delta t)$')
 
-# Título en dos líneas 🔥
+# Título en dos líneas 
 plt.title(rf'COMPARACIÓN ENTRE PROBABILIDAD EXACTA Y APROXIMADA' '\n'
           rf'($\lambda={lam}\ \mathrm{{s^{{-1}}}}$)')
 
@@ -56,7 +56,7 @@ plt.grid()
 plt.legend()
 
 # Guardar
-plt.savefig('comparacion_probabilidades.png', dpi=300, bbox_inches='tight')
+plt.savefig('exacta_vs_aprox.jpg', dpi=300, bbox_inches='tight')
 
 # Mostrar
 plt.show()

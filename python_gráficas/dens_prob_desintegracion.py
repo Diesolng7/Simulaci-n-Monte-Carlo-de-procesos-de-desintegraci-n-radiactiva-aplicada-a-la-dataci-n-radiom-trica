@@ -18,7 +18,7 @@ t = np.linspace(0, 5, 1000)
 lambdas = [0.5, 1, 2]
 
 # Crear figura
-plt.figure()
+plt.figure(figsize=(8, 6))
 
 # Dibujar densidades y sus ⟨t⟩
 for lam in lambdas:
@@ -45,7 +45,7 @@ plt.grid()
 plt.legend()
 
 # Guardar
-plt.savefig('densidad_exponencial.png', dpi=300, bbox_inches='tight')
+plt.savefig('LÁTEX/Gráficas/f(t).jpg', dpi=300, bbox_inches='tight')
 
 
 
