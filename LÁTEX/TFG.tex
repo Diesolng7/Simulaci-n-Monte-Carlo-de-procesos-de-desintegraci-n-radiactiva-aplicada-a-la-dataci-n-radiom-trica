@@ -127,6 +127,7 @@ sorting=none
 % --------------------------------------------------
 % DOCUMENTO
 % --------------------------------------------------
+
 \begin{document}
 
 % ==================================================
@@ -842,7 +843,7 @@ En el límite de tiempos pequeños, donde $q(t)\simeq \lambda t$, estas expresio
     \sigma_D(t)\simeq \sqrt{N_0\lambda t}.
 \end{equation}
 
-
+%tabla resumen
 
 % --------------------------------------------------
 
@@ -1023,6 +1024,15 @@ En las simulaciones iniciales se ha empleado $\Delta t=0{,}05~\text{años}$ y $\
 
 Por tanto, la diferencia relativa entre las varianzas binomial y de Poisson es aproximadamente del $4{,}9\%$, lo que explica que la aproximación de Poisson sea razonable en este caso. Sin embargo, si el paso temporal aumenta, también aumenta $q(\Delta t)$ y la aproximación pierde precisión.
 
+\subsubsection{Limitaciones de la aproximación de Poisson}
+
+%incluir las dos gráficas que tengo de poisson pero las dos juntas en dos columnas
+
+%poisson 100 núcleos
+
+%poisson 0,2 o más de paso temporal 
+
+
 
 \subsection{Validación estadística del modelo binomial}
 
@@ -1072,14 +1082,6 @@ En este instante, la ley de desintegración radiactiva predice
     N(t_{1/2})=\frac{N_0}{2}.
 \end{equation}
 
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.85\textwidth]{TAREA4/figura2_convergencia_t12.png}
-\caption{Error relativo entre el valor medio simulado y el valor teórico en el tiempo de semivida $t_{1/2}$, en función del número de simulaciones $M$.}
-\label{fig:convergencia_semivida}
-\end{figure}
-
 Por tanto, se define el error relativo como
 
 \begin{equation}
@@ -1091,6 +1093,13 @@ Por tanto, se define el error relativo como
     }.
     \label{eq:error_relativo_semivida}
 \end{equation}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{TAREA4/figura2_convergencia_t12.png}
+\caption{Error relativo entre el valor medio simulado y el valor teórico en el tiempo de semivida $t_{1/2}$, en función del número de simulaciones $M$.}
+\label{fig:convergencia_semivida}
+\end{figure}
 
 En la Figura~\ref{fig:convergencia_semivida} se aprecia una tendencia general decreciente de la discrepancia relativa conforme aumenta el número de simulaciones. Este resultado muestra que el valor medio obtenido con el modelo binomial se aproxima cada vez más al comportamiento esperado según la ley macroscópica de desintegración radiactiva.
 
@@ -1509,7 +1518,7 @@ La distribución de los valores de $t_{est}$ se representa mediante el histogram
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth]{TAREA7/histograma_tiempo_estimado.png}
+\includegraphics[width=0.85\textwidth]{TAREA7/histograma_tiempo_estimado.png}
 \caption{Histograma de los valores de tiempo estimado obtenidos a partir de (M=500) simulaciones independientes, con $N_0=5000$ y $t_{ref}=0.70~\text{años}$.}
 \label{fig:histograma_tiempo_estimado}
 \end{figure}
