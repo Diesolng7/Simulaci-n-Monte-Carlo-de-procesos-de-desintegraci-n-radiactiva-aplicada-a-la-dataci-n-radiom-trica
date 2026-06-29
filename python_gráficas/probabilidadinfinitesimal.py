@@ -47,7 +47,7 @@ plt.xlabel(r'$\Delta t\ (\mathrm{s})$')
 plt.ylabel(r'$p(t, t + \Delta t)$')
 
 # Título en dos líneas 
-plt.title(rf'COMPARACIÓN ENTRE PROBABILIDAD EXACTA Y APROXIMADA' '\n'
+plt.title(rf'Comparación entre probabilidad exacta y aproximada' '\n'
           rf'($\lambda={lam}\ \mathrm{{s^{{-1}}}}$)')
 
 plt.xlim(0, 0.25)
@@ -56,7 +56,7 @@ plt.grid()
 plt.legend()
 
 # Guardar
-plt.savefig('exacta_vs_aprox.jpg', dpi=300, bbox_inches='tight')
+plt.savefig('LÁTEX/Gráficas/exacta_vs_aprox.jpg', dpi=300, bbox_inches='tight')
 
 # Mostrar
 plt.show()

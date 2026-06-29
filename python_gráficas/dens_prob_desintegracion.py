@@ -18,7 +18,7 @@ t = np.linspace(0, 5, 1000)
 lambdas = [0.5, 1, 2]
 
 # Crear figura
-plt.figure(figsize=(8, 6))
+plt.figure(figsize=(8, 5))
 
 # Dibujar densidades y sus ⟨t⟩
 for lam in lambdas:
@@ -40,7 +40,7 @@ for lam in lambdas:
 # Etiquetas
 plt.xlabel('t')
 plt.ylabel('f(t)')
-plt.title('DENSIDAD DE PROBABILIDAD DE DESINTEGRACIÓN')
+plt.title('Densidad de probabilidad de desintegración')
 plt.grid()
 plt.legend()
 

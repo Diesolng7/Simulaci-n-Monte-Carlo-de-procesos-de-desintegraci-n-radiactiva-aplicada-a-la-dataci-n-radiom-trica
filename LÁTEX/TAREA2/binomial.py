@@ -1,69 +1,131 @@
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
 import time
+from pathlib import Path
+
+#########################################################
+################ PARÁMETROS GENERALES ##################
+#########################################################
+
+# Constantes de la simulación
+Lambda = 1.0                 # año^{-1}
+N0 = 1000                    # núcleos iniciales
+T_sim = 5.0                  # años
+dt = 0.05                    # años
+
+# Número de pasos temporales
+n_pasos = int(round(T_sim / dt))
+
+# Vector temporal
+tiempos = np.linspace(0, T_sim, n_pasos + 1)
+
+# Probabilidad de supervivencia en un paso temporal
+p_supervivencia = np.exp(-Lambda * dt)
+
+# Generador aleatorio
+rng = np.random.default_rng(1234)
+
+# Carpeta de salida
+carpeta_salida = Path("LÁTEX/TAREA2")
+carpeta_salida.mkdir(parents=True, exist_ok=True)
 
 
-#### CONSTANTES FÍSICAS 
-## Vamos a trabajar en años
-#T12 = 5730.0
-#Lambda = np.log(2)/T12
+#########################################################
+############### FORMATO COMÚN DE GRÁFICAS ##############
+#########################################################
 
-Lambda = 1
+plt.rcParams.update({
+    "font.size": 13,
+    "axes.labelsize": 13,
+    "xtick.labelsize": 12,
+    "ytick.labelsize": 12,
+    "legend.fontsize": 11,
+    "figure.figsize": (7.2, 4.8),
+    "axes.grid": False,
+    "lines.linewidth": 1.8
+})
 
-n0 = 10**2 #número de núcleos a tiempo 0
 
-t = 5 #tiempo que vamos a simular
-dt = 0.05  #intervalo de tiempo
-u = int(t/dt) #número de intervalos
+def guardar_grafica(tiempos, simulaciones, nombre_archivo):
+    """
+    Representa tres simulaciones junto con la ley exponencial teórica
+    usando un formato común para todas las figuras del apartado.
+    """
 
-N=n0 #número de núcleos supervivientes
-D = 0 #número de núcleos desintegrados
+    plt.figure()
 
-p= 1- np.exp(-Lambda*dt)
+    for i, N in enumerate(simulaciones, start=1):
+        plt.plot(tiempos, N, label=f"Simulación {i}")
+
+    plt.plot(
+        tiempos,
+        N0 * np.exp(-Lambda * tiempos),
+        linestyle="--",
+        color="black",
+        label="Ley teórica"
+    )
+
+    plt.title("Modelo B: Distribución binomial")
+    plt.xlabel("t (años)")
+    plt.ylabel(r"$N_s(t)$")
+    plt.xlim(0, T_sim)
+    plt.ylim(0, N0 * 1.05)
+    plt.legend()
+    plt.tight_layout()
+
+    plt.savefig(carpeta_salida / nombre_archivo, dpi=300, bbox_inches="tight")
+    plt.show()
+
+
+#########################################################
+############ MODELO B: DISTRIBUCIÓN BINOMIAL ###########
+#########################################################
+
+def simulacion_binomial():
+    supervivientes = []
+    N = N0
+
+    for _ in tiempos:
+        supervivientes.append(N)
+
+        # Número de núcleos supervivientes al final del intervalo
+        N = rng.binomial(N, p_supervivencia)
+
+    return np.array(supervivientes)
+
+
+#########################################################
+################ EJECUCIÓN DE SIMULACIONES #############
+#########################################################
 
 inicio = time.perf_counter()
 
-def simulacion():
-    tiempos = []
-    supervivientes = []
-    N=n0
-
-    for i in range(u + 1):
-        tiempos.append(i*dt)
-        supervivientes.append(N)
-
-        D = 0
-        D = np.random.binomial(N, p)
-        N -= D
-
-    return tiempos, supervivientes        
-
-# Ejecutar 3 simulaciones
-tiempos, N1 = simulacion()
-_, N2 = simulacion()
-_, N3 = simulacion()
+N1 = simulacion_binomial()
+N2 = simulacion_binomial()
+N3 = simulacion_binomial()
 
 fin = time.perf_counter()
 
-# Guardar todo junto
+
+#########################################################
+################ GUARDAR DATOS Y FIGURA ################
+#########################################################
+
 datos = np.column_stack((tiempos, N1, N2, N3))
-np.savetxt("LÁTEX/TAREA2/TESTbinomial.txt", datos)
+np.savetxt(carpeta_salida / "binomial.txt", datos)
 
-tiempos = np.array(tiempos) #para graficar la solución exacta
+guardar_grafica(
+    tiempos,
+    [N1, N2, N3],
+    "binomial.png"
+)
 
-# Graficar
-plt.title("SIMULACIÓN BINOMIAL")
-plt.plot(tiempos, N1, label="Simulación 1")
-plt.plot(tiempos, N2, label="Simulación 2")
-plt.plot(tiempos, N3, label="Simulación 3")
-plt.plot(tiempos, n0*np.exp(-Lambda*tiempos), label="Solución exacta")
-plt.xlabel("TIEMPO (años)")
-plt.ylabel("NÚCLEOS SUPERVIVIENTES")
-plt.legend()
-plt.savefig("LÁTEX/TAREA2/TESTbinomial.png")
-plt.show()
 
-costeaprox = 3*(u+1) #3 simulaciones, cada una con u+1 intervalos
+#########################################################
+################ COSTE COMPUTACIONAL ###################
+#########################################################
 
-print("Coste aproximado:", costeaprox)
-print("Tiempo de ejecución:", fin - inicio , "segundos")
+coste_aproximado = 3 * len(tiempos)
+
+print("Coste aproximado:", coste_aproximado)
+print("Tiempo de ejecución:", fin - inicio, "segundos")

@@ -1,81 +1,139 @@
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
 import time
+from pathlib import Path
+
+#########################################################
+################ PARÁMETROS GENERALES ##################
+#########################################################
+
+# Constantes de la simulación
+Lambda = 1.0                 # año^{-1}
+N0 = 1000                    # núcleos iniciales
+T_sim = 5.0                  # años
+dt = 0.05                    # años
+
+# Número de pasos temporales
+n_pasos = int(round(T_sim / dt))
+
+# Vector temporal
+tiempos = np.linspace(0, T_sim, n_pasos + 1)
+
+# Probabilidades en un paso temporal
+p_supervivencia = np.exp(-Lambda * dt)
+q = 1.0 - p_supervivencia
+
+# Generador aleatorio
+rng = np.random.default_rng(12345)
+
+# Carpeta de salida
+carpeta_salida = Path("LÁTEX/TAREA2")
+carpeta_salida.mkdir(parents=True, exist_ok=True)
 
 
-#### CONSTANTES FÍSICAS 
-## Vamos a trabajar en años
-#T12 = 5730.0
-#Lambda = np.log(2)/T12
+#########################################################
+############### FORMATO COMÚN DE GRÁFICAS ##############
+#########################################################
 
-Lambda = 1 
+plt.rcParams.update({
+    "font.size": 13,
+    "axes.labelsize": 13,
+    "xtick.labelsize": 12,
+    "ytick.labelsize": 12,
+    "legend.fontsize": 11,
+    "figure.figsize": (7.2, 4.8),
+    "axes.grid": False,
+    "lines.linewidth": 1.8
+})
 
-n0 = 10**2 #número de núcleos a tiempo 0
 
-t = 5 #tiempo que vamos a simular
-dt = 0.05  #intervalo de tiempo
-u = int(t/dt) #número de intervalos
+def guardar_grafica(tiempos, simulaciones, nombre_archivo, titulo):
+    """
+    Representa tres simulaciones junto con la ley exponencial teórica
+    usando un formato común para todas las figuras del apartado.
+    """
 
-N = n0 #número de núcleos supervivientes
-D = 0 #número de núcleos desintegrados
+    plt.figure()
 
-q= 1- np.exp(-Lambda*dt)
+    for i, N in enumerate(simulaciones, start=1):
+        plt.plot(tiempos, N, label=f"Simulación {i}")
 
-##Listas de resultados
-tiempos = []
-supervivientes = []
+    plt.plot(
+        tiempos,
+        N0 * np.exp(-Lambda * tiempos),
+        linestyle="--",
+        color="black",
+        label="Ley teórica"
+    )
+
+    plt.title(titulo)
+    plt.xlabel("t (años)")
+    plt.ylabel(r"$N_s(t)$")
+    plt.xlim(0, T_sim)
+    plt.ylim(0, N0 * 1.05)
+    plt.legend()
+    plt.tight_layout()
+
+    plt.savefig(carpeta_salida / nombre_archivo, dpi=300, bbox_inches="tight")
+    plt.show()
+
+
+#########################################################
+############### MODELO A: NÚCLEO A NÚCLEO ##############
+#########################################################
+
+def simulacion_nucleo_a_nucleo():
+    supervivientes = []
+    N = N0
+
+    for _ in tiempos:
+        supervivientes.append(N)
+
+        # Se genera un número aleatorio por cada núcleo superviviente
+        numeros_aleatorios = rng.random(N)
+
+        # Núcleos desintegrados en el intervalo
+        D = np.sum(numeros_aleatorios < q)
+
+        # Actualización de núcleos supervivientes
+        N -= D
+
+    return np.array(supervivientes)
+
+
+#########################################################
+################ EJECUCIÓN DE SIMULACIONES #############
+#########################################################
 
 inicio = time.perf_counter()
-## SIMULACION MICROSCÓPICA (núcleo a núcleo)
-def simulacion():
-    tiempos = []
-    supervivientes = []
-    
-    N = n0
-    interacciones = 0
-    
-    for j in range(u + 1):
-        tiempos.append(j*dt)
-        supervivientes.append(N)
-        
-        D = 0
-        for i in range(N):
-            interacciones += 1
-            
-            if np.random.random() < q:
-                D += 1
-                
-        N -= D
-    
-    return tiempos, supervivientes, interacciones
 
-# Ejecutar 3 simulaciones
-tiempos, N1, interacciones1 = simulacion()
-_, N2, interacciones2 = simulacion()
-_, N3, interacciones3 = simulacion()
+N1 = simulacion_nucleo_a_nucleo()
+N2 = simulacion_nucleo_a_nucleo()
+N3 = simulacion_nucleo_a_nucleo()
 
 fin = time.perf_counter()
 
-# Guardar todo junto
+
+#########################################################
+################ GUARDAR DATOS Y FIGURA ################
+#########################################################
+
 datos = np.column_stack((tiempos, N1, N2, N3))
-np.savetxt("LÁTEX/TAREA2/TESTmicroscopic.txt", datos)
+np.savetxt(carpeta_salida / "microscopico.txt", datos)
+
+guardar_grafica(
+    tiempos,
+    [N1, N2, N3],
+    "microscopic.png",
+    "Modelo A: núcleo a núcleo"
+)
 
 
+#########################################################
+################ COSTE COMPUTACIONAL ###################
+#########################################################
 
-tiempos = np.array(tiempos) #para graficar la solución exacta
+coste_aproximado = np.sum(N1) + np.sum(N2) + np.sum(N3)
 
-# Graficar
-plt.title("SIMULACIÓN MICROSCÓPICA (Núcleo a núcleo)")
-plt.plot(tiempos, N1, label="Simulación 1")
-plt.plot(tiempos, N2, label="Simulación 2")
-plt.plot(tiempos, N3, label="Simulación 3")
-plt.plot(tiempos, n0*np.exp(-Lambda*tiempos), label="Solución exacta")
-plt.xlabel("TIEMPO (años)")
-plt.ylabel("NÚCLEOS SUPERVIVIENTES")
-plt.legend()
-plt.savefig("LÁTEX/TAREA2/TESTmicroscopic.png")
-plt.show()
-
-
-print("Tiempo de ejecución:", fin - inicio , "segundos")
-print("Número de interacciones:", interacciones1 + interacciones2 + interacciones3)
+print("Coste aproximado:", coste_aproximado)
+print("Tiempo de ejecución:", fin - inicio, "segundos")

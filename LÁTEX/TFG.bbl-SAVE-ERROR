@@ -48,57 +48,6 @@
       \verb https://www.iaea.org/Publications/Factsheets/English/radlife
       \endverb
     \endentry
-    \entry{mit_poisson_notes}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=2a517ad13d6bc4134df15f961271a209}{%
-           family={Sheffield},
-           familyi={S\bibinitperiod},
-           given={Scott},
-           giveni={S\bibinitperiod}}}%
-      }
-      \list{institution}{1}{%
-        {Massachusetts Institute of Technology (MIT)}%
-      }
-      \strng{namehash}{2a517ad13d6bc4134df15f961271a209}
-      \strng{fullhash}{2a517ad13d6bc4134df15f961271a209}
-      \strng{bibnamehash}{2a517ad13d6bc4134df15f961271a209}
-      \strng{authorbibnamehash}{2a517ad13d6bc4134df15f961271a209}
-      \strng{authornamehash}{2a517ad13d6bc4134df15f961271a209}
-      \strng{authorfullhash}{2a517ad13d6bc4134df15f961271a209}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{note}{Lecture notes for course 18.600: Probability and Random Variables}
-      \field{title}{Exponential Random Variables and Poisson Processes}
-      \field{year}{2013}
-    \endentry
-    \entry{ross1993probabilitymodels}{book}{}
-      \name{author}{1}{}{%
-        {{hash=bf5f2440b50cd085a0515d2dd4c3cf92}{%
-           family={Ross},
-           familyi={R\bibinitperiod},
-           given={Sheldon\bibnamedelima M.},
-           giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Academic Press}%
-      }
-      \strng{namehash}{bf5f2440b50cd085a0515d2dd4c3cf92}
-      \strng{fullhash}{bf5f2440b50cd085a0515d2dd4c3cf92}
-      \strng{bibnamehash}{bf5f2440b50cd085a0515d2dd4c3cf92}
-      \strng{authorbibnamehash}{bf5f2440b50cd085a0515d2dd4c3cf92}
-      \strng{authornamehash}{bf5f2440b50cd085a0515d2dd4c3cf92}
-      \strng{authorfullhash}{bf5f2440b50cd085a0515d2dd4c3cf92}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{edition}{5}
-      \field{isbn}{9780125984553}
-      \field{title}{Introduction to Probability Models}
-      \field{year}{1993}
-    \endentry
     \entry{lawless2011lifetime}{book}{}
       \name{author}{1}{}{%
         {{hash=9c8522a82bdbffcb9e6b888b265dd0d3}{%
@@ -116,8 +65,8 @@
       \strng{authorbibnamehash}{9c8522a82bdbffcb9e6b888b265dd0d3}
       \strng{authornamehash}{9c8522a82bdbffcb9e6b888b265dd0d3}
       \strng{authorfullhash}{9c8522a82bdbffcb9e6b888b265dd0d3}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{edition}{2}
@@ -142,12 +91,63 @@
       \strng{authorbibnamehash}{64da2dfacb552fdff861e21b3e047ea6}
       \strng{authornamehash}{64da2dfacb552fdff861e21b3e047ea6}
       \strng{authorfullhash}{64da2dfacb552fdff861e21b3e047ea6}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Introductory Nuclear Physics}
       \field{year}{1987}
+    \endentry
+    \entry{ross1993probabilitymodels}{book}{}
+      \name{author}{1}{}{%
+        {{hash=bf5f2440b50cd085a0515d2dd4c3cf92}{%
+           family={Ross},
+           familyi={R\bibinitperiod},
+           given={Sheldon\bibnamedelima M.},
+           giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Academic Press}%
+      }
+      \strng{namehash}{bf5f2440b50cd085a0515d2dd4c3cf92}
+      \strng{fullhash}{bf5f2440b50cd085a0515d2dd4c3cf92}
+      \strng{bibnamehash}{bf5f2440b50cd085a0515d2dd4c3cf92}
+      \strng{authorbibnamehash}{bf5f2440b50cd085a0515d2dd4c3cf92}
+      \strng{authornamehash}{bf5f2440b50cd085a0515d2dd4c3cf92}
+      \strng{authorfullhash}{bf5f2440b50cd085a0515d2dd4c3cf92}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{5}
+      \field{isbn}{9780125984553}
+      \field{title}{Introduction to Probability Models}
+      \field{year}{1993}
+    \endentry
+    \entry{mit_poisson_notes}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=2a517ad13d6bc4134df15f961271a209}{%
+           family={Sheffield},
+           familyi={S\bibinitperiod},
+           given={Scott},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Massachusetts Institute of Technology (MIT)}%
+      }
+      \strng{namehash}{2a517ad13d6bc4134df15f961271a209}
+      \strng{fullhash}{2a517ad13d6bc4134df15f961271a209}
+      \strng{bibnamehash}{2a517ad13d6bc4134df15f961271a209}
+      \strng{authorbibnamehash}{2a517ad13d6bc4134df15f961271a209}
+      \strng{authornamehash}{2a517ad13d6bc4134df15f961271a209}
+      \strng{authorfullhash}{2a517ad13d6bc4134df15f961271a209}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Lecture notes for course 18.600: Probability and Random Variables}
+      \field{title}{Exponential Random Variables and Poisson Processes}
+      \field{year}{2013}
     \endentry
     \entry{bevington}{book}{}
       \name{author}{2}{}{%
@@ -171,8 +171,8 @@
       \strng{authorbibnamehash}{0c1cf78c11001c2873f6ac5cbc682fdd}
       \strng{authornamehash}{0c1cf78c11001c2873f6ac5cbc682fdd}
       \strng{authorfullhash}{0c1cf78c11001c2873f6ac5cbc682fdd}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{edition}{3}
@@ -201,14 +201,41 @@
       \strng{authorbibnamehash}{352ab620b7266638ec6051c33f6b708b}
       \strng{authornamehash}{352ab620b7266638ec6051c33f6b708b}
       \strng{authorfullhash}{352ab620b7266638ec6051c33f6b708b}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{edition}{4}
       \field{isbn}{9780198847601}
       \field{title}{Probability and Random Processes}
       \field{year}{2020}
+    \endentry
+    \entry{kazkaz2011}{article}{}
+      \name{author}{2}{}{%
+        {{hash=291895cb003314c48560596499b7988d}{%
+           family={Kazkaz},
+           familyi={K\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod}}}%
+        {{hash=d3be3b150c0f81282d796d73d8e70936}{%
+           family={Walsh},
+           familyi={W\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{efca02e12cc7469b37d9a49d73b53c95}
+      \strng{fullhash}{efca02e12cc7469b37d9a49d73b53c95}
+      \strng{bibnamehash}{efca02e12cc7469b37d9a49d73b53c95}
+      \strng{authorbibnamehash}{efca02e12cc7469b37d9a49d73b53c95}
+      \strng{authornamehash}{efca02e12cc7469b37d9a49d73b53c95}
+      \strng{authorfullhash}{efca02e12cc7469b37d9a49d73b53c95}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:1104.2834}
+      \field{title}{Combining Stochastics and Analytics for a Fast Monte Carlo Decay Chain Generator}
+      \field{year}{2011}
     \endentry
     \entry{Hauf2013}{article}{}
       \name{author}{10}{}{%
@@ -364,6 +391,177 @@
       \field{urlyear}{2026}
       \field{year}{2012}
       \field{urldateera}{ce}
+    \endentry
+    \entry{rae_datacion}{online}{}
+      \name{author}{1}{}{%
+        {{hash=b397d66b02476457c3703cb2d7051bea}{%
+           family={{Real Academia Española}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{b397d66b02476457c3703cb2d7051bea}
+      \strng{fullhash}{b397d66b02476457c3703cb2d7051bea}
+      \strng{bibnamehash}{b397d66b02476457c3703cb2d7051bea}
+      \strng{authorbibnamehash}{b397d66b02476457c3703cb2d7051bea}
+      \strng{authornamehash}{b397d66b02476457c3703cb2d7051bea}
+      \strng{authorfullhash}{b397d66b02476457c3703cb2d7051bea}
+      \field{extraname}{1}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Datación}
+      \field{urlday}{24}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{year}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://dle.rae.es/dataci%C3%B3n
+      \endverb
+      \verb{url}
+      \verb https://dle.rae.es/dataci%C3%B3n
+      \endverb
+    \endentry
+    \entry{rae_datar}{online}{}
+      \name{author}{1}{}{%
+        {{hash=b397d66b02476457c3703cb2d7051bea}{%
+           family={{Real Academia Española}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{b397d66b02476457c3703cb2d7051bea}
+      \strng{fullhash}{b397d66b02476457c3703cb2d7051bea}
+      \strng{bibnamehash}{b397d66b02476457c3703cb2d7051bea}
+      \strng{authorbibnamehash}{b397d66b02476457c3703cb2d7051bea}
+      \strng{authornamehash}{b397d66b02476457c3703cb2d7051bea}
+      \strng{authorfullhash}{b397d66b02476457c3703cb2d7051bea}
+      \field{extraname}{2}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Datar}
+      \field{urlday}{24}
+      \field{urlmonth}{6}
+      \field{urlyear}{2026}
+      \field{year}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://dle.rae.es/datar
+      \endverb
+      \verb{url}
+      \verb https://dle.rae.es/datar
+      \endverb
+    \endentry
+    \entry{walker2005quaternary}{book}{}
+      \name{author}{1}{}{%
+        {{hash=63744cc4090fd682b56b5c47fc454107}{%
+           family={Walker},
+           familyi={W\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Chichester}%
+      }
+      \list{publisher}{1}{%
+        {John Wiley \& Sons}%
+      }
+      \strng{namehash}{63744cc4090fd682b56b5c47fc454107}
+      \strng{fullhash}{63744cc4090fd682b56b5c47fc454107}
+      \strng{bibnamehash}{63744cc4090fd682b56b5c47fc454107}
+      \strng{authorbibnamehash}{63744cc4090fd682b56b5c47fc454107}
+      \strng{authornamehash}{63744cc4090fd682b56b5c47fc454107}
+      \strng{authorfullhash}{63744cc4090fd682b56b5c47fc454107}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0-470-86927-7}
+      \field{title}{Quaternary Dating Methods}
+      \field{year}{2005}
+    \endentry
+    \entry{noaa_c14}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=1aeb4c78e36e308ec27003d5203a609e}{%
+           family={{NOAA Global Monitoring Laboratory}},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{1aeb4c78e36e308ec27003d5203a609e}
+      \strng{fullhash}{1aeb4c78e36e308ec27003d5203a609e}
+      \strng{bibnamehash}{1aeb4c78e36e308ec27003d5203a609e}
+      \strng{authorbibnamehash}{1aeb4c78e36e308ec27003d5203a609e}
+      \strng{authornamehash}{1aeb4c78e36e308ec27003d5203a609e}
+      \strng{authorfullhash}{1aeb4c78e36e308ec27003d5203a609e}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Consultado el 25 de junio de 2026}
+      \field{title}{{Stable Isotopes: Carbon-14 Decay}}
+      \field{year}{2026}
+    \endentry
+    \entry{nosams_radiocarbon}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=4b77aa7dbeb1cc0cc6639903dc247ca6}{%
+           family={{National Ocean Sciences Accelerator Mass Spectrometry Facility}},
+           familyi={N\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Woods Hole Oceanographic Institution}%
+      }
+      \strng{namehash}{4b77aa7dbeb1cc0cc6639903dc247ca6}
+      \strng{fullhash}{4b77aa7dbeb1cc0cc6639903dc247ca6}
+      \strng{bibnamehash}{4b77aa7dbeb1cc0cc6639903dc247ca6}
+      \strng{authorbibnamehash}{4b77aa7dbeb1cc0cc6639903dc247ca6}
+      \strng{authornamehash}{4b77aa7dbeb1cc0cc6639903dc247ca6}
+      \strng{authorfullhash}{4b77aa7dbeb1cc0cc6639903dc247ca6}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Consultado el 25 de junio de 2026}
+      \field{title}{{What is Radiocarbon Dating?}}
+      \field{year}{2026}
+    \endentry
+    \entry{nist_carbon_atomic_weight}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=ef9cb61878e61d434507444346b29d1a}{%
+           family={{National Institute of Standards and Technology}},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{ef9cb61878e61d434507444346b29d1a}
+      \strng{fullhash}{ef9cb61878e61d434507444346b29d1a}
+      \strng{bibnamehash}{ef9cb61878e61d434507444346b29d1a}
+      \strng{authorbibnamehash}{ef9cb61878e61d434507444346b29d1a}
+      \strng{authornamehash}{ef9cb61878e61d434507444346b29d1a}
+      \strng{authorfullhash}{ef9cb61878e61d434507444346b29d1a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Consultado el 25 de junio de 2026}
+      \field{title}{{Atomic Weights and Isotopic Compositions for Carbon}}
+      \field{year}{2026}
+    \endentry
+    \entry{iupac_avogadro}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=2cc465540a73611a839622354610877f}{%
+           family={{IUPAC}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{2cc465540a73611a839622354610877f}
+      \strng{fullhash}{2cc465540a73611a839622354610877f}
+      \strng{bibnamehash}{2cc465540a73611a839622354610877f}
+      \strng{authorbibnamehash}{2cc465540a73611a839622354610877f}
+      \strng{authornamehash}{2cc465540a73611a839622354610877f}
+      \strng{authorfullhash}{2cc465540a73611a839622354610877f}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Consultado el 25 de junio de 2026}
+      \field{title}{{Gold Book: Avogadro constant}}
+      \field{year}{2026}
     \endentry
   \enddatalist
 \endrefsection

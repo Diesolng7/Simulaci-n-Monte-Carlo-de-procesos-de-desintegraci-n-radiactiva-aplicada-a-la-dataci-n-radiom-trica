@@ -204,886 +204,835 @@ sorting=none
 \newpage
 \section{Introducción}
 
+Las desintegraciones atómicas están descritas por el término \textbf{Radiactividad}.  En la naturaleza algunos elementos son inestables, por ello, se \refmargen{IAEA \cite{iaea_radiation_everyday_life}: }{Radiation in Everyday Life}desintegran emitienedo partículas y energía en forma de radicación. Este fenómeno físico se conoce como Radiactividad.
+
+
 
 % --------------------------------------------------
+
 
 \newpage
 \section{Fundamento teórico}
 
-\subsection{Desintegraciónes Radiactivas}
+\subsection{Desintegraciones radiactivas}
 
-Las desintegraciones atómicas están descritas por el término \textbf{Radiactividad}.  En la naturaleza algunos elementos son inestables, por ello, se \refmargen{IAEA \cite{iaea_radiation_everyday_life}: }{Radiation in Everyday Life}desintegran emitienedo partículas y energía en forma de radicación. Este fenómeno físico se conoce como Radiactividad.
-
-\subsubsection{Hipótesis fundamental de las desintegraciones radiactivas}
+\subsubsection{Hipótesis fundamental y constante de desintegración}
 
 \begin{cajadefinicion}
-  La probabilidad de desintegración de un núcleo en un intervalo de tiempo no depende del instante inicial $t$, sino únicamente de la duración del intervalo considerado $\Delta t$, es decir, la probabilidad de que un núcleo se desintegre en un intervalo de tiempo es constante y no depende ni de su historia ni de su edad (Probabilidad constante sin memoria).
+  La hipótesis fundamental de la desintegración radiactiva establece que, condicionado a que un núcleo haya sobrevivido hasta un instante $t$, la probabilidad de que se desintegre en un intervalo infinitesimal posterior depende únicamente de la duración de dicho intervalo y no del valor concreto de $t$.
 \end{cajadefinicion}
 
-En particular, para intervalos infinitesimales se cumple que la probabilidad de desintegración es proporcional a $\Delta t$, siendo la constante de proporcionalidad la constante de desintegración $\lambda$. Emplenado (\ref{eq:probabilidaddesupervivenciaintervalodt}):
+Se considera un núcleo radiactivo que puede desintegrarse mediante el proceso
 
 \begin{equation}
-p_d = 1 - p =\lambda \Delta t
+    A \longrightarrow B.
 \end{equation}
 
+Si $T$ representa el tiempo de desintegración del núcleo, la hipótesis anterior puede formularse introduciendo una tasa instantánea de desintegración constante $\lambda$, definida como \refmargen{Lawless \cite{lawless2011lifetime}}{eq 1.2.2}
 
-Para comprobar esta hipótesis se debe comparar la probabilidad de desintegración exacta $p_{exacta}=1-e^{-\lambda \Delta t}$ con la probabilidad de desintegración aproximada $p_{aprox}=\lambda \Delta t$.
+\begin{equation}
+    \lambda=\lim_{\Delta t\to 0}
+    \frac{P(t<T<t+\Delta t \mid T>t)}{\Delta t}.
+    \label{eq:constante_desintegracion}
+\end{equation}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{Gráficas/exacta_vs_aprox.jpg}
-    \caption{Probabilidad de desintegración exacta y aproximada}
-    \label{fig:exacta_vs_aprox}
-\end{figure}
+En el límite infinitesimal, esta definición conduce a que la probabilidad de desintegración venga dada por
 
-La comparación muestra que la aproximación  $p \thickapprox  \lambda \Delta t$ es válida en el régimen $\lambda \Delta t \ll 1 $ donde la expansión de la exponencial a primer orden resulta adecuada.
+\begin{equation}
+    P(t<T<t+dt \mid T>t)=\lambda dt.
+    \label{eq:hipotesis_fundamental}
+\end{equation}
 
-\subsubsection{Distribuciones de probabilidad constante sin memoria}
+En el contexto de la desintegración radiactiva, la constante $\lambda$ recibe el nombre de constante de desintegración, tiene dimensiones de inverso de tiempo y se interpreta como una tasa de desintegración por unidad de tiempo. \refmargen{Krane \cite{krane}}{\S 6.1}
 
-En ciertos procesos físicos, como las desintegraciones radiactivas, la probabilidad de que ocurra un evento en un intervalo de tiempo no depende del tiempo previamente transcurrido. Este comportamiento se conoce como ausencia de memoria.
 
-\begin{cajadefinicion}
-Sea $X$ el tiempo hasta que ocurre un evento. Consideremos un instante $b$ tal que el evento no ha ocurrido todavía, es decir, $X>b$. En esta situación, nos interesa describir el tiempo restante hasta que ocurra el evento. \refmargen{Sheffield \cite{mit_poisson_notes}:}{Lecture 19, Memoryless ~~~~property}
-Definimos la variable $Y = X - b$, que representa el tiempo restante hasta la ocurrencia del evento, condicionado a que $X > b$. Para cualquier valor $a$, se puede calcular
+\subsubsection{Ley de probabilidad de supervivencia}
 
-$$
-P(Y > a \mid X > b),
-$$
+Se define la función de supervivencia $S(t)$ como la probabilidad de que el núcleo no se haya desintegrado hasta el instante $t$:
 
-es decir,
+\begin{equation}
+    S(t)=P(T>t).
+    \label{eq:def_funcion_supervivencia}
+\end{equation}
 
-$$
-P(X - b > a \mid X > b) = P(X > b + a \mid X > b).
-$$
+A partir de la probabilidad infinitesimal de desintegración dada por la ecuación (\ref{eq:hipotesis_fundamental}), la probabilidad complementaria, es decir, la probabilidad de que el núcleo permanezca sin desintegrarse durante el intervalo $[t,t+dt]$, es
 
-Si $X$ sigue una distribución exponencial, se obtiene que
+\begin{equation}
+    P(T>t+dt \mid T>t)=1-\lambda dt.
+    \label{eq:supervivencia_intervalo_infinitesimal}
+\end{equation}
 
-$$
-P(X > b + a \mid X > b) = \frac{P(X > b + a)}{P(X > b)} = \frac{e^{-\lambda (b+a)}}{e^{-\lambda b}} = e^{-\lambda a}.
-$$
+Para relacionar esta probabilidad condicionada con la función de supervivencia, se usa la definición de probabilidad condicionada. Como el suceso $T>t+dt$ implica necesariamente el suceso $T>t$, se tiene
 
-Por tanto,
+\begin{equation}
+    P(T>t+dt \mid T>t)
+    =
+    \frac{P(T>t+dt)}{P(T>t)}.
+\end{equation}
 
-$$
-P(Y > a \mid X > b) = P(X > a),
-$$
+Usando la definición de la función de supervivencia, $S(t)=P(T>t)$, resulta
 
-lo que implica que la distribución del tiempo restante es la misma que la distribución original. Esta propiedad se conoce como ausencia de memoria. 
-\end{cajadefinicion}
+\begin{equation}
+    P(T>t+dt \mid T>t)
+    =
+    \frac{S(t+dt)}{S(t)}.
+\end{equation}
 
-De hecho, la distribución exponencial es la única distribución continua que presenta la propiedad de ausencia de memoria, lo que explica su relevancia en la modelización de procesos físicos como las desintegraciones radiactivas.
+Sustituyendo la ecuación anterior en la expresión de la probabilidad complementaria,
+
+\begin{equation}
+    \frac{S(t+dt)}{S(t)}=1-\lambda dt.
+\end{equation}
+
+Por tanto, multiplicando ambos lados por $S(t)$, se obtiene
+
+\begin{equation}
+    S(t+dt)=S(t)(1-\lambda dt).
+\end{equation}
+
+Restando $S(t)$ en ambos lados,
+
+\begin{equation}
+    S(t+dt)-S(t)=-\lambda S(t)dt.
+\end{equation}
+
+Dividiendo entre $dt$ y tomando el límite $dt\to 0$, se obtiene
+
+\begin{equation}
+    \frac{dS}{dt}=-\lambda S.
+    \label{eq:diferencial_leysupervivencia}
+\end{equation}
+
+La solución de esta ecuación diferencial, imponiendo la condición inicial $S(0)=1$, es
+
+\begin{equation}
+    S(t)=e^{-\lambda t}.
+    \label{eq:ley_supervivencia}
+\end{equation}
+
+Esta expresión muestra que la probabilidad de que un núcleo radiactivo permanezca sin desintegrarse decrece exponencialmente con el tiempo.
+
 
 
 \subsubsection{Densidad de probabilidad exponencial}
-\begin{cajadefinicion} 
-Sea $X$ una variable aleatoria. Decimos que $X$ es una variable contínua aleatoria si existe una función no negativa $f_X(x)$, definida para todos los reales $x\in [-\infty, \infty]$, con la propiedad de que para cualquier intervalo B de números reales \refmargen{Ross \cite{ross1993probabilitymodels}:}{\S~2.3}
+
+El tiempo de desintegración de un núcleo puede describirse mediante una variable aleatoria continua $T$ (véase el apéndice \ref{ap:variable_aleatoria_continua}). Si $f_T(t)$ representa su función densidad de probabilidad, entonces la probabilidad de que la desintegración ocurra en un intervalo temporal $B\subset[0,\infty)$ viene dada por
+
 \begin{equation}
-  P\{X \in B\} = \int_B f_X(x)\,dx
-  \label{eq:P(X in B)}
+    P(T\in B)=\int_B f_T(t)\,dt.
+    \label{eq:def_densidad_probabilidad}
 \end{equation}
 
-siendo $f_X(x)$ la función densidad de probabilidad de la variable aleatoria $X$. 
-\end{cajadefinicion}
+En particular, $f_T(t)dt$ representa, en el límite infinitesimal, la probabilidad de que la desintegración tenga lugar entre los instantes $t$ y $t+dt$.
 
-La ecuación (\ref{eq:P(X in B)}) muestra que la probabilidad de que $X$ se encuentre en $B$ se puede obtener integrando la función densidad de probabilidad ``$f_X(x)$'' en ese intervalo.
-
-Si $f_X(x)$ es evaluada en $[-\infty, \infty]$ debe satisfacer
+A partir de la función de supervivencia $S(t)=P(T>t)$, la función de distribución acumulada del tiempo de desintegración es
 
 \begin{equation}
-  1= P \{X \in (-\infty, \infty) \} = \int_{-\infty}^{\infty} f_X(x)\,dx
+    F(t)=P(T\leq t)=1-S(t).
 \end{equation}
 
-\begin{cajadefinicion}
-  La densidad de probabilidad de desintegración $f_X(x)$ en su forma exponencial para la variable aleatoria $X$ con parámetro $\lambda$ \refmargen{Sheffield \cite{mit_poisson_notes}:}{Lecture 19; Exponential ~~~~~random variables}
+La densidad de probabilidad se obtiene derivando la función de distribución acumulada:
 
 \begin{equation}
-f(x) =
+    f_T(t)=\frac{dF(t)}{dt}=-\frac{dS(t)}{dt}.
+    \label{eq:relacion_densidad_supervivencia}
+\end{equation}
+
+Sustituyendo la ley de supervivencia $S(t)=e^{-\lambda t}$, se obtiene
+
+\begin{equation}
+    f_T(t)=\lambda e^{-\lambda t}, \qquad t\geq 0.
+    \label{eq:densidadpropexponencial}
+\end{equation}
+
+De forma completa, la densidad de probabilidad del tiempo de desintegración puede escribirse como
+
+\begin{equation}
+f_T(t) =
 \begin{cases}
-\lambda e^{-\lambda x}, & x \geq 0 \\
-0, & x < 0
+\lambda e^{-\lambda t}, & t \geq 0, \\
+0, & t < 0.
 \end{cases}
-\label{eq:densidadpropexponencial}
 \end{equation}
 
-\end{cajadefinicion}
-
-Considerando B como un intervalo cerrado $[0, b]$, entonces, si en (\ref{eq:P(X in B)}) introducimos (\ref{eq:densidadpropexponencial}): 
-
-\begin{equation}
-  \rightarrow P\{X \leq b\}=1-e^{-\lambda b} \label{eq:probabilidadintervalocerrado}
-\end{equation}
-\begin{equation}
-  \rightarrow P\{X  > b\}=e^{-\lambda b}~~~~~
-  \label{eq:probabilidadintervaloabierto}
-\end{equation}
-
-La ecuación (\ref{eq:probabilidadintervalocerrado}) es la probabilidad individual de que un núcleo se desintegre en un intervalo cerrado $[0, b]$, mientras qué, la ecuación (\ref{eq:probabilidadintervaloabierto}) es la probabilidad de que un núcleo individual no se haya desintegrado en ese mismo intervalo.
-
-\begin{center}
-  \textbf{SIGNIFICADO FÍSICO}
-\end{center}
-
-\begin{cajadefinicion}
-  La densidad de probabilidad de desintegración $f(t)=\lambda e^{-\lambda t}$ describe como se distribuye en el tiempo la probabilidad de que un núcleo se desintegre, de modo que $f(t)dt$ representa la probabilidad de que la desintegración ocurra entre los instantes $t$ y $t+dt$.
-\end{cajadefinicion}
+Esta expresión corresponde a una distribución exponencial de parámetro $\lambda$. \refmargen{Sheffield \cite{mit_poisson_notes}}{Exponential random variables}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{Gráficas/f(t).jpg}
+    \includegraphics[width=0.5\textwidth]{Gráficas/f(t).jpg}
     \caption{Densidad de probabilidad de desintegración para distintos valores de $\lambda$. Las líneas discontinuas indican el valor medio $\langle t \rangle = 1/\lambda$.}
     \label{fig:densidadpropexponencial}
 \end{figure}
 
-\begin{itemize}
-  \item $f(t)$ tiene un máximo en $t=0$ con valor $\lambda$, la constante de desintegración. Esto indica que la probabilidad instantánea de desintegración es máxima al inicio. Sin embargo, debido al carácter sin memoria del proceso, esta tasa de desintegración permanece constante en todo instante, siendo $\lambda$ la probabilidad por unidad de tiempo de desintegración para un núcleo que ha sobrevivido hasta ese momento.
-  \item Tiempo medio 
-  \begin{equation}
-     \langle t \rangle = \int_{0}^{\infty} t \lambda e^{-\lambda t} \,dt = \frac{1}{\lambda}
-  \end{equation}
-  \item Varianza 
-  \begin{equation}
-    \sigma^2 = \int_{0}^{\infty} (t-\langle t \rangle)^2 \lambda e^{-\lambda t} \,dt = \frac{1}{\lambda^2}
-  \end{equation}
-  \item Desviación típica 
-  \begin{equation}
-    \sigma = \sqrt{\sigma^2} = \frac{1}{\lambda}
-  \end{equation}
-\end{itemize}
+A partir de esta densidad se obtiene que el valor medio del tiempo de desintegración es
 
-\subsubsection{Ley de probabilidad de supervivencia}
-Uno de los requisitos para entender las desintegraciones radiactivas, es conocer la ley de probabilidad de supervivencia $S(t)$. Esta nos permitirá describir el comportamiento de las desintegraciones radiactivas en el tiempo.
-
-La probabilidad de supervivencia de un núcleo en un tiempo $t$ es (\ref{eq:probabilidadintervaloabierto}):
-
-
-\begin{equation}
-  p(t) = P\{X > t\} = e^{-\lambda t}
+\begin{equation} 
+  \langle t \rangle = \int_{0}^{\infty} t\lambda e^{-\lambda t}\,dt = \frac{1}{\lambda}. 
+  \label{eq:valor_medio_exponencial} 
 \end{equation}
 
-Si consideramos un intervalo de tiempo infinitesimal $dt$, la probabilidad de supervivencia de un núcleo en el intervalo $[t, t+dt]$ es
-
-$$
-  p(dt)= P\{X > t + dt \mid X > t\} = \frac{P\{X > t + dt\}}{P\{X > t\}} = \frac{e^{-\lambda (t+dt)}}{e^{-\lambda t}} = e^{-\lambda dt} 
-$$
+La varianza viene dada por
 
 \begin{equation}
-  p(dt) \approx 1 - \lambda dt
-  \label{eq:probabilidaddesupervivenciaintervalodt}
+    \sigma^2 = \int_{0}^{\infty} (t-\langle t\rangle)^2\lambda e^{-\lambda t}\,dt = \frac{1}{\lambda^2}.
 \end{equation}
 
-De esta manera, podemos derivar la ley de probabilidad de supervivencia $S(t)$ a partir de su forma discreta:
-
-$$
-  S(t+dt) = S(t)(1-\lambda dt)  \rightarrow S(t+dt)-S(t)=-S(t)\lambda dt
-$$
-
-Tomándo el límite en $dt \rightarrow 0$:
-
-$$
-  \lim_{dt \rightarrow 0} \frac{S(t+dt) - S(t)}{dt}  = \lim_{dt \rightarrow 0} -S(t)\lambda
-$$
-
-Obtenemos:
+Por tanto, la desviación típica es
 
 \begin{equation}
-  \frac{dS}{dt}= -\lambda S
-  \label{eq:diferencial_leysupervivencia}
+    \sigma=\frac{1}{\lambda}.
 \end{equation}
 
-Llegando finalmente a la ley de probabilidad de supervivencia(función de supervivencia):
-\begin{equation}
-  S(t) = e^{-\lambda t}
-\end{equation}
 
-En relación con la función densidad de propabiblidad (\ref{eq:densidadpropexponencial}):
+\subsubsection{Probabilidad de desintegración en un intervalo temporal}
 
-\begin{cajadefinicion}
-  La función de supervivencia $S(t)$, definida como la probabilidad de que el núcleo no se haya desintegrado hasta el instante $t$, puede expresarse como \refmargen{Lawless \cite{lawless2011lifetime}: }{eq 1.2.1}
+A partir de la ley de supervivencia, la probabilidad de que un núcleo que ha sobrevivido hasta el instante $t$ permanezca sin desintegrarse durante un intervalo adicional de duración $\Delta t$ viene dada por
 
 \begin{equation}
-  S(t) = P(T \geq t) = \int_t ^{\infty} f(t)\,dt
-  \label{eq:defsupervivencia}
+    P(T>t+\Delta t \mid T>t)
+    =
+    \frac{P(T>t+\Delta t)}{P(T>t)}
+    =
+    \frac{e^{-\lambda(t+\Delta t)}}{e^{-\lambda t}}
+    =
+    e^{-\lambda \Delta t}.
 \end{equation}
 
-\end{cajadefinicion}
-
-$S(t)$ es una función contínua monótona decreciente con $S(0) = 1$, es decir, el máximo de la función densidad de probabilidad ($t=0$) en el caso de un núcleo se traduce a que lo más probable es que se desintegre lo antes posible; y $lim_{t \rightarrow \infty} S(t) = 0$. Algunas veces se debe considerar $S(\infty)>0$ pues algunos núcleos nunca decaen.
-
-De la ecuación que define la ley de supervivencia (\ref{eq:defsupervivencia}), se obtiene la relación:
+Por tanto, la probabilidad complementaria, es decir, la probabilidad de que el núcleo se desintegre durante dicho intervalo, es
 
 \begin{equation}
-  f(t)=-\frac{dS(t)}{dt}
+    q(\Delta t)=1-e^{-\lambda \Delta t}.
+    \label{eq:prob_desintegracion_intervalo}
 \end{equation}
+
+Para intervalos suficientemente pequeños, es decir, cuando $\lambda \Delta t \ll 1$, la exponencial puede aproximarse a primer orden mediante
+
+\begin{equation}
+    e^{-\lambda \Delta t}\simeq 1-\lambda \Delta t.
+\end{equation}
+
+Por tanto,
+
+\begin{equation}
+    q(\Delta t)=1-e^{-\lambda \Delta t}\simeq \lambda \Delta t.
+    \label{eq:prob_desintegracion_aproximada}
+\end{equation}
+
+Esta aproximación será útil en la implementación del método de Monte Carlo, ya que permite asociar a cada intervalo temporal pequeño $\Delta t$ una probabilidad de desintegración aproximadamente igual a $\lambda \Delta t$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Gráficas/exacta_vs_aprox.jpg}
+    \caption{Comparación entre la probabilidad exacta de desintegración $q(\Delta t)=1-e^{-\lambda \Delta t}$ y su aproximación lineal $q(\Delta t)\simeq \lambda \Delta t$.}
+    \label{fig:exacta_vs_aprox}
+\end{figure}
+
+La comparación muestra que la aproximación lineal es válida en el régimen $\lambda \Delta t \ll 1$, donde los términos de orden superior en la expansión de la exponencial son despreciables.
+
+
+\subsubsection{Propiedad de ausencia de memoria}
+
+La distribución exponencial presenta la propiedad de ausencia de memoria. Esta propiedad significa que, si un núcleo ha sobrevivido hasta un instante $b$, la probabilidad de que sobreviva durante un intervalo adicional de duración $a$ no depende del tiempo $b$ ya transcurrido. \refmargen{Sheffield \cite{mit_poisson_notes}}{Lecture 19, Memoryless property}
+
+Sea $T$ el tiempo de desintegración del núcleo. Para $a>0$ y $b>0$, se tiene
+
+\begin{equation}
+    P(T>b+a \mid T>b)
+    =
+    \frac{P(T>b+a)}{P(T>b)}.
+\end{equation}
+
+Usando la ley de supervivencia $P(T>t)=e^{-\lambda t}$, se obtiene
+
+\begin{equation}
+    P(T>b+a \mid T>b)
+    =
+    \frac{e^{-\lambda(b+a)}}{e^{-\lambda b}}
+    =
+    e^{-\lambda a}.
+\end{equation}
+
+Como $P(T>a)=e^{-\lambda a}$, resulta
+
+\begin{equation}
+    P(T>b+a \mid T>b)=P(T>a).
+\end{equation}
+
+Por tanto, la probabilidad de supervivencia adicional durante un intervalo de duración $a$ es independiente del tiempo $b$ que el núcleo haya permanecido sin desintegrarse. Esta propiedad formaliza matemáticamente la idea de que el proceso de desintegración no depende de la historia previa del núcleo.
+
+De hecho, la distribución exponencial es la única distribución continua que presenta la propiedad de ausencia de memoria, lo que explica su relevancia en la modelización de procesos físicos como las desintegraciones radiactivas.
+
 
 \subsubsection{Ley de desintegración radiactiva}
 
-Como consecuencia de la hipótesis fundametal, si $N$ núcleos radiactivos están presentes a tiempo t y no se introducen nuevos,  entonces el número de  núcleos decayendo en un tiempo $dt$, $dN$, es proporcional a $N$.  \refmargen{Krane \cite{krane}:}{\S~6.1}
+Hasta este punto se ha descrito la desintegración de un núcleo individual en términos probabilísticos. Sin embargo, en una muestra radiactiva se tiene un número elevado de núcleos, por lo que resulta conveniente describir la evolución temporal del número medio de núcleos supervivientes.
+
+Sea $N(t)$ el número medio de núcleos radiactivos supervivientes en el instante $t$. Como consecuencia de la hipótesis fundamental, si no se introducen nuevos núcleos en la muestra, el número medio de desintegraciones que tienen lugar en un intervalo infinitesimal $dt$ es proporcional a $N(t)$. \refmargen{Krane \cite{krane}}{\S~6.1}
+
+De acuerdo con la ecuación (\ref{eq:hipotesis_fundamental}), cada núcleo tiene una probabilidad $\lambda dt$ de desintegrarse en dicho intervalo. Por tanto, el número medio de núcleos que se desintegran en $dt$ es
 
 \begin{equation}
-\frac{dN}{dt} = - \lambda N
-\label{eq:desintegración}
+    dN_{\text{des}}=\lambda N(t)dt.
 \end{equation}
 
-Esta ecuación es, en realidad, la forma diferencial de la ley de supervivencia (\ref{eq:diferencial_leysupervivencia}) empleando la variable aleatoria $N(t)$(número de núcleos a tiempo t). 
-
-De la ecuación (\ref{eq:desintegración}) llegamos a:
+Como $N(t)$ representa el número medio de núcleos supervivientes, esta cantidad disminuye cuando se producen desintegraciones. Por ello,
 
 \begin{equation}
-N(t) = N_0 e^{-\lambda t}
-\label{eq:ley_desintegracion}
+    dN=-dN_{\text{des}}=-\lambda N(t)dt.
 \end{equation}
 
-Lo que nos permite obtener:
+Dividiendo entre $dt$, se obtiene la ecuación diferencial de desintegración radiactiva:
 
 \begin{equation}
-  t = \frac{1}{\lambda} \ln \left(\frac{N_0}{N}\right)
-  \label{eq:tiempo_desintegración}
+    \frac{dN}{dt}=-\lambda N.
+    \label{eq:desintegracion}
 \end{equation}
 
-\subsubsection{Magnitudes resultantes de la ley de desintegración radiactiva}
+Esta ecuación es la versión macroscópica de la ecuación diferencial de supervivencia (\ref{eq:diferencial_leysupervivencia}). Mientras que $S(t)$ representa la probabilidad de supervivencia de un núcleo individual, $N(t)$ representa el número medio de núcleos supervivientes en una muestra radiactiva.
 
-La \textbf{semivida} es el tiempo necesario para que se desintegren la mitad de los núcleos de una muestra y está relacionada con la constante de desintegración $\lambda$ mediante la ecuación:
+La solución de la ecuación (\ref{eq:desintegracion}), imponiendo la condición inicial $N(0)=N_0$, es
 
 \begin{equation}
-t_{1/2} = \frac{\ln2}{\lambda}
-\label{eq:half-life}
+    N(t)=N_0 e^{-\lambda t}.
+    \label{eq:ley_desintegracion}
 \end{equation}
 
-El \textbf{tiempo medio de vida} de un núcleo es:
+Esta expresión constituye la ley de desintegración radiactiva. A partir de ella, si se conoce el número inicial de núcleos $N_0$ y el número de núcleos supervivientes $N(t)$, el tiempo transcurrido puede obtenerse como
 
 \begin{equation}
-\tau = \frac{\int_{0}^{\infty} t|dN/dt| \,dt }{\int_{0}^{\infty} |dN/dt|\,dt}
+    t=\frac{1}{\lambda}\ln\left(\frac{N_0}{N(t)}\right).
+    \label{eq:tiempo_desintegracion}
 \end{equation}
 
-Resolviendo:
+\subsubsection{Magnitudes asociadas a la ley de desintegración radiactiva}
+
+La semivida, $t_{1/2}$, es el tiempo necesario para que el número de núcleos supervivientes se reduzca a la mitad. Por tanto, se define mediante la condición
 
 \begin{equation}
-\tau = \frac{\int_{0}^{\infty} t|dN/dt| \,dt }{N_0} = \frac{\lambda \int_{0}^{\infty} t N_0 e^{-\lambda t} \,dt}{N_0} = \frac{\lambda}{\lambda^2}= \frac{1}{\lambda}
+    N(t_{1/2})=\frac{N_0}{2}.
 \end{equation}
 
-Es decir que el tiempo medio de vida de un núcleo es la inversa de la constante de desintegración.
-
-La \textbf{actividad} es el número de desintegraciones radiactivas por unidad de tiempo:
+Sustituyendo esta condición en la ley de desintegración radiactiva (\ref{eq:ley_desintegracion}), se obtiene
 
 \begin{equation}
-A = \lambda N(t) = \lambda N_0 e^{-\lambda t} = A_0 e^{-\lambda t}
-\label{eq:activity}
+    \frac{N_0}{2}=N_0 e^{-\lambda t_{1/2}}.
 \end{equation}
 
-Obtener el número de núcleos en un tiempo $t$ es bastante complidado si $\lambda$ no es conocido. Sin embargo, sí se puede medir la radiación emitida por una fuente en un intervalo de tiempo $t$, es decir, el número de desintegraciones que tienen lugar en dicho intervalo:
+Cancelando $N_0$ y despejando $t_{1/2}$, resulta
 
 \begin{equation}
-|\Delta N| = N(t) - N(t + \Delta t) = N_0 e^{-\lambda t}(1-e^{-\lambda \Delta t})
+    t_{1/2}=\frac{\ln 2}{\lambda}.
+    \label{eq:half_life}
 \end{equation}
 
-Esta magnitud está directamente relacionada con la actividad (\ref{eq:activity}) de la muestra, lo que permite acceder experimentalmente a la constante de desintegración $\lambda$.
+El tiempo medio de vida, $\tau$, representa el valor medio del tiempo de desintegración de un núcleo. Como se obtuvo en la ecuación (\ref{eq:valor_medio_exponencial}), viene dado por
+
+\begin{equation}
+    \tau=\langle t\rangle=\frac{1}{\lambda}.
+    \label{eq:tiempo_medio_vida}
+\end{equation}
+
+Por tanto, la semivida y el tiempo medio de vida están relacionados mediante
+
+\begin{equation}
+    t_{1/2}=\tau \ln 2.
+\end{equation}
+
+La actividad de una muestra radiactiva se define como el número de desintegraciones por unidad de tiempo. Dado que el número de núcleos supervivientes disminuye con el tiempo, la actividad se expresa como
+
+\begin{equation}
+    A(t)=-\frac{dN}{dt}.
+\end{equation}
+
+Usando la ecuación diferencial de desintegración radiactiva (\ref{eq:desintegracion}), se obtiene
+
+\begin{equation}
+    A(t)=\lambda N(t)=\lambda N_0 e^{-\lambda t}=A_0 e^{-\lambda t},
+    \label{eq:actividad}
+\end{equation}
+
+donde $A_0=\lambda N_0$ es la actividad inicial de la muestra.
+
+El número de desintegraciones que tienen lugar entre los instantes $t$ y $t+\Delta t$ viene dado por la disminución del número de núcleos supervivientes en dicho intervalo:
+
+\begin{equation}
+    \Delta N_{\text{des}}=N(t)-N(t+\Delta t).
+\end{equation}
+
+Sustituyendo la ley de desintegración radiactiva, se obtiene
+
+\begin{equation}
+    \Delta N_{\text{des}}
+    =
+    N_0 e^{-\lambda t}\left(1-e^{-\lambda \Delta t}\right).
+    \label{eq:desintegraciones_intervalo}
+\end{equation}
+
+Para intervalos suficientemente pequeños, esta cantidad puede aproximarse como
+
+\begin{equation}
+    \Delta N_{\text{des}}\simeq A(t)\Delta t.
+\end{equation}
+
+Esta relación conecta la actividad de la muestra con el número de desintegraciones observadas en un intervalo temporal pequeño.
 
 
 \subsection{Descripción estadística de una muestra radiactiva}
-La ley de desintegración obtenida (\ref{eq:desintegración}) no describe un proceso determinista, es un comportamiento promedio.
 
-Partiendo de $N_0$ núcleos independientes, cada núcleo individual tiene una probabilidad $q(t)= 1-e^{-\lambda t}$ de desintegrarse en un intervalo de tiempo $[0,t]$ (\ref{eq:probabilidadintervalocerrado}). El resto de núcleos que no se desintegran se almacenan en la variable aleatoria $N(t)$,  la cual sigue la distribución binomial (\ref{eq:distribucionbinomial}):
+La ley de desintegración radiactiva obtenida en la ecuación (\ref{eq:ley_desintegracion}) describe la evolución media del número de núcleos supervivientes. Sin embargo, la desintegración radiactiva es un proceso aleatorio, por lo que una muestra concreta puede presentar fluctuaciones estadísticas alrededor de dicho comportamiento medio.
 
-\subsubsection{Distribución Binomial}
-
-Para llegar a la distribución binomial, se escoge un sistema físico que muestre dos resultados posibles, como por ejemplo el lanzamiento de una moneda. Partiendo de 5 monedas, a cada moneda se le asigna una letra A, B, C, D y E. El objetivo es obtener 3 monedas cara. Sean A, B y C cara y D y E cruz. Al escoger la primera moneda, puede estar en 5 posiciones distintas, la siguiente moneda puede estar en 4 posiciones distintas y la tercera en 3 posiciones. Por lo tanto($5\cdot 4\cdot 3$), existen 60 permutaciones posibles de escoger A, B y C.
-
-Como el objetivo es obtener 3 monedas cara, el orden en el que se escojan las monedas no importa, por lo que se debe dividir entre el número de combinaciones posibles de las monedas cara, es decir, 6 ($3\cdot 2\cdot 1$). De esta manera, se obtiene que existen 10 combinaciones distintas de obtener 3 monedas cara. Matemáticamente:
-
-$$\binom{5}{3} = \frac{60}{6} = 10$$
-
-Esto se conoce como el \textbf{Coeficiente Binomial}. \refmargen{Bevington \cite{bevington}: }{cap~2.1}
-
-\begin{cajadefinicion}
-  Sea $n$ el número de ensayos independientes, $x$ el número de éxitos. El número de permutaciones posibles de obtener $x$ éxitos en $n$ ensayos es:
-  $$P_m=n(n-1)(n-2)...(n-x+1)=\frac{n!}{(n-x)!}$$
-  
-  No obstante, $x$ combinaciones de éxitos se pueden ordenar de $x!$ formas distintas, por lo que el número de combinaciones posibles de obtener $x$ éxitos en $n$ ensayos es el coeficiente binomial C(n,x):
-  \begin{equation}
-    C(n,x) = \binom{n}{x} = \frac{P_m}{x!} = \frac{n!}{x!(n-x)!}
-  \end{equation}
-\end{cajadefinicion}
-
-Para obtener la probabilidad de conseguir $x$ éxitos en $n$ ensayos ($P(n,x)$) se debe multiplicar $C(n,x)$ por la probabilidad individual de que salga cierto resultado.
-
-La probabilidad de obtener $x$ éxitos es $p^x$ siendo $p$ la probabilidad de éxito en un ensayo. La probabilidad de obtener $n-x$ fracasos es $q^{n-x}=(1-p)^{n-x}$. Finalmente llegamos a la probabilidad de la distribución binomial:
+Se considera una muestra formada inicialmente por $N_0$ núcleos radiactivos independientes. Para cada núcleo, la probabilidad de desintegración en el intervalo $[0,t]$ viene dada por
 
 \begin{equation}
-  P(n,x) = C(n,x) p^x q^{n-x} = \binom{n}{x} p^x (1-p)^{n-x}
-  \label{eq:distribucionbinomial}
+    q(t)=1-e^{-\lambda t}.
+    \label{eq:prob_desintegracion_t}
 \end{equation}
 
-\subsubsection{Media de la Distribución Binomial}
+Por tanto, el número de núcleos desintegrados en dicho intervalo, denotado por $D(t)$, puede describirse mediante una variable aleatoria binomial. De forma equivalente, el número de núcleos supervivientes, denotado por $N_s(t)$, también puede describirse mediante una distribución binomial, pero con probabilidad de supervivencia $e^{-\lambda t}$.
 
-La media o valor esperado de una variable aleatoria binomial $X\sim B(n,p)$ se define como:
+
+\subsubsection{Distribución binomial}
+
+La distribución binomial aparece cuando se consideran $n$ ensayos independientes, cada uno de los cuales solo puede dar lugar a dos resultados posibles: éxito o fracaso. Si la probabilidad de éxito en cada ensayo es $p$, entonces la probabilidad de fracaso es $1-p$.
+
+Para obtener la probabilidad de que se produzcan exactamente $x$ éxitos en $n$ ensayos, primero se debe contar de cuántas formas pueden escogerse esos $x$ éxitos entre los $n$ ensayos totales. Este número viene dado por el coeficiente binomial (véase el apéndice \ref{ap:coeficiente_binomial})
 
 \begin{equation}
-    \mu = \sum_{x=0}^{n} x P(X=x) = \sum_{x=0}^{n} x\frac{n!}{x!(n-x)!} p^x(1-p)^{n-x} \refmargen{Bevington \cite{bevington}: }{eq~2.6}
+    \binom{n}{x}
+    =
+    \frac{n!}{x!(n-x)!}.
+    \label{eq:coeficiente_binomial}
 \end{equation}
 
-El término correspondiente a $x=0$ no contribuye a la suma, ya que queda multiplicado por cero. Por tanto, se puede escribir:
+El factor $\binom{n}{x}$ cuenta el número de combinaciones distintas de $x$ éxitos y $n-x$ fracasos. Para cada una de estas combinaciones, la probabilidad asociada es $p^x(1-p)^{n-x}$. Por tanto, si $X$ es una variable aleatoria binomial, se tiene \refmargen{Bevington \cite{bevington}}{cap.~2.1}
 
 \begin{equation}
-    \mu = \sum_{x=1}^{n} x\frac{n!}{x!(n-x)!}p^x(1-p)^{n-x}
-  \label{eq:mediabinomial}
+    P(X=x)=\binom{n}{x}p^x(1-p)^{n-x},
+    \qquad x=0,1,\ldots,n.
+    \label{eq:distribucionbinomial}
+\end{equation}
+
+En este caso se dice que $X$ sigue una distribución binomial de parámetros $n$ y $p$, y se escribe
+
+\begin{equation}
+    X\sim \operatorname{Bin}(n,p).
+\end{equation}
+
+Esta distribución resulta adecuada para describir el número de núcleos desintegrados en una muestra radiactiva, ya que cada núcleo puede considerarse como un ensayo independiente con dos resultados posibles: desintegrarse o no desintegrarse.
+
+En el caso de una muestra formada inicialmente por $N_0$ núcleos radiactivos independientes, el número de núcleos desintegrados en el intervalo $[0,t]$ puede describirse mediante
+
+\begin{equation}
+    D(t)\sim \operatorname{Bin}(N_0,q(t)),
+    \label{eq:desintegrados_binomial}
+\end{equation}
+
+donde $q(t)=1-e^{-\lambda t}$ es la probabilidad de desintegración de un núcleo individual en dicho intervalo. Por tanto,
+
+\begin{equation}
+    P(D(t)=d)
+    =
+    \binom{N_0}{d}
+    q(t)^d
+    \left[1-q(t)\right]^{N_0-d},
+    \qquad d=0,1,\ldots,N_0.
+    \label{eq:binomial_desintegrados}
+\end{equation}
+
+De forma equivalente, el número de núcleos supervivientes $N_s(t)$ sigue una distribución binomial con probabilidad de supervivencia $1-q(t)=e^{-\lambda t}$:
+
+\begin{equation}
+    N_s(t)\sim \operatorname{Bin}(N_0,e^{-\lambda t}).
+    \label{eq:supervivientes_binomial}
 \end{equation}
 
 
+\subsubsection{Media, varianza y desviación típica de una distribución binomial}
 
-Como $x! = x(x-1)!$, se tiene:
-
-$$
-    x\binom{n}{x}
-    =
-    \frac{n!}{x!(n-x)!}
-    =
-    x\frac{n!}{x(x-1)!(n-x)!}
-$$
-
-Cancelando el factor $x$:
-
-$$
-    x\binom{n}{x}
-    =
-    \frac{n!}{(x-1)!(n-x)!}
-$$
-
-Además, como $n! = n(n-1)!$, queda:
-
-$$
-    x\binom{n}{x}
-    =
-    n\frac{(n-1)!}{(x-1)!(n-x)!}
-$$
-
-Esta expresión puede escribirse como:
-
-$$
-    x\binom{n}{x}
-    =
-    n\binom{n-1}{x-1}
-$$
-
-Sustituyendo este resultado en la expresión de la media (\ref{eq:mediabinomial}):
+Sea $X$ una variable aleatoria binomial de parámetros $n$ y $p$,
 
 \begin{equation}
-    \mu =
-    \sum_{x=1}^{n}
-    n\binom{n-1}{x-1}p^x(1-p)^{n-x}
+    X\sim \operatorname{Bin}(n,p).
 \end{equation}
 
-Como $n$ no depende del índice de la suma, puede sacarse fuera:
-
-$$
-    \mu =
-    n\sum_{x=1}^{n}
-    \binom{n-1}{x-1}p^x(1-p)^{n-x}
-$$
-
-Ahora se separa un factor $p$, usando que $p^x=p\,p^{x-1}$:
-
-$$
-    \mu =
-    np\sum_{x=1}^{n}
-    \binom{n-1}{x-1}p^{x-1}(1-p)^{n-x}
-$$
-
-Se realiza el cambio de variable:
+La media o valor esperado de la distribución binomial viene dado por
 
 \begin{equation}
-    y=x-1
-\end{equation}
-
-Cuando $x=1$, entonces $y=0$, y cuando $x=n$, entonces $y=n-1$. Además:
-
-$$
-    x-1=y,
-    \qquad
-    n-x=n-1-y
-$$
-
-Por tanto, la suma queda:
-
-\begin{equation}
-    \mu =
-    np\sum_{y=0}^{n-1}
-    \binom{n-1}{y}p^y(1-p)^{n-1-y}
-\end{equation}
-
-La suma que aparece es la suma de todas las probabilidades de una distribución binomial con $n-1$ ensayos, por lo que vale 1. Empleando el binomio de Newton:
-
-$$
-    \sum_{y=0}^{n-1}
-    \binom{n-1}{y}p^y(1-p)^{n-1-y}
-    =
-    \left[p+(1-p)\right]^{n-1}
-    =
-    1^{n-1}
-    =
-    1
-$$
-
-Por tanto, la media de una distribución binomial es:
-
-\begin{equation}
-    \boxed{\mu = np}
+    E[X]=np.
     \label{eq:media_distribucion_binomial}
 \end{equation}
 
-\subsubsection{Varianza y desviación típica de una distribución binomial}
-\label{sec:varianza_desviación_binomial}
-
-La varianza de una variable aleatoria $X$ puede escribirse como:
+La varianza puede escribirse como
 
 \begin{equation}
-    \sigma^2 = E[X^2]-\mu^2
-    \label{eq:varianza}
+    \operatorname{Var}(X)=E[X^2]-\left(E[X]\right)^2.
 \end{equation}
 
-donde $\mu=E[X]$. Para una distribución binomial $X\sim B(n,p)$, ya se ha obtenido que $\mu = np$, por tanto, para calcular la varianza es necesario obtener primero $E[X^2]$. Por definición:
+Para una distribución binomial, esta magnitud toma la forma
 
 \begin{equation}
-    E[X^2]
-    =
-    \sum_{x=0}^{n}
-    x^2
-    \binom{n}{x}
-    p^x(1-p)^{n-x}
+    \operatorname{Var}(X)=np(1-p).
+    \label{eq:varianza_binomial}
 \end{equation}
 
-Para simplificar esta suma, se utiliza la identidad:
+Por tanto, la desviación típica es
 
 \begin{equation}
-    x^2=x(x-1)+x
+    \sigma_X=\sqrt{\operatorname{Var}(X)}=\sqrt{np(1-p)}.
+    \label{eq:desviacion_tipica_binomial}
 \end{equation}
 
-Así:
+La derivación detallada de estas expresiones se recoge en el apéndice \ref{ap:momentos_binomial}.
 
-$$
-    E[X^2]
-    =
-    E[X(X-1)]+E[X]
-$$
-
-Como $E[X]=\mu=np$, queda:
-
-$$
-    E[X^2]
-    =
-    E[X(X-1)]+np
-$$
-
-Calculamos ahora $E[X(X-1)]$:
+Aplicando estos resultados al número de núcleos desintegrados $D(t)\sim \operatorname{Bin}(N_0,q(t))$, se obtiene
 
 \begin{equation}
-    E[X(X-1)]
-    =
-    \sum_{x=0}^{n}
-    x(x-1)
-    \binom{n}{x}
-    p^x(1-p)^{n-x}
+    E[D(t)]=N_0q(t),
+    \label{eq:media_desintegrados_binomial}
 \end{equation}
-
-Los términos $x=0$ y $x=1$ no contribuyen, ya que $x(x-1)=0$. Por tanto:
 
 \begin{equation}
-    E[X(X-1)]
-    =
-    \sum_{x=2}^{n}
-    x(x-1)
-    \binom{n}{x}
-    p^x(1-p)^{n-x}
+    \operatorname{Var}(D(t))=N_0q(t)\left[1-q(t)\right],
+    \label{eq:varianza_desintegrados_binomial}
 \end{equation}
-
-Se desarrolla ahora el factor $x(x-1)\binom{n}{x}$:
-
-$$
-    x(x-1)\binom{n}{x}
-    =
-    x(x-1)\frac{n!}{x!(n-x)!}
-$$
-
-Como:
-
-$$
-    x! = x(x-1)(x-2)!
-$$
-
-entonces:
-
-$$
-    x(x-1)\binom{n}{x}
-    =
-    x(x-1)
-    \frac{n!}{x(x-1)(x-2)!(n-x)!}.
-$$
-
-Cancelando el factor $x(x-1)$:
-
-$$
-    x(x-1)\binom{n}{x}
-    =
-    \frac{n!}{(x-2)!(n-x)!}
-$$
-
-Además, como:
-
-$$
-    n! = n(n-1)(n-2)!
-$$
-
-se obtiene:
 
 \begin{equation}
-    x(x-1)\binom{n}{x}
-    =
-    n(n-1)
-    \frac{(n-2)!}{(x-2)!(n-x)!}
+    \sigma_D(t)=\sqrt{N_0q(t)\left[1-q(t)\right]}.
+    \label{eq:desviacion_desintegrados_binomial}
 \end{equation}
 
-Esta expresión puede escribirse como:
+De forma equivalente, para el número de núcleos supervivientes $N_s(t)\sim \operatorname{Bin}(N_0,e^{-\lambda t})$, se tiene
 
 \begin{equation}
-    x(x-1)\binom{n}{x}
-    =
-    n(n-1)\binom{n-2}{x-2}
+    E[N_s(t)]=N_0e^{-\lambda t},
+    \label{eq:media_supervivientes_binomial}
 \end{equation}
-
-Sustituyendo en la suma:
 
 \begin{equation}
-    E[X(X-1)]
+    \operatorname{Var}(N_s(t))
     =
-    \sum_{x=2}^{n}
-    n(n-1)
-    \binom{n-2}{x-2}
-    p^x(1-p)^{n-x}
+    N_0e^{-\lambda t}\left(1-e^{-\lambda t}\right),
+    \label{eq:varianza_supervivientes_binomial}
 \end{equation}
-
-Como $n(n-1)$ no depende del índice de la suma, puede sacarse fuera:
-
-$$
-    E[X(X-1)]
-    =
-    n(n-1)
-    \sum_{x=2}^{n}
-    \binom{n-2}{x-2}
-    p^x(1-p)^{n-x}
-$$
-
-Ahora se separa un factor $p^2$, usando que $p^x=p^2p^{x-2}$:
-
-$$
-    E[X(X-1)]
-    =
-    n(n-1)p^2
-    \sum_{x=2}^{n}
-    \binom{n-2}{x-2}
-    p^{x-2}(1-p)^{n-x}
-$$
-
-
-Se realiza el cambio de variable:
 
 \begin{equation}
-    y=x-2
+    \sigma_{N_s}(t)
+    =
+    \sqrt{N_0e^{-\lambda t}\left(1-e^{-\lambda t}\right)}.
+    \label{eq:desviacion_supervivientes_binomial}
 \end{equation}
 
-Cuando $x=2$, entonces $y=0$, y cuando $x=n$, entonces $y=n-2$. Además:
 
-$$
-    x-2=y,
-    \qquad
-    n-x=n-2-y
-$$
-
-Por tanto:
-
-\begin{equation}
-    E[X(X-1)]
-    =
-    n(n-1)p^2
-    \sum_{y=0}^{n-2}
-    \binom{n-2}{y}
-    p^y(1-p)^{n-2-y}.
-\end{equation}
-
-La suma que aparece es la suma de todas las probabilidades de una distribución binomial con $n-2$ ensayos, por lo que vale 1. Empleando el binomio de Newton:
-
-$$
-    \sum_{y=0}^{n-2}
-    \binom{n-2}{y}
-    p^y(1-p)^{n-2-y}
-    =
-    [p+(1-p)]^{n-2}
-    =
-    1^{n-2}
-    =
-    1
-$$
-
-Así:
-
-$$
-    E[X(X-1)] = n(n-1)p^2.
-$$
-
-Por tanto:
-
-\begin{equation}
-    E[X^2]
-    =
-    E[X(X-1)]+E[X]
-    =
-    n(n-1)p^2+np
-\end{equation}
-
-Finalmente, usando la expresión de la varianza(\ref{eq:varianza}) y sabiendo que $\mu=np$, se obtiene:
-
-$$
-    \sigma^2
-    =
-    n(n-1)p^2+np-(np)^2
-      =
-    np-np^2
-$$
-
-Sacando factor común $np$ llegamos a la varianza de la distribución binomial:
-
-\begin{equation}
-    \boxed{Var=\sigma^2=np(1-p)}
-\end{equation}
-
-Y la desviación típica de la distribución binomial es:
-\begin{equation}
-    \boxed{\sigma = \sqrt{Var} = \sqrt{np(1-p)}}
-     \label{eq:desviación_típica_binomial}
-\end{equation}
 
 \subsubsection{Aproximación de Poisson}
 
-Cuando el número inicial de núcleos $N_0$ es grande y la probabilidad de desintegración en el intervalo $[0,t]$ es pequeña, es decir, $t$ es pequeño comparado con la vida media, la distribución binomial se aproxima a la \textbf{distribución de Poisson}. Concretamente para el número de núcleos desintegrados en el intervalo $[0,t]$
+Cuando el número inicial de núcleos $N_0$ es grande y la probabilidad individual de desintegración $q(t)$ en el intervalo $[0,t]$ es pequeña, la distribución binomial del número de núcleos desintegrados puede aproximarse mediante una distribución de Poisson. La definición general de proceso de Poisson homogéneo se recoge en el apéndice \ref{ap:proceso_poisson}.
+
+En el caso de la desintegración radiactiva, la probabilidad de desintegración de un núcleo individual en el intervalo $[0,t]$ es
 
 \begin{equation}
-  D(t)=N_0-N(t)
-  \label{eq:núcleosdesintegrados}
+    q(t)=1-e^{-\lambda t}.
 \end{equation}
 
-se tiene que
+Por tanto, si el número de núcleos desintegrados viene descrito por
 
 \begin{equation}
-  P(D(t)=n)\approx \frac{\mu^n}{n!} e^{-\mu},
-  \qquad
-  \mu=N_0p,
-  \qquad
-  p=1-e^{-\lambda t}\approx \lambda t
-  \label{eq:poisson}
+    D(t)\sim \operatorname{Bin}(N_0,q(t)),
 \end{equation}
 
-\begin{cajadefinicion}
-  Un proceso de Poisson, con tasa $\lambda$, es un proceso $N=\{ N(t):t \geq 0 \}$ que toma valores en $S=\{ 0,1,2,... \}$ tal que:
-  \begin{enumerate}
-    \item Comienza en 0: $N(0)=0$.
-    \item No decrece: $N(s) \leq N(t)$ si $s < t$.
-    \item Si $s < t$, el número de emisiones $N(t)-N(s)$ en un intervalo $(s,t]$ no afecta a lo que ocurre en otro intervalo $[0,s]$ que no se solapa. \refmargen{Grimmett,  \cite{grimmett2020probability}:}{\S~6.8}
-    \item En un intervalo muy pequeño de duración $h$, la probabilidad de que ocurra exactamente una desintegración es aproximadamente $\lambda h$, la probabilidad de que ocurra más de una es prácticamente cero ($o(h)$), y la probabilidad de que no ocurra ninguna es $1 - \lambda h + o(h)$.
-  \end{enumerate}
-  \label{def:procesodepoisson}
-\end{cajadefinicion}
+entonces, en el régimen $N_0\gg 1$ y $q(t)\ll 1$, puede aproximarse mediante una distribución de Poisson de parámetro $\mu$, donde
 
-El proceso de Poisson solo es válido para intervalos cortos. Conforme el tiempo avanza, el número de núcleos que quedan se reduce y la tasa de desintegración deja de ser constante, quitándole el carácter de homogeneidad al proceso de Poisson.
+\begin{equation}
+    \mu=N_0q(t).
+    \label{eq:parametro_poisson}
+\end{equation}
+
+Es decir,
+
+\begin{equation}
+    D(t)\sim \operatorname{Poi}(\mu).
+\end{equation}
+
+De este modo, la probabilidad de observar $d$ núcleos desintegrados en el intervalo $[0,t]$ viene dada aproximadamente por
+
+\begin{equation}
+    P(D(t)=d)
+    \approx
+    \frac{\mu^d}{d!}e^{-\mu}.
+    \label{eq:poisson}
+\end{equation}
+
+Si el tiempo considerado es pequeño frente al tiempo característico $1/\lambda$, se cumple $\lambda t\ll 1$ y puede usarse la aproximación
+
+\begin{equation}
+    q(t)=1-e^{-\lambda t}\simeq \lambda t.
+\end{equation}
+
+En ese límite, el parámetro de la distribución de Poisson puede escribirse como
+
+\begin{equation}
+    \mu=N_0q(t)\simeq N_0\lambda t.
+    \label{eq:parametro_poisson_tiempos_pequenos}
+\end{equation}
+
+
+Esta aproximación resulta útil cuando la probabilidad de desintegración de cada núcleo individual es pequeña, de forma que $D(t)$ puede describirse aproximadamente mediante una distribución de Poisson.
+
 
 \subsubsection{Valor esperado, varianza y desviación típica de la aproximación de Poisson}
 
-Para una distribución de Poisson, el valor esperado coincide con su parámetro:
+Bajo la aproximación de Poisson, el número de núcleos desintegrados en el intervalo $[0,t]$ se describe mediante una variable aleatoria de Poisson de parámetro $\mu$,
 
 \begin{equation}
-    E[D(t)] = \mu.
+    D(t)\sim \operatorname{Poi}(\mu),
+    \qquad
+    \mu=N_0q(t).
 \end{equation}
 
-Por tanto, en este caso:
+Para una variable aleatoria de Poisson, el valor esperado coincide con su parámetro:
 
 \begin{equation}
-    \boxed{E[D(t)] = \mu = N_0p}
+    E[D(t)]=\mu.
 \end{equation}
 
-donde, para los núcleos desintegrados,
+Por tanto, en este caso,
 
 \begin{equation}
-    p=1-e^{-\lambda t}\approx \lambda t.
+    E[D(t)]=\mu=N_0q(t).
+    \label{eq:media_poisson_desintegrados}
 \end{equation}
 
 Además, una propiedad característica de la distribución de Poisson es que su varianza también coincide con el parámetro de la distribución:
 
 \begin{equation}
-    Var[D(t)] = \sigma^2 = \mu.
+    \operatorname{Var}(D(t))=\mu.
 \end{equation}
 
-Así, para el número de núcleos desintegrados se obtiene:
+Por tanto,
 
 \begin{equation}
-    \boxed{Var[D(t)] = \mu = N_0p}
+    \operatorname{Var}(D(t))=N_0q(t).
+    \label{eq:varianza_poisson_desintegrados}
 \end{equation}
 
-y la desviación típica viene dada por:
+Esta expresión coincide con la aproximación de la varianza binomial en el límite $q(t)\ll 1$, ya que
 
 \begin{equation}
-    \boxed{\sigma = \sqrt{\mu} = \sqrt{N_0p}}
+    N_0q(t)\left[1-q(t)\right]\simeq N_0q(t).
 \end{equation}
 
-\subsection{Técnica de Monte Carlo}
-
-La técnica de Monte Carlo es un método computacional basado en el uso de números aleatorios para simular procesos de naturaleza probabilística. En lugar de describir únicamente el comportamiento medio de un sistema, este método permite generar realizaciones individuales del proceso y estudiar las fluctuaciones estadísticas asociadas.\refmargen{Bevington \cite{bevington}}{cap~5}
-
-En el caso de la desintegración radiactiva, esta técnica resulta especialmente adecuada, ya que la desintegración de un núcleo individual es un proceso aleatorio. Aunque no es posible predecir con certeza el instante exacto en el que se desintegrará un núcleo concreto, sí puede asignarse una probabilidad de desintegración en un intervalo temporal dado.\refmargen{Krane \cite{krane}}{\S~6.1} Para un intervalo $\Delta t$, dicha probabilidad viene dada por
+La desviación típica viene dada por
 
 \begin{equation}
-    p(\Delta t)=1-e^{-\lambda \Delta t},
-    \label{eq:probabilidad_desintegracion_montecarlo}
+    \sigma_D(t)=\sqrt{\mu}=\sqrt{N_0q(t)}.
+    \label{eq:desviacion_poisson_desintegrados}
 \end{equation}
 
-donde $\lambda$ es la constante de desintegración. En la simulación, para cada núcleo superviviente se genera un número aleatorio $r$ distribuido uniformemente entre 0 y 1. Si se cumple que
+En el límite de tiempos pequeños, donde $q(t)\simeq \lambda t$, estas expresiones se reducen a
 
 \begin{equation}
-    r < p(\Delta t),
+    E[D(t)]\simeq N_0\lambda t,
 \end{equation}
-
-el núcleo se considera desintegrado durante ese intervalo temporal. En caso contrario, el núcleo permanece sin desintegrarse y continúa formando parte de la muestra en el siguiente paso temporal.
-
-Este procedimiento permite construir trayectorias individuales para la evolución temporal del número de núcleos supervivientes. Al promediar un número suficientemente grande de simulaciones independientes, se recupera el comportamiento macroscópico descrito por la ley exponencial de desintegración,
 
 \begin{equation}
-    N(t)=N_0 e^{-\lambda t}.
-    \label{eq:ley_exponencial_montecarlo}
+    \operatorname{Var}(D(t))\simeq N_0\lambda t,
 \end{equation}
 
-Por tanto, el interés del método Monte Carlo no se limita a reproducir la ley determinista, sino que también permite analizar la dispersión estadística alrededor de dicha ley. Esta dispersión es especialmente relevante en el contexto de la datación radiométrica, ya que las fluctuaciones en el \refmargen{Kazkaz y Walsh \cite{kazkaz2011}}{\S~II}número de núcleos supervivientes se traducen en una incertidumbre sobre la edad estimada de la muestra.
+\begin{equation}
+    \sigma_D(t)\simeq \sqrt{N_0\lambda t}.
+\end{equation}
 
 
 
 % --------------------------------------------------
 
 \newpage
+
+
+
 \section{Análisis del modelo de simulación}
 \label{sec:analisisdelmodelo}
 
+La técnica de Monte Carlo es un método computacional basado en el uso de números aleatorios para simular procesos de naturaleza probabilística. En lugar de describir únicamente el comportamiento medio de un sistema, este método permite generar realizaciones individuales del proceso y estudiar las fluctuaciones estadísticas asociadas. \refmargen{Bevington \cite{bevington}}{cap.~5}
+
+En el caso de la desintegración radiactiva, esta técnica resulta especialmente adecuada, ya que la desintegración de un núcleo individual es un proceso aleatorio. Aunque no es posible predecir con certeza el instante exacto en el que se desintegrará un núcleo concreto, sí puede asignarse una probabilidad de desintegración en un intervalo temporal dado. \refmargen{Krane \cite{krane}}{\S~6.1}
+
+Como se obtuvo en la ecuación (\ref{eq:prob_desintegracion_intervalo}), la probabilidad de desintegración en un intervalo temporal de duración $\Delta t$ viene dada por
+
+\begin{equation}
+    q(\Delta t)=1-e^{-\lambda \Delta t}.
+\end{equation}
+
+En todos los modelos se supone que los núcleos se desintegran de forma independiente, que la constante de desintegración $\lambda$ permanece constante y que el proceso no presenta memoria, de acuerdo con las hipótesis desarrolladas en el fundamento teórico. Además, el tiempo se discretiza en pasos de duración $\Delta t$, de modo que el instante $t_i$ viene dado por $t_i=i\Delta t$.
+
+Esta probabilidad constituye la base de los modelos de simulación considerados. Dependiendo del procedimiento empleado, el proceso puede simularse núcleo a núcleo, mediante una distribución binomial o mediante una aproximación de Poisson.
+
+Al considerar un número suficientemente grande de simulaciones independientes, el promedio de las trayectorias reproduce el comportamiento macroscópico descrito por la ley exponencial de desintegración, dada en la ecuación (\ref{eq:ley_desintegracion}). Por tanto, el interés del método Monte Carlo no se limita a reproducir la ley macroscópica, sino que también permite analizar la dispersión estadística alrededor de dicha ley. Esta dispersión es especialmente relevante en el contexto de la datación radiométrica, ya que las fluctuaciones en el número de núcleos supervivientes se traducen en una incertidumbre sobre la edad estimada de la muestra. \refmargen{Kazkaz y Walsh \cite{kazkaz2011}}{\S~II}
+
+
+
 \subsection{Simulaciones iniciales}
-Antes de comenzar con la datación radiométrica, es necesario escoger un modelo de simulación que permita describir el proceso de desintegración radiactiva. Para ello, se han elegido tres modelos de simulación distintos que emplean la técnica o modelo de Monte Carlo.
 
+Antes de aplicar el modelo a la datación radiométrica, es necesario escoger un procedimiento de simulación que permita describir adecuadamente el proceso de desintegración radiactiva. Para ello, se comparan tres modelos distintos basados en la técnica de Monte Carlo.
 
-De cara a estas primeras simulaciones, se han empleado los valores $\lambda = 1$ para la constante de desintegración, $N_0 = 1000$ núcleos iniciales, un tiempo total de simulación $t = 5$ años y un intervalo temporal $dt = 0,05$ años. Este tiempo total permite observar prácticamente toda la evolución del sistema, ya que la población de núcleos supervivientes se reduce a una fracción muy pequeña de la inicial.
+En estas primeras simulaciones se emplean los valores $\lambda=1~\text{año}^{-1}$ para la constante de desintegración, $N_0=1000$ núcleos iniciales, un tiempo total de simulación $T_{\mathrm{sim}}=5~\text{años}$ y un paso temporal $\Delta t=0{,}05~\text{años}$. Este tiempo total permite observar prácticamente toda la evolución del sistema, ya que el valor medio esperado del número de núcleos supervivientes al final de la simulación es
 
-
-\subsubsection{Simulación núcleo a núcleo}
-En este modelo se representa explícitamente cada uno de los núcleos iniciales $N_0$. El tiempo total de la simulación se divide en intervalos de duración $dt$. A cada núcleo se le asigna una probabilidad de desintegración
-  
 \begin{equation}
-  q = 1 - e^{-\lambda dt}
-  \label{eq:probabilidad_desintegración}
+    N(T_{\mathrm{sim}})
+    =
+    N_0e^{-\lambda T_{\mathrm{sim}}}
+    =
+    1000e^{-1\cdot 5}
+    \approx 6{,}73.
 \end{equation}
 
-Con el fin de conocer el destino de cada núcleo, se genera un número aleatorio ``$r$'' para cada uno de ellos, el cual estará uniformemente distribuido entre 0 y 1 \refmargen{Hauf \cite{Hauf2013}}{\S~III.B}. Si el número aleatorio generado es menor que la probabilidad de desintegración ($r < q$), se considmera que ese núcleo se ha desintegrado, en caso contrario, el núcleo sobrevivirá. Este proceso se repite para cada núcleo presente en cada intervalo de tiempo $dt$ hasta alcanzar el tiempo total de simulación $t$. 
+Por tanto, al final del intervalo simulado el número medio de núcleos supervivientes se ha reducido a una fracción muy pequeña del número inicial.
+
+\subsubsection{Modelo A: núcleo a núcleo}
+
+En este modelo se representa explícitamente cada uno de los $N_0$ núcleos iniciales. El tiempo total de simulación se divide en intervalos de duración $\Delta t$. En cada paso temporal, a cada núcleo superviviente se le asigna la probabilidad de desintegración $q(\Delta t)$ definida en la ecuación (\ref{eq:prob_desintegracion_intervalo}).
+
+Con el fin de determinar el destino de cada núcleo, se genera un número aleatorio $r$ para cada uno de ellos, distribuido uniformemente en el intervalo $[0,1]$. \refmargen{Hauf \cite{Hauf2013}}{\S~III.B} Si el número aleatorio generado es menor que la probabilidad de desintegración, es decir, si
+
+\begin{equation}
+    r<q(\Delta t),
+\end{equation}
+
+se considera que el núcleo se ha desintegrado durante ese intervalo temporal. En caso contrario, el núcleo permanece sin desintegrarse. Este procedimiento se repite para cada núcleo superviviente en cada paso temporal hasta alcanzar el tiempo total de simulación $T_{\mathrm{sim}}$.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.9\textwidth]{TAREA2/microscopic.png}
-  \caption{3 simulaciones realizadas con el modelo microscópico núcleo a núcleo.}
+  \includegraphics[width=0.85\textwidth]{TAREA2/microscopic.png}
+  \caption{Evolución del número de núcleos supervivientes en tres simulaciones del modelo microscópico núcleo a núcleo, junto con la ley teórica $N(t)=N_0e^{-\lambda t}$.}
+  \label{fig:modelo_nucleo_a_nucleo}
 \end{figure}
 
-\subsubsection{Simulación con distribución binomial}
-Este modelo no simula individualmente el destino de cada núcleo, sino que se genera directametne el número de núcleos que se desintegran en cada intervalo de tiempo $dt$. Al inicio de cada intervalo, se conoce el número de núcleos supervivientes $N_i$, siendo la probabilidad de supervivencia de cada uno de ellos
+En la Figura~\ref{fig:modelo_nucleo_a_nucleo} se observa que las tres simulaciones presentan una disminución progresiva del número de núcleos supervivientes y se mantienen próximas a la ley teórica, representada mediante una línea discontinua. Aunque todas siguen la tendencia decreciente esperada, las trayectorias no coinciden exactamente entre sí debido al carácter aleatorio del proceso de desintegración. Estas diferencias entre realizaciones reflejan las fluctuaciones estadísticas propias del método Monte Carlo.
+
+\subsubsection{Modelo B: distribución binomial}
+
+Este modelo no simula individualmente el destino de cada núcleo, sino que genera directamente el número de núcleos que se desintegran en cada intervalo temporal. Al inicio del paso $i$, se conoce el número de núcleos supervivientes $N_i$. Como la probabilidad de desintegración durante un intervalo de duración $\Delta t$ es $q(\Delta t)$, el número de núcleos desintegrados en dicho intervalo se describe mediante una distribución binomial con parámetros $N_i$ y $q(\Delta t)$:
 
 \begin{equation}
-  p = e^{-\lambda dt}
-  \label{eq:probabilidad_supervivencia}
+    D_i\sim \operatorname{Bin}(N_i,q(\Delta t)).
 \end{equation}
 
-El número de núcleos supervivientes al final del intervalo, queda determinado mediante una distribución binomial con parámetros $N_i$ y $p$  (\ref{eq:distribucionbinomial}). 
-
-\begin{equation}
-N_{i+1} \sim \operatorname{Bin}(N_i,p)
-\end{equation}
-
-De esta forma, se genera un único número aleatorio para cada paso temporal, el cual, representa el número de núcleos supervivientes al final del intervalo. Es decir, este valor se emplea como población incial al comienzo del siguiente intervalo. El proceso se repite hasta alcanzar el tiempo total de simulación ($t$).
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1\textwidth]{TAREA2/binomial.png}
-  \caption{3 simulaciones realizadas con el modelo de distribución binomial.}
-\end{figure}
-
-\subsubsection{Simulación con aproximación de Poisson}
-
-Cuando la probabilidad de desintegración durante un intervalo temporal es pequeña, el número de núcleos desintegrados puede aproximarse mediante una distribución de Poisson (\ref{eq:poisson}).
-
-En este caso, si en el instante $t_i$ quedan $N_i$ núcleos supervivientes, el número de núcleos que se desintegran durante el intervalo $[t_i,t_i+dt]$ se genera como
-
-\begin{equation}
-D_i\sim\operatorname{Poi}(\mu_i).
-\end{equation}
-
-donde
-
-\begin{equation}
-\mu_i = N_i(1-e^{-\lambda dt}) \approx N_i\lambda dt
-\end{equation}
-
-es el número medio de núcleos que se desintegran en dicho intervalo.
+De forma equivalente, también puede generarse directamente el número de núcleos supervivientes al final del intervalo mediante una distribución binomial con probabilidad de supervivencia $p(\Delta t)=1-q(\Delta t)=e^{-\lambda\Delta t}$.
 
 Una vez generado el número de desintegraciones, la población de núcleos supervivientes se actualiza según
 
 \begin{equation}
-N_{i+1}=N_i-D_i.
+    N_{i+1}=N_i-D_i.
 \end{equation}
 
-De esta forma, en cada paso temporal se genera un único número aleatorio que representa el número total de núcleos desintegrados. La media de la distribución de Poisson se recalcula a partir de la población presente $N_i$, y el proceso se repite hasta alcanzar el tiempo total de simulación ($t$).
+De esta forma, en cada paso temporal se genera directamente un valor aleatorio que representa el número total de núcleos desintegrados, evitando simular individualmente el destino de cada núcleo. El proceso se repite hasta alcanzar el tiempo total de simulación $T_{\mathrm{sim}}$, lo que supone una reducción considerable del coste computacional.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\textwidth]{TAREA2/poisson.png}
-  \caption{3 simulaciones realizadas con la aproximación de Poisson.}
+  \includegraphics[width=0.85\textwidth]{TAREA2/binomial.png}
+  \caption{Evolución del número de núcleos supervivientes en tres simulaciones del modelo binomial, junto con la ley teórica $N(t)=N_0e^{-\lambda t}$.}
+  \label{fig:modelo_binomial}
 \end{figure}
+
+En la Figura~\ref{fig:modelo_binomial} se muestran tres trayectorias obtenidas mediante el modelo binomial. Al igual que en el modelo núcleo a núcleo, el número de núcleos supervivientes decrece con el tiempo y las distintas realizaciones fluctúan alrededor de la ley teórica. Esto indica que el modelo binomial conserva el carácter estocástico del proceso, aunque evita simular individualmente el destino de cada núcleo.
+
+\subsubsection{Modelo C: aproximación de Poisson}
+
+Cuando la probabilidad de desintegración durante un intervalo temporal es pequeña, el número de núcleos desintegrados puede aproximarse mediante una distribución de Poisson, como se indicó en la ecuación (\ref{eq:poisson}).
+
+Esta aproximación corresponde al límite de la distribución binomial cuando el número de núcleos disponibles es grande, la probabilidad de desintegración por paso temporal es pequeña y el producto $N_iq(\Delta t)$ se mantiene finito.
+
+En este caso, si en el instante $t_i$ quedan $N_i$ núcleos supervivientes, el número de núcleos que se desintegran durante el intervalo $[t_i,t_i+\Delta t]$ se genera como
+
+\begin{equation}
+    D_i\sim\operatorname{Poi}(\mu_i),
+\end{equation}
+
+donde el parámetro de la distribución viene dado por
+
+\begin{equation}
+    \mu_i = N_i\left(1-e^{-\lambda \Delta t}\right)
+    \simeq N_i\lambda \Delta t.
+\end{equation}
+
+Este parámetro representa el número medio de núcleos que se desintegran en dicho intervalo.
+
+Una vez generado el número de desintegraciones, el número de núcleos supervivientes se actualiza según
+
+\begin{equation}
+    N_{i+1}=N_i-D_i.
+\end{equation}
+
+De esta forma, en cada paso temporal se genera directamente un único valor aleatorio que representa el número total de núcleos desintegrados. La media de la distribución de Poisson se recalcula a partir de la población superviviente $N_i$, y el proceso se repite hasta alcanzar el tiempo total de simulación $T_{\mathrm{sim}}$.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{TAREA2/poisson.png}
+  \caption{Evolución del número de núcleos supervivientes en tres simulaciones realizadas con la aproximación de Poisson, junto con la ley teórica $N(t)=N_0e^{-\lambda t}$.}
+  \label{fig:modelo_poisson}
+\end{figure}
+
+En la Figura~\ref{fig:modelo_poisson} se muestran tres trayectorias obtenidas mediante la aproximación de Poisson. Las simulaciones reproducen la tendencia decreciente esperada para el número de núcleos supervivientes y presentan fluctuaciones entre realizaciones, de forma similar a los modelos anteriores. En este caso, la aproximación resulta razonable porque el paso temporal empleado da lugar a una probabilidad de desintegración pequeña, $q(\Delta t)=1-e^{-0{,}05}\simeq 0{,}049$.
+
 
 \subsubsection{Comparación de los modelos de simulación}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\textwidth]{TAREA2/comparacion.png}
-  \caption{Comparación de las 3 simulaciones de cada modelo frente a la solución exacta.}
+  \includegraphics[width=0.85\textwidth]{TAREA2/comparacion.png}
+  \caption{Comparación entre tres realizaciones independientes de cada modelo de simulación y la ley teórica $N(t)=N_0e^{-\lambda t}$.}
+  \label{fig:comparacion_modelos}
 \end{figure}
 
-El modelo núcleo a núcleo y el modelo binomial muestran el mismo comportamiento estadístico, aunque difieren en la forma de simular el proceso. Esto permite descartar uno de ellos y conservar únicamente el modelo binomial, ya que en cada paso temporal genera un único número aleatorio, mientras que el modelo núcleo a núcleo debe evaluar individualmente la posible desintegración de cada núcleo superviviente. Esta diferencia, que depende del número inicial de núcleos y del número de pasos temporales, también se refleja en el tiempo de ejecución, que resulta notablemente mayor para el modelo núcleo a núcleo.
+En la Figura~\ref{fig:comparacion_modelos} se observa que los tres modelos reproducen la tendencia decreciente descrita por la ley teórica $N(t)=N_0e^{-\lambda t}$. Las diferencias entre las distintas realizaciones se deben al carácter aleatorio de las simulaciones, aunque todas ellas permanecen próximas al comportamiento macroscópico esperado.
 
-La aproximación de la distribución binomial a la distribución de Poisson es una buena aproximación para intervalos cortos y muchos núcleos. En este caso, 1000 núcleos y un intervalo de 0.05, la aproximación es notablemente buena. No obstante, esta aproximación pierde precisión a medida que aumente el intervalo temporal, ya que también crece la probabilidad de desintegración en cada paso (\ref{eq:probabilidad_desintegración}).
-La distribución binomial y de poisson presentan el mismo valor esperado pero no la misma varianza. La varianza de la distribución binomial es $np(1-p)$, mientras que la de la distribución de Poisson es $n p$. En este caso, con un paso de 0.05, el factor $1-p\approx 1$. A partir del $10\%$ de diferencia entre varianzas
 
-$$1-\frac{Var_{Bin}}{Var_{Poi}} \thickapprox 10\%$$
 
-la aproximación de la distribución binomial a la distribución de Poisson comienza a perder precisión.
+El modelo núcleo a núcleo y el modelo binomial muestran el mismo comportamiento estadístico, aunque difieren en la forma de simular el proceso. En el modelo núcleo a núcleo se evalúa individualmente la posible desintegración de cada núcleo superviviente, mientras que en el modelo binomial se genera directamente el número total de núcleos desintegrados en cada paso temporal. Por tanto, el modelo binomial puede interpretarse como una versión agregada del modelo núcleo a núcleo.
 
-Para un intervalo de 0.2 años y 1000 núcleos.
+Esta equivalencia permite conservar únicamente el modelo binomial en los análisis posteriores, ya que reduce considerablemente el coste computacional. En efecto, el modelo núcleo a núcleo requiere evaluar todos los núcleos supervivientes en cada intervalo temporal, mientras que el modelo binomial genera directamente un único valor aleatorio por paso temporal.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.85\textwidth]{TAREA2/0.2poisson.png}
-  \caption{3 simulaciones realizadas con la aproximación de Poisson para un paso de 0.2 años.}
-\end{figure}
+La aproximación de Poisson también reproduce adecuadamente el comportamiento medio cuando la probabilidad de desintegración en cada intervalo temporal es pequeña. Si $q=q(\Delta t)$ representa la probabilidad de desintegración en un paso temporal, la varianza del número de desintegraciones en el modelo binomial es
 
-Para el caso de pocos núcleos, 100 núcleos, manteniendo el paso de 0.05 años, el valor esperado $\mu = np \thickapprox 5$. Es decir, por intervalo de tiempo, se desintegran solo 5 núcleos, haciendo las estadística muy pobre.
+\begin{equation}
+    \operatorname{Var}_{\mathrm{Bin}}=N_iq(1-q),
+\end{equation}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.85\textwidth]{TAREA2/100poisson.png}
-  \caption{3 simulaciones realizadas con la aproximación de poisson para un paso de 0.05 años y 100 núcleos.}
-\end{figure}
+mientras que en la aproximación de Poisson es
+
+\begin{equation}
+    \operatorname{Var}_{\mathrm{Poi}}=N_iq.
+\end{equation}
+
+Ambas varianzas coinciden aproximadamente cuando $q\ll 1$. La diferencia relativa entre ellas viene dada por
+
+\begin{equation}
+    1-\frac{\operatorname{Var}_{\mathrm{Bin}}}
+    {\operatorname{Var}_{\mathrm{Poi}}}
+    =
+    1-\frac{N_iq(1-q)}{N_iq}
+    =
+    q.
+\end{equation}
+
+En las simulaciones iniciales se ha empleado $\Delta t=0{,}05~\text{años}$ y $\lambda=1~\text{año}^{-1}$, por lo que
+
+\begin{equation}
+    q(\Delta t)=1-e^{-0{,}05}\simeq 0{,}049.
+\end{equation}
+
+Por tanto, la diferencia relativa entre las varianzas binomial y de Poisson es aproximadamente del $4{,}9\%$, lo que explica que la aproximación de Poisson sea razonable en este caso. Sin embargo, si el paso temporal aumenta, también aumenta $q(\Delta t)$ y la aproximación pierde precisión.
+
 
 \subsection{Validación estadística del modelo binomial}
 
-Una vez seleccionado el modelo binomial como modelo de simulación, se debe comprobar si reproduce correctamente la ley macroscópica de desintegración radiactiva. Para ello, se repite la simulación $M=50$ veces, manteniendo fijos los parámetros $N_0$, $\lambda$, $dt$ y el tiempo total de simulación. Cada repetición representa una posible trayectoria temporal del número de núcleos supervivientes.
+Una vez seleccionado el modelo binomial como modelo de simulación, se debe comprobar si reproduce correctamente la ley macroscópica de desintegración radiactiva. Para ello, se repite la simulación $M=50$ veces, manteniendo fijos los parámetros $N_0$, $\lambda$, $\Delta t$ y $T_{\mathrm{sim}}$. Cada repetición representa una posible trayectoria temporal del número de núcleos supervivientes.
+
+
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{TAREA4/figura1_trayectorias.png}
+\includegraphics[width=0.85\textwidth]{TAREA4/figura1_trayectorias.png}
 \caption{Cuatro trayectorias escogidas aleatoriamente entre un total de 50 simulaciones, comparadas con el valor medio y la desviación típica del número de núcleos supervivientes en cada intervalo temporal.}
 \label{fig:trayectorias_binomial}
 \end{figure}
@@ -1104,48 +1053,46 @@ s_i=
 \sum_{j=1}^{M}
 \left(N_i^{(j)}-\overline{N}_i\right)^2
 }.
-\label{eq:desviación_típica_muestral}
+\label{eq:desviacion_tipica_muestral}
 \end{equation}
 
-De esta forma, se puede comparar el comportamiento promedio de la simulación con la ley teórica de desintegración,
-
-$$
-N(t)=N_0e^{-\lambda t}.
-$$
+De esta forma, se puede comparar el comportamiento promedio de la simulación con la ley teórica de desintegración dada en la ecuación (\ref{eq:ley_desintegracion}).
 
 
-En la Figura~\ref{fig:trayectorias_binomial} se observa que las trayectorias individuales presentan fluctuaciones alrededor de la ley exponencial teórica. Estas fluctuaciones son consecuencia directa de la naturaleza aleatoria del proceso de desintegración. Sin embargo, al considerar el promedio de las 50 simulaciones, el resultado se aproxima de forma clara al comportamiento macroscópico esperado. Por tanto, aunque una trayectoria individual no reproduce exactamente la ley exponencial, el promedio estadístico del modelo binomial sí converge hacia ella.
+En la Figura~\ref{fig:trayectorias_binomial} se observa que las trayectorias individuales presentan fluctuaciones alrededor de la ley exponencial teórica. Estas fluctuaciones son consecuencia directa de la naturaleza aleatoria del proceso de desintegración. Sin embargo, al considerar el promedio de las 50 simulaciones, el resultado se aproxima de forma clara al comportamiento macroscópico esperado. Por tanto, aunque una trayectoria individual no reproduce exactamente la ley exponencial, el promedio estadístico del modelo binomial se aproxima a ella al aumentar el número de simulaciones.
+
 
 \subsubsection{Convergencia con el número de simulaciones}
 
-Una vez comprobado que el promedio de varias simulaciones reproduce la ley exponencial de desintegración, se estudia cómo mejora esta aproximación al aumentar el número de simulaciones. Para ello, se calcula la discrepancia relativa entre el valor medio simulado y el valor teórico en el tiempo de semivida, es decir, en $t=T_{1/2}$.
+Una vez comprobado que el promedio de varias simulaciones reproduce la ley exponencial de desintegración, se estudia cómo mejora esta aproximación al aumentar el número de simulaciones. Para ello, se calcula la discrepancia relativa entre el valor medio simulado y el valor teórico en el tiempo de semivida, es decir, en $t=t_{1/2}$.
 
 En este instante, la ley de desintegración radiactiva predice
 
 \begin{equation}
-N(T_{1/2})=\frac{N_0}{2}.
+    N(t_{1/2})=\frac{N_0}{2}.
 \end{equation}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{TAREA4/figura2_convergencia_t12.png}
+\caption{Error relativo entre el valor medio simulado y el valor teórico en el tiempo de semivida $t_{1/2}$, en función del número de simulaciones $M$.}
+\label{fig:convergencia_semivida}
+\end{figure}
 
 Por tanto, se define el error relativo como
 
 \begin{equation}
-\Delta(T_{1/2})=
-\frac{
-\left|\overline{N}(T_{1/2})-N(T_{1/2})\right|
-}{
-N(T_{1/2})
-}.
+    \Delta(t_{1/2})=
+    \frac{
+    \left|\overline{N}(t_{1/2})-N(t_{1/2})\right|
+    }{
+    N(t_{1/2})
+    }.
+    \label{eq:error_relativo_semivida}
 \end{equation}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.9\textwidth]{TAREA4/figura2_convergencia_t12.png}
-\caption{Error relativo entre el valor medio simulado y el valor teórico en el tiempo de semivida $T_{1/2}$, en función del número de simulaciones $M$.}
-\label{fig:convergencia_semivida}
-\end{figure}
-
-En la Figura~\ref{fig:convergencia_semivida} se aprecia una disminución progresiva de la discrepancia relativa conforme aumenta el número de simulaciones. Este resultado muestra que el valor medio obtenido con el modelo binomial se aproxima cada vez más al comportamiento esperado según la ley macroscópica de desintegración radiactiva.
-
+En la Figura~\ref{fig:convergencia_semivida} se aprecia una tendencia general decreciente de la discrepancia relativa conforme aumenta el número de simulaciones. Este resultado muestra que el valor medio obtenido con el modelo binomial se aproxima cada vez más al comportamiento esperado según la ley macroscópica de desintegración radiactiva.
 
 
 \subsubsection{Error relativo máximo}
@@ -1156,45 +1103,45 @@ El análisis anterior permite estudiar la convergencia del modelo en un instante
 Para ello, se calcula el error relativo en cada instante $t_i$,
 
 \begin{equation}
-\Delta_i=
-\frac{
-\left|\overline{N}_i-N(t_i)\right|
-}{
-N(t_i)
-},
-\label{eq:error_relativo_ti}
+    \Delta_i=
+    \frac{
+    \left|\overline{N}_i-N(t_i)\right|
+    }{
+    N(t_i)
+    },
+    \label{eq:error_relativo_ti}
 \end{equation}
 
 y posteriormente se toma el valor máximo de dicha discrepancia,
 
 \begin{equation}
-\Delta_{max}=
-\max_i(\Delta_i).
-\label{eq:error_relativo_maximo}
+    \Delta_{\max}=
+    \max_i(\Delta_i).
+    \label{eq:error_relativo_maximo}
 \end{equation}
 
-De esta forma, $\Delta_{max}$ representa el mayor error relativo cometido por la simulación a lo largo de todo el intervalo temporal estudiado.
+De esta forma, $\Delta_{\max}$ representa el mayor error relativo cometido por la simulación a lo largo de todo el intervalo temporal estudiado.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth]{TAREA4/error_maximo_vs_M.png}
-\caption{Error relativo máximo entre el valor medio simulado y el valor teórico considerando todos los instantes temporales, en función del número de simulaciones (M). La línea discontinua indica el límite del $1\%$.}
+\includegraphics[width=0.85\textwidth]{TAREA4/error_maximo_vs_M.png}
+\caption{Error relativo máximo entre el valor medio simulado y el valor teórico considerando todos los instantes temporales, en función del número de simulaciones $M$. La línea discontinua indica el límite del $1\%$.}
 \label{fig:error_relativo_maximo}
 \end{figure}
 
-En la Figura \ref{fig:error_relativo_maximo} se observa que el error relativo máximo disminuye de forma notable al aumentar el número de simulaciones. Para $M=100$, la discrepancia máxima es superior al $1\%$, lo que indica que el promedio obtenido todavía no reproduce con suficiente precisión la ley teórica en todos los instantes temporales. Sin embargo, a partir de $M=500$, el error relativo máximo queda por debajo del límite del $1\%$ en la realización mostrada.
+En la Figura~\ref{fig:error_relativo_maximo} se observa que el error relativo máximo disminuye de forma notable al aumentar el número de simulaciones. Para $M=100$, la discrepancia máxima es superior al $1\%$, lo que indica que el promedio obtenido todavía no reproduce con suficiente precisión la ley teórica en todos los instantes temporales. Sin embargo, a partir de $M=500$, el error relativo máximo queda por debajo del límite del $1\%$ en la realización mostrada.
 
-Debido a la naturaleza aleatoria del método Monte Carlo, esta tendencia no tiene por qué reproducirse de forma idéntica en todas las ejecuciones. Al repetir el análisis pueden aparecer oscilaciones puntuales, incluso para valores de $M$ superiores a 500. No obstante, la tendencia general observada es clara: al aumentar $M$, el error relativo máximo tiende a reducirse. En la realización mostrada, el valor $M=500$ marca aproximadamente la entrada en la región en la que el error relativo máximo se sitúa por debajo del $1\%$, por lo que puede tomarse como un valor orientativo.
+Debido a la naturaleza aleatoria del método Monte Carlo, esta tendencia no tiene por qué reproducirse de forma idéntica en todas las ejecuciones. Al repetir el análisis pueden aparecer oscilaciones puntuales, incluso para valores de $M$ superiores a 500. No obstante, la tendencia general observada es clara: al aumentar $M$, el error relativo máximo tiende a reducirse. En la realización mostrada, el valor $M=500$ puede tomarse como una elección orientativa para que el error relativo máximo se sitúe alrededor o por debajo del $1\%$.
 
 
 \subsection{Dependencia estadística con el número inicial de núcleos}
 
 Antes de continuar con el análisis estadístico del modelo, se estudia la dependencia de las fluctuaciones con el número inicial de núcleos $N_0$. Este estudio permite cuantificar cómo varían la desviación típica absoluta y la desviación típica relativa al aumentar el tamaño del sistema simulado, proporcionando un criterio para escoger valores de $N_0$ adecuados.
 
-Sea $t^*$ un valor de tiempo fijo, la desviación típica teórica (\ref{eq:desviación_típica_binomial}) es
+Para un instante fijo $t^*$, la desviación típica teórica del número de núcleos supervivientes, dada en la ecuación (\ref{eq:desviacion_supervivientes_binomial}), es
 
 \begin{equation}
-\sigma_N=
+\sigma_N(t^*)=
 \sqrt{
 N_0e^{-\lambda t^*}\left(1-e^{-\lambda t^*}\right)
 }.
@@ -1204,14 +1151,14 @@ N_0e^{-\lambda t^*}\left(1-e^{-\lambda t^*}\right)
 Como $t^*$ se mantiene fijo, los factores $e^{-\lambda t^*}$ y $1-e^{-\lambda t^*}$ son constantes. Por tanto, la dependencia de la desviación típica con el número inicial de núcleos es
 
 \begin{equation}
-\sigma_N \propto \sqrt{N_0}.
+\sigma_N(t^*) \propto \sqrt{N_0}.
 \label{eq:sigma_proporcional_raiz_N0}
 \end{equation}
 
-La desviación típica $\sigma_N$ mide la dispersión absoluta del número de núcleos supervivientes. Sin embargo, para saber si esta dispersión es grande o pequeña en comparación con el valor medio, se introduce la desviación típica relativa
+La desviación típica $\sigma_N(t^*)$ mide la dispersión absoluta del número de núcleos supervivientes. Sin embargo, para saber si esta dispersión es grande o pequeña en comparación con el valor medio teórico, se introduce la desviación típica relativa
 
 \begin{equation}
-\frac{\sigma_N}{\overline{N}} = 
+\frac{\sigma_N(t^*)}{N(t^*)} = 
 \frac{
 \sqrt{
 N_0e^{-\lambda t^*}\left(1-e^{-\lambda t^*}\right)
@@ -1225,7 +1172,7 @@ N_0e^{-\lambda t^*}
 Simplificando,
 
 \begin{equation}
-\frac{\sigma_N}{\overline{N}}
+\frac{\sigma_N(t^*)}{N(t^*)}
  = \sqrt{
 \frac{
 1-e^{-\lambda t^*}
@@ -1239,36 +1186,33 @@ N_0e^{-\lambda t^*}
 Como el instante $t^*$ es fijo, la dependencia con $N_0$ queda dada por
 
 \begin{equation}
-\frac{\sigma_N}{\overline{N}}
+\frac{\sigma_N(t^*)}{N(t^*)}
 \propto
 \frac{1}{\sqrt{N_0}}.
 \label{eq:desviacion_relativa_proporcional_raiz_N0}
 \end{equation}
 
-
 Por tanto, al aumentar el número inicial de núcleos, la desviación típica absoluta aumenta como $\sqrt{N_0}$, pero la desviación típica relativa disminuye como $1/\sqrt{N_0}$. Esto significa que, aunque las fluctuaciones absolutas sean mayores para sistemas con más núcleos, dichas fluctuaciones representan una fracción cada vez menor del valor medio.
 
-Para comprobar numéricamente este comportamiento, se realiza la simulación en el instante $t^*=T_{1/2}$ para distintos valores de $N_0$. Para cada valor de $N_0$, se calcula el valor medio $\overline{N}$, la desviación típica $\sigma_N$ y la desviación típica relativa $\sigma_N/\overline{N}$.
+Para comprobar numéricamente este comportamiento, se realiza la simulación en el instante $t^*=t_{1/2}$ para distintos valores de $N_0$. Para cada valor de $N_0$, se calcula el valor medio $\overline{N}$, la desviación típica $\sigma_N$ y la desviación típica relativa $\sigma_N/\overline{N}$.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth]{TAREA6/desviacion_tipica_vs_N0.png}
+\includegraphics[width=0.85\textwidth]{TAREA6/desviacion_tipica_vs_N0.png}
+\caption{Desviación típica del número de núcleos supervivientes frente a $N_0$.}
 \label{fig:desviacion_tipica_vs_N0}
-\caption{Desviación típica frente a $N_0$.}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth]{TAREA6/desviacion_relativa_vs_N0.png}
+\includegraphics[width=0.85\textwidth]{TAREA6/desviacion_relativa_vs_N0.png}
+\caption{Desviación típica relativa del número de núcleos supervivientes frente a $N_0$.}
 \label{fig:desviacion_relativa_vs_N0}
-\caption{Desviación típica relativa frente a $N_0$.}
 \end{figure}
-
-
 
 Las representaciones en escala doble logarítmica muestran un comportamiento lineal, lo que confirma que ambas magnitudes siguen aproximadamente una ley de potencia con $N_0$. El ajuste realizado para la desviación típica proporciona un exponente próximo a $1/2$, mientras que el ajuste correspondiente a la desviación típica relativa da un exponente próximo a $-1/2$, dando consistencia a las dependencias teóricas obtenidas anteriormente.
 
-Además, el análisis permite cuantificar la reducción de las fluctuaciones relativas al aumentar $N_0$. En el caso particular $t=T_{1/2}$ ($p=\frac{1}{2}$), la desviación típica relativa viene dada por
+Además, el análisis permite cuantificar la reducción de las fluctuaciones relativas al aumentar $N_0$. En el caso particular $t=t_{1/2}$, se cumple $e^{-\lambda t_{1/2}}=1/2$, por lo que la desviación típica relativa viene dada por
 
 \begin{equation}
 \frac{\sigma_N}{\overline{N}}=\frac{1}{\sqrt{N_0}}.
@@ -1279,29 +1223,30 @@ Por tanto, para $N_0=10^3$ se obtiene
 \begin{equation}
 \frac{\sigma_N}{\overline{N}}
 =\frac{1}{\sqrt{1000}}
-\simeq 0.032,
+\simeq 0{,}032,
 \end{equation}
 
-lo que equivale aproximadamente a un $3.2\%$. Para $N_0=5000$,
+lo que equivale aproximadamente a un $3{,}2\%$. Para $N_0=5000$,
 
 \begin{equation}
 \frac{\sigma_N}{\overline{N}}
 =\frac{1}{\sqrt{5000}}
-\simeq 0.014,
+\simeq 0{,}014,
 \end{equation}
 
-por lo que la desviación relativa se reduce aproximadamente al $1.4\%$. Si se toma $N_0=10^4$, se obtiene
+por lo que la desviación relativa se reduce aproximadamente al $1{,}4\%$. Si se toma $N_0=10^4$, se obtiene
 
 \begin{equation}
 \frac{\sigma_N}{\overline{N}}
 =\frac{1}{\sqrt{10000}}
 \simeq
-0.01,
+0{,}01,
 \end{equation}
 
 es decir, una desviación relativa del $1\%$.
 
-Aunque el valor $N_0=10^4$ proporciona una reducción ligeramente mayor de las fluctuaciones relativas, la mejora respecto a $N_0=5000$ es moderada, pasando aproximadamente del $1.4\%$ al $1\%$. Por ello, en los análisis posteriores se emplea $N_0=5000$, que reduce de forma apreciable la dispersión relativa respecto al caso $N_0=10^3$, manteniendo un coste computacional menor que el correspondiente a $N_0=10^4$ y sin modificar el procedimiento de simulación.
+Aunque el valor $N_0=10^4$ proporciona una reducción ligeramente mayor de las fluctuaciones relativas, la mejora respecto a $N_0=5000$ es moderada, pasando aproximadamente del $1{,}4\%$ al $1\%$. Por ello, en los análisis posteriores se emplea $N_0=5000$, que reduce de forma apreciable la dispersión relativa respecto al caso $N_0=10^3$, manteniendo un coste computacional menor que el correspondiente a $N_0=10^4$ y sin modificar el procedimiento de simulación.
+
 
 \subsection{Distribución estadística de núcleos supervivientes y desintegrados}
 \label{sec:estudio_regiones_desintegración}
@@ -1856,7 +1801,536 @@ En cuanto a los tiempos umbral obtenidos para los errores relativos del $5\%$, $
 % ==================================================
 % ANEXOS
 % ==================================================
+
 \appendix
+
+\section{Definiciones probabilísticas auxiliares}
+\label{ap:definiciones_probabilisticas}
+
+\subsection{Variable aleatoria continua y función densidad de probabilidad}
+\label{ap:variable_aleatoria_continua}
+
+\begin{cajadefinicion}
+  Una variable aleatoria $X$ se dice continua si existe una función no negativa $f_X(x)$, definida para $x\in\mathbb{R}$, tal que para cualquier intervalo $B\subset\mathbb{R}$ se cumple \refmargen{Ross \cite{ross1993probabilitymodels}}{\S~2.3}
+
+\begin{equation}
+    P(X\in B)=\int_B f_X(x)\,dx.
+    \label{eq:ap_def_densidad_probabilidad}
+\end{equation}
+
+  La función $f_X(x)$ recibe el nombre de función densidad de probabilidad de la variable aleatoria $X$.
+\end{cajadefinicion}
+
+\section{Derivación del coeficiente binomial}
+\label{ap:coeficiente_binomial}
+
+El coeficiente binomial aparece al contar el número de formas distintas de escoger $x$ elementos de un conjunto formado por $n$ elementos, sin tener en cuenta el orden en que se escogen.
+
+En primer lugar, si el orden importase, el número de formas de escoger $x$ elementos entre $n$ sería
+
+\begin{equation}
+    P_m=n(n-1)(n-2)\cdots(n-x+1).
+\end{equation}
+
+Esta expresión puede escribirse en términos de factoriales como
+
+\begin{equation}
+    P_m=\frac{n!}{(n-x)!}.
+    \label{eq:ap_permutaciones_binomial}
+\end{equation}
+
+Sin embargo, para contar combinaciones, el orden no debe tenerse en cuenta. Una misma selección de $x$ elementos puede ordenarse de $x!$ formas distintas. Por tanto, el número de combinaciones posibles se obtiene dividiendo el número de permutaciones entre $x!$:
+
+\begin{equation}
+    C(n,x)=\frac{P_m}{x!}.
+\end{equation}
+
+Sustituyendo la ecuación (\ref{eq:ap_permutaciones_binomial}), se obtiene
+
+\begin{equation}
+    C(n,x)
+    =
+    \frac{1}{x!}\frac{n!}{(n-x)!}
+    =
+    \frac{n!}{x!(n-x)!}.
+\end{equation}
+
+Este número recibe el nombre de coeficiente binomial y se denota por
+
+\begin{equation}
+    \binom{n}{x}
+    =
+    \frac{n!}{x!(n-x)!}.
+    \label{eq:ap_coeficiente_binomial}
+\end{equation}
+
+Como ejemplo, si se tienen $n=5$ elementos y se quieren escoger $x=3$, el número de permutaciones sería
+
+\begin{equation}
+    P_m=5\cdot4\cdot3=60.
+\end{equation}
+
+No obstante, cada grupo de tres elementos puede ordenarse de
+
+\begin{equation}
+    3!=3\cdot2\cdot1=6
+\end{equation}
+
+formas distintas. Por tanto, el número de combinaciones diferentes es
+
+\begin{equation}
+    \binom{5}{3}
+    =
+    \frac{5!}{3!2!}
+    =
+    \frac{5\cdot4\cdot3}{3\cdot2\cdot1}
+    =
+    10.
+\end{equation}
+
+Este resultado es el que permite contar cuántas formas distintas existen de obtener $x$ éxitos en $n$ ensayos independientes, lo que da lugar al factor combinatorio de la distribución binomial.
+
+\section{Media y varianza de la distribución binomial}
+\label{ap:momentos_binomial}
+
+En este apéndice se obtiene la media y la varianza de una variable aleatoria binomial. Sea
+
+\begin{equation}
+    X\sim \operatorname{Bin}(n,p),
+\end{equation}
+
+donde $n$ es el número de ensayos independientes y $p$ la probabilidad de éxito en cada ensayo. La función de probabilidad viene dada por
+
+\begin{equation}
+    P(X=x)=\binom{n}{x}p^x(1-p)^{n-x},
+    \qquad x=0,1,\ldots,n.
+    \label{eq:ap_binomial}
+\end{equation}
+
+
+\subsection{Media de la distribución binomial}
+\label{ap:media_binomial}
+
+La media o valor esperado de $X$ se define como
+
+\begin{equation}
+    E[X]
+    =
+    \sum_{x=0}^{n} xP(X=x).
+\end{equation}
+
+Sustituyendo la función de probabilidad binomial, se obtiene
+
+\begin{equation}
+    E[X]
+    =
+    \sum_{x=0}^{n}
+    x\binom{n}{x}p^x(1-p)^{n-x}.
+\end{equation}
+
+El término correspondiente a $x=0$ no contribuye a la suma, ya que queda multiplicado por cero. Por tanto,
+
+\begin{equation}
+    E[X]
+    =
+    \sum_{x=1}^{n}
+    x\binom{n}{x}p^x(1-p)^{n-x}.
+    \label{eq:ap_media_binomial_suma}
+\end{equation}
+
+Para simplificar esta expresión, se utiliza la identidad
+
+\begin{equation}
+    x\binom{n}{x}
+    =
+    n\binom{n-1}{x-1}.
+    \label{eq:ap_identidad_media_binomial}
+\end{equation}
+
+Esta identidad se obtiene a partir de la definición del coeficiente binomial:
+
+\begin{equation}
+    x\binom{n}{x}
+    =
+    x\frac{n!}{x!(n-x)!}.
+\end{equation}
+
+Como $x!=x(x-1)!$, se tiene
+
+\begin{equation}
+    x\binom{n}{x}
+    =
+    x\frac{n!}{x(x-1)!(n-x)!}.
+\end{equation}
+
+Cancelando el factor $x$,
+
+\begin{equation}
+    x\binom{n}{x}
+    =
+    \frac{n!}{(x-1)!(n-x)!}.
+\end{equation}
+
+Además, usando $n!=n(n-1)!$, resulta
+
+\begin{equation}
+    x\binom{n}{x}
+    =
+    n\frac{(n-1)!}{(x-1)!(n-x)!}.
+\end{equation}
+
+Como $n-x=(n-1)-(x-1)$, esta expresión puede escribirse como
+
+\begin{equation}
+    x\binom{n}{x}
+    =
+    n\binom{n-1}{x-1}.
+\end{equation}
+
+Sustituyendo la identidad (\ref{eq:ap_identidad_media_binomial}) en la ecuación (\ref{eq:ap_media_binomial_suma}), se obtiene
+
+\begin{equation}
+    E[X]
+    =
+    \sum_{x=1}^{n}
+    n\binom{n-1}{x-1}p^x(1-p)^{n-x}.
+\end{equation}
+
+Como $n$ no depende del índice de la suma, puede sacarse fuera:
+
+\begin{equation}
+    E[X]
+    =
+    n\sum_{x=1}^{n}
+    \binom{n-1}{x-1}p^x(1-p)^{n-x}.
+\end{equation}
+
+Separando un factor $p$, usando $p^x=pp^{x-1}$, se obtiene
+
+\begin{equation}
+    E[X]
+    =
+    np\sum_{x=1}^{n}
+    \binom{n-1}{x-1}p^{x-1}(1-p)^{n-x}.
+\end{equation}
+
+Se realiza ahora el cambio de variable
+
+\begin{equation}
+    y=x-1.
+\end{equation}
+
+Cuando $x=1$, entonces $y=0$, y cuando $x=n$, entonces $y=n-1$. Además,
+
+\begin{equation}
+    x-1=y,
+    \qquad
+    n-x=n-1-y.
+\end{equation}
+
+Por tanto,
+
+\begin{equation}
+    E[X]
+    =
+    np\sum_{y=0}^{n-1}
+    \binom{n-1}{y}p^y(1-p)^{n-1-y}.
+\end{equation}
+
+La suma que aparece corresponde al desarrollo del binomio de Newton:
+
+\begin{equation}
+    \sum_{y=0}^{n-1}
+    \binom{n-1}{y}p^y(1-p)^{n-1-y}
+    =
+    \left[p+(1-p)\right]^{n-1}
+    =
+    1.
+\end{equation}
+
+Por tanto, la media de una distribución binomial es
+
+\begin{equation}
+    E[X]=np.
+    \label{eq:ap_media_binomial}
+\end{equation}
+
+
+\subsection{Varianza de la distribución binomial}
+\label{ap:varianza_binomial}
+
+La varianza de una variable aleatoria $X$ puede escribirse como
+
+\begin{equation}
+    \operatorname{Var}(X)=E[X^2]-E[X]^2.
+    \label{eq:ap_def_varianza}
+\end{equation}
+
+Para una variable aleatoria binomial, ya se ha obtenido que $E[X]=np$. Por tanto, para calcular la varianza es necesario obtener primero $E[X^2]$.
+
+Se utiliza la identidad
+
+\begin{equation}
+    X^2=X(X-1)+X.
+\end{equation}
+
+Tomando valores esperados,
+
+\begin{equation}
+    E[X^2]=E[X(X-1)]+E[X].
+    \label{eq:ap_x2_factorial}
+\end{equation}
+
+Como $E[X]=np$, queda
+
+\begin{equation}
+    E[X^2]=E[X(X-1)]+np.
+\end{equation}
+
+Se calcula ahora $E[X(X-1)]$:
+
+\begin{equation}
+    E[X(X-1)]
+    =
+    \sum_{x=0}^{n}
+    x(x-1)\binom{n}{x}p^x(1-p)^{n-x}.
+\end{equation}
+
+Los términos $x=0$ y $x=1$ no contribuyen, ya que $x(x-1)=0$. Por tanto,
+
+\begin{equation}
+    E[X(X-1)]
+    =
+    \sum_{x=2}^{n}
+    x(x-1)\binom{n}{x}p^x(1-p)^{n-x}.
+    \label{eq:ap_exxmenos1_suma}
+\end{equation}
+
+Para simplificar esta suma, se utiliza la identidad
+
+\begin{equation}
+    x(x-1)\binom{n}{x}
+    =
+    n(n-1)\binom{n-2}{x-2}.
+    \label{eq:ap_identidad_varianza_binomial}
+\end{equation}
+
+Esta identidad se obtiene de la forma siguiente:
+
+\begin{equation}
+    x(x-1)\binom{n}{x}
+    =
+    x(x-1)\frac{n!}{x!(n-x)!}.
+\end{equation}
+
+Como $x!=x(x-1)(x-2)!$, se tiene
+
+\begin{equation}
+    x(x-1)\binom{n}{x}
+    =
+    x(x-1)
+    \frac{n!}{x(x-1)(x-2)!(n-x)!}.
+\end{equation}
+
+Cancelando el factor $x(x-1)$,
+
+\begin{equation}
+    x(x-1)\binom{n}{x}
+    =
+    \frac{n!}{(x-2)!(n-x)!}.
+\end{equation}
+
+Además, usando $n!=n(n-1)(n-2)!$, resulta
+
+\begin{equation}
+    x(x-1)\binom{n}{x}
+    =
+    n(n-1)
+    \frac{(n-2)!}{(x-2)!(n-x)!}.
+\end{equation}
+
+Como $n-x=(n-2)-(x-2)$, se obtiene
+
+\begin{equation}
+    x(x-1)\binom{n}{x}
+    =
+    n(n-1)\binom{n-2}{x-2}.
+\end{equation}
+
+Sustituyendo la identidad (\ref{eq:ap_identidad_varianza_binomial}) en la ecuación (\ref{eq:ap_exxmenos1_suma}), resulta
+
+\begin{equation}
+    E[X(X-1)]
+    =
+    \sum_{x=2}^{n}
+    n(n-1)\binom{n-2}{x-2}
+    p^x(1-p)^{n-x}.
+\end{equation}
+
+Como $n(n-1)$ no depende del índice de la suma,
+
+\begin{equation}
+    E[X(X-1)]
+    =
+    n(n-1)
+    \sum_{x=2}^{n}
+    \binom{n-2}{x-2}
+    p^x(1-p)^{n-x}.
+\end{equation}
+
+Separando un factor $p^2$, usando $p^x=p^2p^{x-2}$, se obtiene
+
+\begin{equation}
+    E[X(X-1)]
+    =
+    n(n-1)p^2
+    \sum_{x=2}^{n}
+    \binom{n-2}{x-2}
+    p^{x-2}(1-p)^{n-x}.
+\end{equation}
+
+Se realiza el cambio de variable
+
+\begin{equation}
+    y=x-2.
+\end{equation}
+
+Cuando $x=2$, entonces $y=0$, y cuando $x=n$, entonces $y=n-2$. Además,
+
+\begin{equation}
+    x-2=y,
+    \qquad
+    n-x=n-2-y.
+\end{equation}
+
+Por tanto,
+
+\begin{equation}
+    E[X(X-1)]
+    =
+    n(n-1)p^2
+    \sum_{y=0}^{n-2}
+    \binom{n-2}{y}
+    p^y(1-p)^{n-2-y}.
+\end{equation}
+
+La suma vuelve a corresponder al desarrollo del binomio de Newton:
+
+\begin{equation}
+    \sum_{y=0}^{n-2}
+    \binom{n-2}{y}
+    p^y(1-p)^{n-2-y}
+    =
+    \left[p+(1-p)\right]^{n-2}
+    =
+    1.
+\end{equation}
+
+Por tanto,
+
+\begin{equation}
+    E[X(X-1)]=n(n-1)p^2.
+\end{equation}
+
+Sustituyendo este resultado en la ecuación (\ref{eq:ap_x2_factorial}),
+
+\begin{equation}
+    E[X^2]
+    =
+    n(n-1)p^2+np.
+\end{equation}
+
+Finalmente, usando la definición de la varianza,
+
+\begin{equation}
+    \operatorname{Var}(X)
+    =
+    E[X^2]-E[X]^2,
+\end{equation}
+
+se obtiene
+
+\begin{equation}
+    \operatorname{Var}(X)
+    =
+    n(n-1)p^2+np-(np)^2.
+\end{equation}
+
+Desarrollando,
+
+\begin{equation}
+    \operatorname{Var}(X)
+    =
+    n^2p^2-np^2+np-n^2p^2.
+\end{equation}
+
+Por tanto,
+
+\begin{equation}
+    \operatorname{Var}(X)
+    =
+    np-np^2
+    =
+    np(1-p).
+    \label{eq:ap_varianza_binomial}
+\end{equation}
+
+La desviación típica se obtiene como la raíz cuadrada de la varianza:
+
+\begin{equation}
+    \sigma_X
+    =
+    \sqrt{\operatorname{Var}(X)}
+    =
+    \sqrt{np(1-p)}.
+    \label{eq:ap_desviacion_tipica_binomial}
+\end{equation}
+
+
+\section{Proceso de Poisson}
+\label{ap:proceso_poisson}
+
+\begin{cajadefinicion}
+  Un proceso de Poisson homogéneo con tasa $\nu$ es un proceso estocástico $N_P=\{N_P(t):t\geq 0\}$ que cuenta el número de eventos ocurridos hasta el instante $t$ y que cumple las siguientes propiedades:
+
+  \begin{enumerate}
+    \item El proceso comienza en cero:
+    \begin{equation}
+        N_P(0)=0.
+    \end{equation}
+
+    \item El proceso es no decreciente, es decir, si $s<t$, entonces
+    \begin{equation}
+        N_P(s)\leq N_P(t).
+    \end{equation}
+
+    \item Los incrementos en intervalos disjuntos son independientes. Esto significa que el número de eventos que ocurren en un intervalo no depende de lo ocurrido en otros intervalos que no se solapan.
+
+    \item Los incrementos son estacionarios, de modo que la distribución del número de eventos en un intervalo depende únicamente de la longitud de dicho intervalo y no del instante inicial considerado.
+
+    \item En un intervalo suficientemente pequeño de duración $h$, se cumple
+    \begin{equation}
+        P(N_P(t+h)-N_P(t)=1)=\nu h+o(h),
+    \end{equation}
+    \begin{equation}
+        P(N_P(t+h)-N_P(t)\geq 2)=o(h),
+    \end{equation}
+    \begin{equation}
+        P(N_P(t+h)-N_P(t)=0)=1-\nu h+o(h).
+    \end{equation}
+  \end{enumerate}
+
+  Bajo estas condiciones, el número de eventos ocurridos en un intervalo de duración $t$ sigue una distribución de Poisson:
+  \begin{equation}
+      P(N_P(t)=n)=\frac{(\nu t)^n}{n!}e^{-\nu t},
+      \qquad n=0,1,2,\ldots
+  \end{equation}
+\end{cajadefinicion}
+
+Esta definición describe un proceso de Poisson homogéneo, en el que la tasa $\nu$ permanece constante. En el caso de una muestra radiactiva finita, esta descripción solo puede usarse como aproximación en intervalos suficientemente cortos, ya que la tasa total de desintegraciones disminuye a medida que se reduce el número de núcleos supervivientes. \refmargen{Grimmett \cite{grimmett2020probability}}{\S~6.8}
+
+
+
 
 \section{Figuras complementarias}
 \subsection{Histogramas de núcleos supervivientes y desintegrados}
