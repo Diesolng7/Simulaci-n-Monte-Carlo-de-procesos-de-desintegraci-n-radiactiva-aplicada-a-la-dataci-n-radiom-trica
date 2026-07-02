@@ -40,7 +40,6 @@ for lam in lambdas:
 # Etiquetas
 plt.xlabel('t')
 plt.ylabel('f(t)')
-plt.title('Densidad de probabilidad de desintegración')
 plt.grid()
 plt.legend()
 

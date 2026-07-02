@@ -66,7 +66,7 @@ def guardar_grafica(tiempos, simulaciones, nombre_archivo, titulo):
         label="Ley teórica"
     )
 
-    plt.title(titulo)
+   
     plt.xlabel("t (años)")
     plt.ylabel(r"$N_s(t)$")
     plt.xlim(0, T_sim)

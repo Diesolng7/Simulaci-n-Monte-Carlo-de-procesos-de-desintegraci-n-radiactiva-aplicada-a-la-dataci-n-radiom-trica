@@ -29,8 +29,9 @@ p_lim = lam * dt_lim
 plt.figure(figsize=(8, 5))
 
 # Curvas
-plt.plot(dt, p_exacta, label=r'$p = 1 - e^{-\lambda \Delta t}$')
-plt.plot(dt, p_aprox, '--', label=r'$p = \lambda \Delta t$')
+plt.plot(dt, p_exacta, label=r'$q(\Delta t) = 1 - e^{-\lambda \Delta t}$')
+plt.plot(dt, p_aprox, '--', label=r'$q(\Delta t) = \lambda \Delta t$')
+plt.ylabel(r'$q(\Delta t)$')
 
 # Punto crítico
 plt.scatter(dt_lim, p_lim, zorder=5)
@@ -42,13 +43,11 @@ plt.text(dt_lim*1.05, p_lim*0.9,
          r'$\lambda \Delta t \approx 0.1$',
          fontsize=16)
 
+
 # Etiquetas
 plt.xlabel(r'$\Delta t\ (\mathrm{s})$')
-plt.ylabel(r'$p(t, t + \Delta t)$')
+plt.ylabel(r'$q(\Delta t)$')
 
-# Título en dos líneas 
-plt.title(rf'Comparación entre probabilidad exacta y aproximada' '\n'
-          rf'($\lambda={lam}\ \mathrm{{s^{{-1}}}}$)')
 
 plt.xlim(0, 0.25)
 plt.ylim(0, 0.25)

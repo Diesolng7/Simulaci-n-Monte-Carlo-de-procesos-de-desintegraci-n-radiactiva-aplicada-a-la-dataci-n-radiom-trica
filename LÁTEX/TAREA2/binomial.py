@@ -65,7 +65,7 @@ def guardar_grafica(tiempos, simulaciones, nombre_archivo):
         label="Ley teórica"
     )
 
-    plt.title("Modelo B: Distribución binomial")
+  
     plt.xlabel("t (años)")
     plt.ylabel(r"$N_s(t)$")
     plt.xlim(0, T_sim)

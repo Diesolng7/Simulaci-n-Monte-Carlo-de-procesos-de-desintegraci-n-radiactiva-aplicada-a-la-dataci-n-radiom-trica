@@ -95,7 +95,7 @@ plt.plot(
     label="Ley teórica"
 )
 
-plt.title("Comparación de modelos de simulación")
+
 plt.xlabel("t (años)")
 plt.ylabel(r"$N_s(t)$")
 plt.xlim(0, tiempos[-1])
