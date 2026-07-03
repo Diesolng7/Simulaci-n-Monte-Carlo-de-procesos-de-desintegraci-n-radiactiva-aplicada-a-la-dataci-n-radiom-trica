@@ -35,17 +35,15 @@ N_teorica = N0 * np.exp(-Lambda * tiempos)
 
 plt.rcParams.update({
     "font.size": 13,
-    "axes.titlesize": 15,
-    "axes.labelsize": 13,
+    "axes.titlesize": 16,
+    "axes.labelsize": 14,
     "xtick.labelsize": 12,
     "ytick.labelsize": 12,
-    "legend.fontsize": 10,
+    "legend.fontsize": 14,
     "figure.figsize": (7.2, 4.8),
     "axes.grid": False,
     "lines.linewidth": 1.8
 })
-
-
 #########################################################
 ################ GRÁFICA COMPARATIVA ###################
 #########################################################

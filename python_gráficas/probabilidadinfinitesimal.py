@@ -51,7 +51,6 @@ plt.ylabel(r'$q(\Delta t)$')
 
 plt.xlim(0, 0.25)
 plt.ylim(0, 0.25)
-plt.grid()
 plt.legend()
 
 # Guardar

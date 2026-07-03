@@ -131,34 +131,88 @@ sorting=none
 \begin{document}
 
 % ==================================================
-% PORTADA
+% CUBIERTA O PORTADA EXTERIOR
 % ==================================================
 \begin{titlepage}
+    \thispagestyle{empty}
     \centering
 
     {\Large \universidadTFG \par}
     \vspace{0.3cm}
+
     {\large \facultadTFG \par}
     \vspace{0.3cm}
+
     {\large \gradoTFG \par}
-
-    \vspace{2.5cm}
-
-    {\Huge \bfseries \tituloTFG \par}
 
     \vspace{2.5cm}
 
     {\Large Trabajo de Fin de Grado \par}
 
-    \vfill
+    \vspace{1.5cm}
 
-    \begin{flushleft}
-        \textbf{Autor:} \autorTFG \\[0.3cm]
-        \textbf{Tutor:} \tutorTFG \\[0.3cm]
-        \textbf{Curso académico:} \cursoTFG
-    \end{flushleft}
+    {\Huge \bfseries \tituloTFG \par}
 
     \vfill
+
+    {\large
+        \textbf{Autor:} \autorTFG \par
+        \vspace{0.3cm}
+
+        \textbf{Tutora:} \tutorTFG \par
+        \vspace{0.3cm}
+
+        \textbf{Curso académico:} \cursoTFG \par
+    }
+
+    \vfill
+
+\end{titlepage}
+
+
+% ==================================================
+% PORTADA INTERIOR FIRMADA
+% ==================================================
+\begin{titlepage}
+    \thispagestyle{empty}
+    \centering
+
+    {\Large \universidadTFG \par}
+    \vspace{0.3cm}
+
+    {\large \facultadTFG \par}
+    \vspace{0.3cm}
+
+    {\large \gradoTFG \par}
+
+    \vspace{2.5cm}
+
+    {\Large Trabajo de Fin de Grado \par}
+
+    \vspace{1.5cm}
+
+    {\Huge \bfseries \tituloTFG \par}
+
+    \vfill
+
+    {\large
+        \textbf{Autor:} \autorTFG \par
+        \vspace{0.3cm}
+
+        \textbf{Tutora:} \tutorTFG \par
+        \vspace{0.3cm}
+
+        \textbf{Curso académico:} \cursoTFG \par
+    }
+
+    \vspace{1.2cm}
+
+    {\large
+        \textbf{Firma del autor:}\par
+    }
+
+    % Espacio reservado para la firma electrónica
+    \vspace{2cm}
 
 \end{titlepage}
 
@@ -170,13 +224,47 @@ sorting=none
 % --------------------------------------------------
 % RESUMEN
 % --------------------------------------------------
-
+\newpage
 \section*{Resumen}
-\section*{Palabras claves}
+
+La desintegración radiactiva es un proceso de naturaleza aleatoria a escala microscópica cuyo comportamiento promedio puede describirse mediante la ley exponencial de desintegración. Esta combinación entre aleatoriedad individual y regularidad macroscópica permite aplicar métodos probabilísticos y técnicas de simulación al estudio de la evolución temporal de una muestra radiactiva. El objetivo de este trabajo es analizar estadísticamente dicho proceso mediante simulaciones de Monte Carlo y estudiar cómo las fluctuaciones en el número de núcleos supervivientes se propagan a la estimación de edades en problemas de datación radiométrica.
+
+En primer lugar, se desarrolla el fundamento probabilístico de la desintegración radiactiva a partir de la distribución exponencial del tiempo de desintegración y de la distribución binomial asociada al número de núcleos supervivientes o desintegrados. Posteriormente, se comparan tres procedimientos de simulación: un modelo núcleo a núcleo, un modelo basado en la distribución binomial y una aproximación de Poisson. Los modelos núcleo a núcleo y binomial presentan el mismo comportamiento estadístico, aunque el modelo binomial permite generar directamente el número de desintegraciones en cada intervalo temporal y reduce de forma considerable el coste computacional. La aproximación de Poisson reproduce adecuadamente el proceso únicamente cuando la probabilidad del suceso contado es suficientemente pequeña; fuera de este régimen puede conservar aproximadamente el valor medio, pero introduce discrepancias en la varianza.
+
+Una vez seleccionado el modelo binomial, se valida su comportamiento mediante la comparación entre las simulaciones y las predicciones analíticas. Se comprueba que el promedio de un número suficiente de trayectorias reproduce la ley exponencial de desintegración y que las distribuciones simuladas de núcleos supervivientes y desintegrados son compatibles con la distribución binomial. La comparación cuantitativa mediante el estadístico $\chi^2$ confirma esta concordancia y permite identificar los casos concretos en los que la aproximación de Poisson resulta válida.
+
+También se estudia la dependencia de las fluctuaciones con el número inicial de núcleos. Los resultados muestran que la desviación típica absoluta aumenta como $\sqrt{N_0}$, mientras que la desviación típica relativa disminuye como $1/\sqrt{N_0}$. A partir de la inversión de la ley exponencial se obtiene una estimación del tiempo transcurrido y se deduce analíticamente la incertidumbre asociada. La buena concordancia entre las desviaciones típicas muestrales y las incertidumbres teóricas confirma que la propagación de incertidumbres describe correctamente la dispersión de las edades estimadas.
+
+Finalmente, el procedimiento se aplica a dos sistemas de datación representativos de escalas temporales diferentes: el $^{14}\text{C}$, utilizado en muestras orgánicas relativamente recientes, y el $^{238}\text{U}$, adecuado para materiales de edad geológica. En ambos casos, las edades medias estimadas reproducen los tiempos impuestos en las simulaciones y las incertidumbres muestrales concuerdan con las predicciones analíticas. Asimismo, se comprueba que el aumento de la cantidad de material reduce la incertidumbre como $1/\sqrt{m}$, por lo que la mejora estadística presenta rendimientos decrecientes.
+
+El modelo desarrollado considera únicamente las fluctuaciones intrínsecas debidas al carácter aleatorio de la desintegración. No se incluyen fuentes experimentales de incertidumbre como la contaminación, el fondo instrumental, la eficiencia de detección, la calibración, la estimación de la cantidad inicial del isótopo o las posibles alteraciones del sistema. Además, en el caso del uranio se simula únicamente la disminución de los núcleos padre de $^{238}\text{U}$, sin reproducir explícitamente la cadena completa de desintegración ni la acumulación de $^{206}\text{Pb}$. Por tanto, los resultados obtenidos representan un límite estadístico ideal y no la precisión total alcanzable en una datación experimental real.
+
+\section*{Palabras clave}
+
+Simulación de Monte Carlo; desintegración radiactiva; datación radiométrica; distribución binomial; aproximación de Poisson; análisis estadístico; propagación de incertidumbres; carbono-14; uranio-238.
+
 
 % --------------------------------------------------
+% ABSTRACT
+% --------------------------------------------------
+\newpage
 \section*{Abstract}
-\section*{Key words}
+
+Radioactive decay is a random process at the microscopic scale whose average behaviour can be described by the exponential decay law. This combination of individual randomness and macroscopic regularity makes it possible to apply probabilistic methods and simulation techniques to the study of the time evolution of a radioactive sample. The aim of this work is to analyse this process statistically by means of Monte Carlo simulations and to study how fluctuations in the number of surviving nuclei propagate to age estimates in radiometric dating problems.
+
+First, the probabilistic foundations of radioactive decay are developed from the exponential distribution of decay times and the binomial distribution associated with the number of surviving or decayed nuclei. Three simulation procedures are then compared: a nucleus-by-nucleus model, a model based on the binomial distribution, and a Poisson approximation. The nucleus-by-nucleus and binomial models exhibit the same statistical behaviour, although the binomial model directly generates the number of decays in each time interval and considerably reduces the computational cost. The Poisson approximation reproduces the process accurately only when the probability of the counted event is sufficiently small; outside this regime, it may approximately preserve the mean value but introduces discrepancies in the variance.
+
+After selecting the binomial model, its behaviour is validated by comparing the simulations with analytical predictions. It is verified that the average of a sufficiently large number of trajectories reproduces the exponential decay law and that the simulated distributions of surviving and decayed nuclei are compatible with the binomial distribution. A quantitative comparison based on the $\chi^2$ statistic confirms this agreement and identifies the specific cases in which the Poisson approximation is valid.
+
+The dependence of the fluctuations on the initial number of nuclei is also investigated. The results show that the absolute standard deviation increases as $\sqrt{N_0}$, whereas the relative standard deviation decreases as $1/\sqrt{N_0}$. By inverting the exponential decay law, an estimate of the elapsed time is obtained, and its associated uncertainty is derived analytically. The close agreement between the sample standard deviations and the theoretical uncertainties confirms that the uncertainty propagation procedure correctly describes the dispersion of the estimated ages.
+
+Finally, the procedure is applied to two dating systems representative of different timescales: $^{14}\text{C}$, used for relatively recent organic samples, and $^{238}\text{U}$, suitable for geological materials. In both cases, the mean estimated ages reproduce the times imposed in the simulations, and the sample uncertainties agree with the analytical predictions. It is also shown that increasing the amount of material reduces the uncertainty as $1/\sqrt{m}$, and therefore the statistical improvement exhibits diminishing returns.
+
+The model developed in this work only considers the intrinsic fluctuations arising from the random nature of radioactive decay. Experimental sources of uncertainty such as contamination, instrumental background, detection efficiency, calibration, estimation of the initial isotope content, or possible alterations of the system are not included. Furthermore, in the uranium case, only the decrease in the number of $^{238}\text{U}$ parent nuclei is simulated, without explicitly reproducing the complete decay chain or the accumulation of $^{206}\text{Pb}$. Therefore, the results represent an ideal statistical limit rather than the overall precision achievable in an actual radiometric dating experiment.
+
+\section*{Keywords}
+
+Monte Carlo simulation; radioactive decay; radiometric dating; binomial distribution; Poisson approximation; statistical analysis; uncertainty propagation; carbon-14; uranium-238.
 
 \bigskip
 
@@ -184,6 +272,8 @@ sorting=none
 % --------------------------------------------------
 % ÍNDICE
 % --------------------------------------------------
+
+\newpage
 \tableofcontents
 \newpage
 
@@ -215,9 +305,9 @@ Uno de los avances más importantes se produjo cuando se comprendió que la desi
 
 Sin embargo, la estimación de una edad a partir de una muestra radiactiva no está exenta de incertidumbre. En una muestra finita, el número de núcleos supervivientes no coincide exactamente con su valor medio teórico, sino que presenta fluctuaciones estadísticas debidas al carácter aleatorio de la desintegración. Estas fluctuaciones se propagan a la edad estimada y hacen necesario estudiar no solo el comportamiento medio de la muestra, sino también la dispersión estadística asociada al proceso.
 
-La técnica de Monte Carlo proporciona una herramienta adecuada para este propósito, ya que permite generar realizaciones individuales de un proceso aleatorio y analizar la variabilidad de los resultados obtenidos. En el caso de la desintegración radiactiva, esta técnica permite simular la evolución temporal de una muestra, comparar distintos procedimientos de simulación y estudiar cómo las fluctuaciones en el número de núcleos supervivientes afectan a la estimación temporal.
+La técnica de Monte Carlo proporciona una herramienta adecuada para este propósito, ya que permite generar realizaciones individuales de un proceso aleatorio y analizar la variabilidad de los resultados obtenidos. En el caso de la desintegración radiactiva, esta técnica permite simular la evolución temporal de una muestra, comparar distintos procedimientos de simulación y estudiar, sobre todo, cómo las fluctuaciones en el número de núcleos supervivientes se traducen en una incertidumbre sobre la edad estimada.
 
-El objetivo de este trabajo es estudiar la desintegración radiactiva desde un punto de vista probabilístico y analizar su aplicación a la datación radiométrica mediante simulaciones Monte Carlo. El problema se aborda como una estimación temporal con incertidumbre, en la que el número inicial de núcleos, la constante de desintegración y el tiempo transcurrido condicionan la precisión estadística de la edad estimada.
+El objetivo de este trabajo es estudiar la desintegración radiactiva desde un punto de vista probabilístico y analizar su aplicación a la datación radiométrica mediante simulaciones de Monte Carlo. Para ello, se estudia cómo el número inicial de núcleos, la constante de desintegración y el tiempo transcurrido condicionan la precisión estadística de la edad estimada.
 
 El análisis se plantea dentro de un modelo idealizado, centrado en la contribución estadística debida al carácter aleatorio de la desintegración nuclear. Por tanto, no se pretende reproducir todos los factores experimentales que intervienen en una datación real, como la contaminación de la muestra, el fondo instrumental, la calibración experimental o las hipótesis geoquímicas del sistema considerado.
 
@@ -969,7 +1059,7 @@ se considera que el núcleo se ha desintegrado durante ese intervalo temporal. E
   \label{fig:modelo_nucleo_a_nucleo}
 \end{figure}
 
-En la Figura~\ref{fig:modelo_nucleo_a_nucleo} se muestra que las tres simulaciones presentan una disminución progresiva del número de núcleos supervivientes y se mantienen próximas a la ley teórica de decaimiento exponencial \eqref{eq:ley_desintegracion}, representada mediante una línea discontinua. Aunque todas siguen la tendencia decreciente esperada, las trayectorias no coinciden exactamente entre sí debido al carácter aleatorio del proceso de desintegración. Estas diferencias entre realizaciones reflejan las fluctuaciones estadísticas propias del proceso de desintegración radiactiva.
+En la figura~\ref{fig:modelo_nucleo_a_nucleo} se muestra que las tres simulaciones presentan una disminución progresiva del número de núcleos supervivientes y se mantienen próximas a la ley teórica de decaimiento exponencial \eqref{eq:ley_desintegracion}, representada mediante una línea discontinua. Aunque todas siguen la tendencia decreciente esperada, las trayectorias no coinciden exactamente entre sí debido al carácter aleatorio del proceso de desintegración. Estas diferencias entre realizaciones reflejan las fluctuaciones estadísticas propias del proceso de desintegración radiactiva.
 
 \subsubsection{Modelo B: distribución binomial}
 
@@ -996,7 +1086,7 @@ De esta forma, en cada paso temporal se genera directamente un valor aleatorio q
   \label{fig:modelo_binomial}
 \end{figure}
 
-En la Figura~\ref{fig:modelo_binomial} se muestran tres trayectorias cualesquiera obtenidas mediante el modelo binomial. Al igual que en el modelo núcleo a núcleo, el número de núcleos supervivientes decrece con el tiempo y las distintas realizaciones fluctúan alrededor de la ley teórica. Esto indica que el modelo binomial conserva el carácter estocástico del proceso, aunque evita simular individualmente el destino de cada núcleo.
+En la figura~\ref{fig:modelo_binomial} se muestran tres trayectorias cualesquiera obtenidas mediante el modelo binomial. Al igual que en el modelo núcleo a núcleo, el número de núcleos supervivientes decrece con el tiempo y las distintas realizaciones fluctúan alrededor de la ley teórica. Esto indica que el modelo binomial conserva el carácter estocástico del proceso, aunque evita simular individualmente el destino de cada núcleo.
 
 \subsubsection{Modelo C: aproximación de Poisson}
 
@@ -1034,7 +1124,7 @@ De esta forma, en cada paso temporal se genera directamente un único valor alea
   \label{fig:modelo_poisson}
 \end{figure}
 
-En la Figura~\ref{fig:modelo_poisson} se muestran tres trayectorias obtenidas mediante la aproximación de Poisson. Las simulaciones reproducen la tendencia decreciente esperada para el número de núcleos supervivientes y presentan fluctuaciones entre realizaciones, de forma similar a los modelos anteriores. En este caso, la aproximación resulta razonable porque el paso temporal empleado da lugar a una probabilidad de desintegración pequeña, $q(\Delta t)=1-e^{-0{,}05}\simeq 0{,}049$.
+En la figura~\ref{fig:modelo_poisson} se muestran tres trayectorias obtenidas mediante la aproximación de Poisson. Las simulaciones reproducen la tendencia decreciente esperada para el número de núcleos supervivientes y presentan fluctuaciones entre realizaciones, de forma similar a los modelos anteriores. En este caso, la aproximación resulta razonable porque el paso temporal empleado da lugar a una probabilidad de desintegración pequeña, $q(\Delta t)=1-e^{-0{,}05}\simeq 0{,}049$.
 
 
 \subsubsection{Comparación de los modelos de simulación}
@@ -1047,7 +1137,7 @@ En la Figura~\ref{fig:modelo_poisson} se muestran tres trayectorias obtenidas me
 \end{figure}
 
 
-En la Figura~\ref{fig:comparacion_modelos} se representan tres trayectorias independientes obtenidas con cada uno de los modelos de simulación: núcleo a núcleo, binomial y aproximación de Poisson. En todos los casos se observa que las realizaciones reproducen la tendencia decreciente descrita por la ley teórica de decaimiento exponencial $N(t)=N_0e^{-\lambda t}$. Las diferencias entre trayectorias, tanto dentro de un mismo modelo como entre modelos distintos, se deben al carácter aleatorio del proceso de desintegración. No obstante, todas ellas permanecen próximas al comportamiento macroscópico esperado.
+En la figura~\ref{fig:comparacion_modelos} se representan tres trayectorias independientes obtenidas con cada uno de los modelos de simulación: núcleo a núcleo, binomial y aproximación de Poisson. En todos los casos se observa que las realizaciones reproducen la tendencia decreciente descrita por la ley teórica de decaimiento exponencial $N(t)=N_0e^{-\lambda t}$. Las diferencias entre trayectorias, tanto dentro de un mismo modelo como entre modelos distintos, se deben al carácter aleatorio del proceso de desintegración. No obstante, todas ellas permanecen próximas al comportamiento macroscópico esperado.
 
 El modelo núcleo a núcleo y el modelo binomial muestran el mismo comportamiento estadístico, aunque difieren en la forma de simular el proceso. En el modelo núcleo a núcleo se evalúa individualmente la posible desintegración de cada núcleo superviviente, mientras que en el modelo binomial se genera directamente el número total de núcleos desintegrados en cada paso temporal. Por tanto, el modelo binomial puede interpretarse como una versión agregada del modelo núcleo a núcleo.
 
@@ -1095,7 +1185,7 @@ Por tanto, la diferencia relativa entre las varianzas binomial y de Poisson es a
   \label{fig:limitaciones_poisson}
 \end{figure}
 
-En la Figura~\ref{fig:limitaciones_poisson} se estudia el efecto de aumentar el paso temporal en simulaciones realizadas mediante la aproximación de Poisson. En ambos casos se mantiene el mismo número inicial de núcleos, $N_0=1000$, y la misma constante de desintegración, $\lambda=1~\text{año}^{-1}$, modificando únicamente el valor de $\Delta t$.
+En la figura~\ref{fig:limitaciones_poisson} se estudia el efecto de aumentar el paso temporal en simulaciones realizadas mediante la aproximación de Poisson. En ambos casos se mantiene el mismo número inicial de núcleos, $N_0=1000$, y la misma constante de desintegración, $\lambda=1~\text{año}^{-1}$, modificando únicamente el valor de $\Delta t$.
 
 En la gráfica de la izquierda se emplea un paso temporal $\Delta t=0{,}20~\text{años}$. En este caso, la probabilidad de desintegración durante un intervalo temporal es
 
@@ -1158,7 +1248,7 @@ s_i=
 De esta forma, se puede comparar el comportamiento promedio de la simulación con la ley teórica de desintegración dada en la ecuación (\ref{eq:ley_desintegracion}).
 
 
-En la Figura~\ref{fig:trayectorias_binomial} se observa que las trayectorias individuales presentan fluctuaciones alrededor de la ley exponencial teórica. Estas fluctuaciones son consecuencia directa de la naturaleza aleatoria del proceso de desintegración. Sin embargo, al considerar el promedio de las 50 simulaciones, el resultado se aproxima de forma clara al comportamiento macroscópico esperado. Por tanto, aunque una trayectoria individual no reproduce exactamente la ley exponencial, el promedio estadístico del modelo binomial se aproxima a ella a medida que aumenta el número de simulaciones.
+En la figura~\ref{fig:trayectorias_binomial} se observa que las trayectorias individuales presentan fluctuaciones alrededor de la ley exponencial teórica. Estas fluctuaciones son consecuencia directa de la naturaleza aleatoria del proceso de desintegración. Sin embargo, al considerar el promedio de las 50 simulaciones, el resultado se aproxima de forma clara al comportamiento macroscópico esperado. Por tanto, aunque una trayectoria individual no reproduce exactamente la ley exponencial, el promedio estadístico del modelo binomial se aproxima a ella a medida que aumenta el número de simulaciones.
 
 
 \subsubsection{Convergencia con el número de simulaciones}
@@ -1193,7 +1283,7 @@ Por tanto, se define el error relativo como
 
 
 
-En la Figura~\ref{fig:convergencia_semivida} se aprecia una tendencia general decreciente de la discrepancia relativa conforme aumenta el número de simulaciones. Este resultado muestra que el valor medio obtenido con el modelo binomial se aproxima cada vez más al comportamiento esperado según la ley macroscópica de desintegración radiactiva.
+En la figura~\ref{fig:convergencia_semivida} se aprecia una tendencia general decreciente de la discrepancia relativa conforme aumenta el número de simulaciones. Este resultado muestra que el valor medio obtenido con el modelo binomial se aproxima cada vez más al comportamiento esperado según la ley macroscópica de desintegración radiactiva.
 
 
 \subsubsection{Error relativo máximo}
@@ -1230,21 +1320,22 @@ De esta forma, $\Delta_{\max}$ representa el mayor error relativo cometido por l
 \label{fig:error_relativo_maximo}
 \end{figure}
 
-En la Figura~\ref{fig:error_relativo_maximo} se observa que el error relativo máximo disminuye de forma notable al aumentar el número de simulaciones. Para $M=100$, la discrepancia máxima es superior al $1\%$, lo que indica que el promedio obtenido todavía no reproduce con suficiente precisión la ley teórica en todos los instantes temporales. Sin embargo, a partir de $M=500$, el error relativo máximo queda por debajo del límite del $1\%$ en la realización mostrada.
+En la figura~\ref{fig:error_relativo_maximo} se observa que el error relativo máximo disminuye de forma notable al aumentar el número de simulaciones. Para $M=100$, la discrepancia máxima es superior al $1\%$, lo que indica que el promedio obtenido todavía no reproduce con suficiente precisión la ley teórica en todos los instantes temporales. Sin embargo, a partir de $M=500$, el error relativo máximo queda por debajo del límite del $1\%$ en la realización mostrada.
 
 Debido a la naturaleza aleatoria del método Monte Carlo, esta tendencia no tiene por qué reproducirse de forma idéntica en todas las ejecuciones. Al repetir el análisis pueden aparecer oscilaciones puntuales, incluso para valores de $M$ superiores a 500. No obstante, la tendencia general observada es clara: al aumentar $M$, el error relativo máximo tiende a reducirse. En la realización mostrada, el valor $M=500$ puede tomarse como una elección orientativa para que el error relativo máximo se sitúe alrededor o por debajo del $1\%$.
 
-
 \subsection{Dependencia estadística con el número inicial de núcleos}
 
-Antes de continuar con el análisis estadístico del modelo, se estudia la dependencia de las fluctuaciones con el número inicial de núcleos $N_0$. Este estudio permite cuantificar cómo varían la desviación típica absoluta y la desviación típica relativa al aumentar el tamaño del sistema simulado, proporcionando un criterio para escoger valores de $N_0$ adecuados.
+Antes de continuar con el análisis estadístico del modelo, se estudia la dependencia de las fluctuaciones con el número inicial de núcleos $N_0$. Este estudio permite cuantificar cómo varían la desviación típica absoluta y la desviación típica relativa al aumentar el tamaño del sistema simulado, proporcionando un criterio para escoger valores adecuados de $N_0$.
 
-Para un instante fijo $t^*$, la desviación típica teórica del número de núcleos supervivientes, dada en la ecuación (\ref{eq:desviacion_supervivientes_binomial}), es
+Para un instante fijo $t^*$, la desviación típica teórica del número de núcleos supervivientes, dada en la ecuación~\eqref{eq:desviacion_supervivientes_binomial}, es
 
 \begin{equation}
-\sigma_N(t^*)=
+\sigma_N(t^*)
+=
 \sqrt{
-N_0e^{-\lambda t^*}\left(1-e^{-\lambda t^*}\right)
+N_0e^{-\lambda t^*}
+\left(1-e^{-\lambda t^*}\right)
 }.
 \label{eq:desviacion_tipica_supervivientes_t_estrella}
 \end{equation}
@@ -1256,13 +1347,15 @@ Como $t^*$ se mantiene fijo, los factores $e^{-\lambda t^*}$ y $1-e^{-\lambda t^
 \label{eq:sigma_proporcional_raiz_N0}
 \end{equation}
 
-La desviación típica $\sigma_N(t^*)$ mide la dispersión absoluta del número de núcleos supervivientes. Sin embargo, para saber si esta dispersión es grande o pequeña en comparación con el valor medio teórico, se introduce la desviación típica relativa
+La desviación típica $\sigma_N(t^*)$ mide la dispersión absoluta del número de núcleos supervivientes. Sin embargo, para determinar si esta dispersión es grande o pequeña en comparación con el valor medio teórico, se introduce la desviación típica relativa,
 
 \begin{equation}
-\frac{\sigma_N(t^*)}{N(t^*)} = 
+\frac{\sigma_N(t^*)}{N(t^*)}
+=
 \frac{
 \sqrt{
-N_0e^{-\lambda t^*}\left(1-e^{-\lambda t^*}\right)
+N_0e^{-\lambda t^*}
+\left(1-e^{-\lambda t^*}\right)
 }
 }{
 N_0e^{-\lambda t^*}
@@ -1270,13 +1363,14 @@ N_0e^{-\lambda t^*}
 \label{eq:desviacion_relativa_supervivientes}
 \end{equation}
 
-Simplificando,
+Simplificando, se obtiene
 
 \begin{equation}
 \frac{\sigma_N(t^*)}{N(t^*)}
- = \sqrt{
+=
+\sqrt{
 \frac{
-e^{-\lambda t^*}-1
+e^{\lambda t^*}-1
 }{
 N_0
 }
@@ -1298,39 +1392,37 @@ Por tanto, al aumentar el número inicial de núcleos, la desviación típica ab
 Para comprobar numéricamente este comportamiento, se realiza la simulación en el instante $t^*=t_{1/2}$ para distintos valores de $N_0$. Para cada uno de ellos, se calcula el valor medio $\overline{N}$, la desviación típica $\sigma_N$ y la desviación típica relativa $\sigma_N/\overline{N}$.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.85\textwidth]{TAREA6/desviacion_tipica_vs_N0.png}
-\caption{Desviación típica del número de núcleos supervivientes frente a $N_0$ en $t*=t_{1/2}$.}
-\label{fig:desviacion_tipica_vs_N0}
+  \centering
+  \includegraphics[width=\textwidth]
+  {TAREA6/dependencia_incertidumbre_N0.png}
+  \caption{Dependencia de las fluctuaciones estadísticas con el número inicial de núcleos en $t^*=t_{1/2}$. En el panel izquierdo se representa la desviación típica absoluta del número de núcleos supervivientes y, en el panel derecho, la desviación típica relativa.}
+  \label{fig:dependencia_incertidumbre_N0}
 \end{figure}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.85\textwidth]{TAREA6/desviacion_relativa_vs_N0.png}
-\caption{Desviación típica relativa del número de núcleos supervivientes frente a $N_0$ en $t*=t_{1/2}$.}
-\label{fig:desviacion_relativa_vs_N0}
-\end{figure}
+En la figura~\ref{fig:dependencia_incertidumbre_N0} se representan los resultados en escala doble logarítmica. En el panel izquierdo se muestra la desviación típica absoluta del número de núcleos supervivientes, mientras que en el panel derecho se representa la desviación típica relativa. Esta representación permite estudiar si ambas magnitudes siguen una ley de potencia con $N_0$.
 
-En las Figuras~\ref{fig:desviacion_tipica_vs_N0} y~\ref{fig:desviacion_relativa_vs_N0} se representan los resultados en escala doble logarítmica. Esta representación permite estudiar si las magnitudes analizadas siguen una ley de potencia con $N_0$. En efecto, si una magnitud $y$ depende de $N_0$ como
+En efecto, si una magnitud $y$ depende de $N_0$ como
 
 \begin{equation}
-    y \propto N_0^\alpha,
+y \propto N_0^\alpha,
 \end{equation}
 
-entonces, al tomar logaritmos, se obtiene
+al tomar logaritmos se obtiene
 
 \begin{equation}
-    \log y = \alpha \log N_0 + \text{cte}.
+\log y = \alpha \log N_0 + \text{cte}.
 \end{equation}
 
-Por tanto, al representar $\log y$ frente a $\log N_0$, se espera que los datos se ajusten aproximadamente a una recta, cuya pendiente proporciona el exponente $\alpha$. En este caso, se realiza un ajuste lineal de $\log(\sigma_N)$ frente a $\log(N_0)$ para la desviación típica absoluta, y de $\log(\sigma_N/\overline{N})$ frente a $\log(N_0)$ para la desviación típica relativa.
+Por tanto, al representar $\log y$ frente a $\log N_0$, se espera que los datos se ajusten aproximadamente a una recta cuya pendiente proporciona el exponente $\alpha$. En este caso, se realiza un ajuste lineal de $\log(\sigma_N)$ frente a $\log(N_0)$ para la desviación típica absoluta y de $\log(\sigma_N/\overline{N})$ frente a $\log(N_0)$ para la desviación típica relativa.
 
-En el ajuste de $\log(\sigma_N)$ frente a $\log(N_0)$ se obtiene una pendiente próxima a $1/2$, lo que confirma que la desviación típica absoluta aumenta al considerar muestras con mayor número inicial de núcleos. En cambio, el ajuste de $\log(\sigma_N/\overline{N})$ frente a $\log(N_0)$ proporciona una pendiente próxima a $-1/2$, indicando que la desviación típica relativa disminuye al aumentar $N_0$. Por tanto, aunque las fluctuaciones absolutas aumentan, su importancia relativa se reduce.
+En el panel izquierdo se obtiene una pendiente igual a $0{,}502$, muy próxima al valor teórico $1/2$. Esto confirma que la desviación típica absoluta aumenta como $\sqrt{N_0}$. En el panel derecho se obtiene una pendiente igual a $-0{,}498$, próxima al valor teórico $-1/2$, lo que confirma que la desviación típica relativa disminuye como $1/\sqrt{N_0}$. Por tanto, aunque las fluctuaciones absolutas aumentan con el número inicial de núcleos, su importancia relativa se reduce.
 
-Esta disminución de las fluctuaciones relativas puede cuantificarse de forma sencilla en el caso particular $t^*=t_{1/2}$. En este instante se cumple $e^{-\lambda t_{1/2}}=1/2$, por lo que la desviación típica relativa viene dada por
+Esta disminución de las fluctuaciones relativas puede cuantificarse de forma sencilla en el caso particular $t^*=t_{1/2}$. En este instante se cumple $e^{-\lambda t_{1/2}}=1/2$ y, por tanto, $e^{\lambda t_{1/2}}=2$. La desviación típica relativa queda entonces dada por
 
 \begin{equation}
-\frac{\sigma_N}{\overline{N}}=\frac{1}{\sqrt{N_0}}.
+\frac{\sigma_N}{\overline{N}}
+=
+\frac{1}{\sqrt{N_0}}.
 \end{equation}
 
 A partir de esta expresión se obtiene que, para $N_0=10^3$, $N_0=5000$ y $N_0=10^4$, las desviaciones típicas relativas son, respectivamente,
@@ -1346,6 +1438,7 @@ A partir de esta expresión se obtiene que, para $N_0=10^3$, $N_0=5000$ y $N_0=1
 Por tanto, las desviaciones relativas correspondientes son aproximadamente del $3{,}2\%$, $1{,}4\%$ y $1\%$, respectivamente.
 
 Aunque el valor $N_0=10^4$ proporciona una reducción ligeramente mayor de las fluctuaciones relativas, la mejora respecto a $N_0=5000$ es moderada, pasando aproximadamente del $1{,}4\%$ al $1\%$. Por ello, en los análisis posteriores se empleará $N_0=5000$, que reduce de forma apreciable la dispersión relativa respecto al caso $N_0=10^3$, manteniendo un coste computacional menor que el correspondiente a $N_0=10^4$ y sin modificar el procedimiento de simulación.
+
 
 \subsection{Distribución estadística de núcleos supervivientes y desintegrados}
 \label{sec:estudio_regiones_desintegracion}
@@ -1403,7 +1496,7 @@ Sobre cada histograma se superponen la distribución binomial teórica y la apro
 \label{fig:histogramas_supervivientes_principal}
 \end{figure}
 
-En la Figura~\ref{fig:histogramas_supervivientes_principal} se muestran los histogramas del número de núcleos supervivientes en los tres instantes temporales representativos. Los histogramas completos, incluyendo también los núcleos desintegrados, se recogen en el Apéndice~\ref{ap:histogramas}.
+En la figura~\ref{fig:histogramas_supervivientes_principal} se muestran los histogramas del número de núcleos supervivientes en los tres instantes temporales representativos. Los histogramas completos, incluyendo también los núcleos desintegrados, se recogen en el Apéndice~\ref{ap:histogramas}.
 
 La distribución binomial reproduce adecuadamente las distribuciones de núcleos supervivientes y desintegrados. Esto se comprueba observando la proximidad entre las medias teóricas y muestrales, así como la forma de los histogramas.
 
@@ -1636,14 +1729,14 @@ Este resultado es muy cercano al valor teórico $\sigma_{\mathrm{teo}}=0{,}01424
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.7\textwidth]{TAREA7/histograma_tiempo_estimado.png}
+\includegraphics[width=0.75\textwidth]{TAREA7/histograma_tiempo_estimado.png}
 \caption{Histograma de los valores de tiempo estimado obtenidos a partir de $M=500$ simulaciones independientes, con $N_0=5000$ y $t_{\mathrm{ref}}=0{,}70~\text{años}$.}
 \label{fig:histograma_tiempo_estimado}
 \end{figure}
 
-En la Figura~\ref{fig:histograma_tiempo_estimado} se muestra la distribución de las edades estimadas $t_{\mathrm{est}}$ obtenidas a partir de las $M=500$ simulaciones. La línea vertical azul indica el tiempo de referencia $t_{\mathrm{ref}}$ impuesto en la simulación, mientras que la línea roja representa la media muestral $\overline{t_{\mathrm{est}}}$. Se observa que ambas líneas se encuentran muy próximas, lo que indica que el valor medio de las edades estimadas reproduce adecuadamente el tiempo de referencia.
+En la figura~\ref{fig:histograma_tiempo_estimado} se muestra la distribución de las edades estimadas $t_{\mathrm{est}}$ obtenidas a partir de las $M=500$ simulaciones. La línea vertical azul indica el tiempo de referencia $t_{\mathrm{ref}}$ impuesto en la simulación, mientras que la línea roja representa la media muestral $\overline{t_{\mathrm{est}}}$. Se observa que ambas líneas se encuentran muy próximas, lo que indica que el valor medio de las edades estimadas reproduce adecuadamente el tiempo de referencia.
 
-La anchura del histograma refleja la dispersión estadística de las edades estimadas alrededor de su valor medio. Esta dispersión queda cuantificada mediante la desviación típica muestral, $s=0{,}01405~\text{años}$, cuyo valor es muy cercano a la incertidumbre teórica obtenida por propagación, $\sigma_{\mathrm{teo}}=0{,}01424~\text{años}$. Por tanto, la distribución representada en el histograma es compatible con la incertidumbre predicha analíticamente.
+La anchura del histograma refleja la dispersión estadística de las edades estimadas alrededor de su valor medio. Esta dispersión queda cuantificada mediante la desviación típica muestral, $s\thickapprox 0{,}014~\text{años}$, cuyo valor es muy cercano a la incertidumbre teórica obtenida por propagación, $\sigma_{\mathrm{teo}}\thickapprox0{,}014~\text{años}$. Por tanto, la distribución representada en el histograma es compatible con la incertidumbre predicha analíticamente.
 
 Finalmente, se calcula la incertidumbre relativa asociada a la estimación temporal. Para el valor teórico se obtiene
 
@@ -1694,7 +1787,7 @@ A partir de los resultados de la simulación, se representa el número de núcle
 
 Una vez comprobada la evolución temporal de la muestra, se comparan las incertidumbres teóricas y muestrales asociadas a la estimación del tiempo de desintegración. El objetivo de esta comparación es comprobar si la dispersión obtenida a partir de las simulaciones reproduce adecuadamente la incertidumbre predicha de forma analítica. En la sección~\ref{sec:propagacion_errores_estadisticos} se detalla el procedimiento empleado para obtener la incertidumbre analítica.
 
-Para el cálculo de las incertidumbres muestrales se emplean $M=500$ trayectorias. Este valor se toma como referencia a partir del análisis realizado en la sección~\ref{sec:error_relativo_max}, donde se mostró que, para un caso de prueba con $\lambda=1$ y $N_0=1000$, el error relativo máximo entre el valor medio simulado y el valor teórico se sitúa aproximadamente por debajo del $1\%$ a partir de $M=500$. Dado que en las simulaciones de datación se trabaja con números iniciales de núcleos varios órdenes de magnitud mayores, las fluctuaciones relativas asociadas al número de núcleos supervivientes son menores.
+Para el cálculo de las incertidumbres muestrales se emplean $M=500$ trayectorias. Este valor se toma como referencia a partir del análisis realizado en la sección~\ref{sec:error_relativo_max}, donde se mostró que, para un caso de prueba con $\lambda=1\ \text{año}^{-1}$ y $N_0=1000$, el error relativo máximo entre el valor medio simulado y el valor teórico se mantiene por debajo del $1\%$ a partir de $M=500$. Dado que en las simulaciones de datación se emplean valores de $N_0$ varios órdenes de magnitud mayores, las fluctuaciones relativas asociadas al número de núcleos supervivientes son menores.
 
 Antes de realizar la representación gráfica, para cada simulación se calcula el tiempo estimado mediante la ecuación~\ref{eq:tiempo_estimado}. Este cálculo se realiza en los instantes representativos de las tres regiones estudiadas en la sección~\ref{sec:estudio_regiones_desintegracion}. A partir de estos valores se obtienen las incertidumbres teóricas, $\sigma_t$ y $\sigma_t/t_{\mathrm{real}}$, y las incertidumbres muestrales, $s_t$ y $s_t/\overline{t_{\mathrm{est}}}$.
 
@@ -1704,16 +1797,16 @@ Finalmente, para cada isótopo se representan conjuntamente las incertidumbres t
 
 Es importante conocer hasta qué edad puede estimarse una muestra manteniendo una incertidumbre relativa razonable. A medida que aumenta el tiempo transcurrido, el número de núcleos supervivientes disminuye y, por tanto, las fluctuaciones estadísticas adquieren mayor importancia relativa. Como consecuencia, la incertidumbre asociada a la edad estimada crece progresivamente con el tiempo.
 
-Para cuantificar este efecto se define un error relativo umbral, $E_{\mathrm{umbral}}$, que representa el valor máximo de incertidumbre relativa que se considera aceptable. En este trabajo se han escogido como valores de referencia
+Para cuantificar este efecto se define un error relativo umbral, $\epsilon_{\mathrm{umbral}}$, que representa el valor máximo de incertidumbre relativa que se considera aceptable. En este trabajo se han escogido como valores de referencia
 
 \begin{equation}
-E_{\mathrm{umbral}} = 5\%,\ 10\%,\ 20\%.
+\epsilon_{\mathrm{umbral}} = 5\%,\ 10\%,\ 20\%.
 \end{equation}
 
 El error relativo considerado se define como
 
 \begin{equation}
-E_{\mathrm{rel}}(t)=\frac{\sigma_t}{t_{\mathrm{real}}},
+\epsilon_{\mathrm{rel}}(t)=\frac{\sigma_t}{t_{\mathrm{real}}},
 \end{equation}
 
 donde $\sigma_t$ es la incertidumbre asociada a la edad estimada. En este apartado se emplea la expresión analítica de dicha incertidumbre, dada en la ecuación~\ref{eq:sigma_t_propagacion},
@@ -1729,7 +1822,7 @@ donde $\sigma_t$ es la incertidumbre asociada a la edad estimada. En este aparta
 de forma que el error relativo analítico queda dado por
 
 \begin{equation}
-E_{\mathrm{rel}}(t)=
+\epsilon_{\mathrm{rel}}(t)=
 \frac{1}{\lambda t_{\mathrm{real}}}
 \sqrt{
 \frac{e^{\lambda t_{\mathrm{real}}}-1}{N_0}
@@ -1740,7 +1833,7 @@ E_{\mathrm{rel}}(t)=
 A partir de esta expresión se determina el primer instante en el que la incertidumbre relativa alcanza o supera el umbral prefijado. Es decir, se busca el tiempo $t_{\mathrm{umbral}}$ que verifica aproximadamente
 
 \begin{equation}
-E_{\mathrm{rel}}(t_{\mathrm{umbral}}) \geq E_{\mathrm{umbral}}.
+\epsilon_{\mathrm{rel}}(t_{\mathrm{umbral}}) \geq \epsilon_{\mathrm{umbral}}.
 \end{equation}
 
 El cálculo se realiza evaluando la incertidumbre relativa sobre una malla temporal discreta con paso $\Delta t$. Por tanto, el valor obtenido para $t_{\mathrm{umbral}}$ debe interpretarse como una edad aproximada, cuya precisión está limitada por el paso temporal utilizado.
@@ -1772,7 +1865,7 @@ por lo que la constante de desintegración empleada en la simulación es
 \simeq 1{,}21 \times 10^{-4}~\text{años}^{-1}.
 \end{equation}
 
-Como muestra de referencia se considera una muestra orgánica idealizada que contiene $1\ \text{g}$ de carbono. En materia orgánica viva, la proporción de carbono-14 respecto al carbono estable es del orden de un átomo de $^{14}\text{C}$ por cada $10^{12}$ átomos de carbono. Por tanto, el número inicial de núcleos de $^{14}\text{C}$ puede estimarse a partir del número total de átomos de carbono presentes en la muestra.
+Como muestra de referencia se considera una muestra orgánica idealizada que contiene $1\ \text{g}$ de carbono. Esta masa se elige por ser un valor sencillo y conveniente para establecer una escala de referencia y facilitar los cálculos posteriores. En materia orgánica viva, la proporción de carbono-14 respecto al carbono total es del orden de un átomo de $^{14}\text{C}$ por cada $10^{12}$ átomos de carbono. Por tanto, el número inicial de núcleos de $^{14}\text{C}$ puede estimarse a partir del número total de átomos de carbono presentes en la muestra.
 
 Usando la masa molar del carbono y la constante de Avogadro, el número total aproximado de átomos de carbono en $1\ \text{g}$ es
 
@@ -1807,7 +1900,7 @@ A continuación se aplica el procedimiento descrito en la sección~\ref{sec:obte
 
 En primer lugar, se simula la evolución temporal de la muestra de referencia de $1\ \text{g}$ de carbono, para la que se ha estimado un número inicial $N_0 \simeq 5{,}0 \times 10^{10}$ núcleos de $^{14}\text{C}$. Se emplea un paso temporal $\Delta t = 100~\text{años}$ y un tiempo total de simulación $T = 10000~\text{años}$, que corresponde aproximadamente a $1{,}75$ veces la semivida del $^{14}\text{C}$. Esta simulación permite comprobar visualmente que el modelo reproduce la ley exponencial de desintegración antes de analizar las incertidumbres asociadas a la datación.
 
-En la Figura~\ref{fig:trayectoria_temporal_C14} se observa que la trayectoria simulada se superpone prácticamente con la ley teórica. Esto indica que, para un número inicial de núcleos tan elevado, las fluctuaciones estadísticas relativas son muy pequeñas y la evolución simulada sigue de forma muy precisa el comportamiento exponencial esperado.
+En la figura~\ref{fig:trayectoria_temporal_C14} se observa que la trayectoria simulada se superpone prácticamente con la ley teórica. Esto indica que, para un número inicial de núcleos tan elevado, las fluctuaciones estadísticas relativas son muy pequeñas y la evolución simulada sigue de forma muy precisa el comportamiento exponencial esperado.
 
 \begin{figure}[H]
   \centering
@@ -1816,14 +1909,15 @@ En la Figura~\ref{fig:trayectoria_temporal_C14} se observa que la trayectoria si
   \label{fig:trayectoria_temporal_C14}
 \end{figure}
 
-Una vez comprobado que la simulación reproduce correctamente la ley exponencial de desintegración, se procede a comparar las incertidumbres analíticas, $\sigma_t$ y $\sigma_t / t_{real}$, con las incertidumbres muestrales, $s_t$ y $s_t / t_{est}$, obtenidas a partir de las $M = 500$ simulaciones Monte Carlo. En primer lugar, se considera la muestra de referencia de $1\ \text{g}$ de carbono. Los resultados se muestran en la tabla \ref{tab:comparacion_incertidumbres_1g_C14} y en las figuras \ref{fig:comp_incertidumbres_1g_C14} y \ref{fig:comp_incertidumbres_relativas_1g_C14}.
+Una vez comprobado que la simulación reproduce correctamente la ley exponencial de desintegración, se procede a comparar las incertidumbres analíticas, $\sigma_t$ y $\sigma_t/t_{\mathrm{real}}$, con las incertidumbres muestrales, $s_t$ y $s_t/\overline{t}_{\mathrm{est}}$ obtenidas a partir de las $M = 500$ simulaciones Monte Carlo. En primer lugar, se considera la muestra de referencia de $1\ \text{g}$ de carbono. Los resultados se muestran en la tabla \ref{tab:comparacion_incertidumbres_1g_C14} y en la Figura~\ref{fig:comparacion_incertidumbres_1g_C14}.
 
 \begin{table}[H]
 \centering
 \resizebox{\textwidth}{!}{%
 \input{TAREA8/tabla_E2_estimacion_edad.tex}
 }
-\caption{Incertidumbres muestrales y teóricas para la edad de una muestra de $1\ \text{g}$ de carbono. Las incertidumbres absolutas se expresan en unidades de $10^{-2}$ años y las relativas en unidades de $10^{-3}\%$.}
+\caption{Incertidumbres muestrales y teóricas para la edad de una muestra de $1\ \text{g}$ de carbono.}
+
 \label{tab:comparacion_incertidumbres_1g_C14}
 \end{table}
 
@@ -1831,65 +1925,51 @@ En la tabla \ref{tab:comparacion_incertidumbres_1g_C14} se observa que la edad m
 
 También se aprecia una buena concordancia entre la desviación típica muestral, $s_t$, y la incertidumbre analítica, $\sigma_t$. Esta coincidencia muestra que las fluctuaciones obtenidas mediante las simulaciones Monte Carlo son coherentes con la incertidumbre predicha teóricamente mediante el modelo binomial y la propagación de incertidumbres.
 
-Por otro lado, la incertidumbre absoluta aumenta con el tiempo. Esto es esperable, ya que a edades mayores queda un número menor de núcleos de $^{14}\text{C}$ sin desintegrar, por lo que las fluctuaciones estadísticas en el número de supervivientes tienen un efecto mayor sobre la edad estimada. Sin embargo, debido al elevado número inicial de núcleos considerado para una muestra de $1\ \text{g}$ de carbono, las incertidumbres relativas permanecen muy pequeñas en todo el intervalo estudiado, del orden de $10^{-3}\%$.
+Por otro lado, la incertidumbre absoluta aumenta con el tiempo. Este comportamiento se debe a que la edad estimada se obtiene a partir del número de núcleos supervivientes mediante la relación logarítmica \eqref{eq:tiempo_estimado}. La sensibilidad de la edad estimada frente a una variación en el número de núcleos supervivientes es proporcional a $1/N$. Por tanto, a medida que el número de núcleos disminuye, una misma fluctuación en $N$ produce una variación mayor en la edad estimada. Sin embargo, debido al elevado número inicial de núcleos considerado para una muestra de $1\ \text{g}$ de carbono, las incertidumbres relativas permanecen muy pequeñas en todo el intervalo estudiado, del orden de $10^{-3}\%$.
 
-Debe tenerse en cuenta que estas incertidumbres corresponden únicamente a la contribución estadística asociada al carácter aleatorio de la desintegración dentro del modelo ideal considerado. En una datación experimental real intervendrían además otras fuentes de incertidumbre, como la contaminación de la muestra, el fondo instrumental, la calibración y la estimación de la cantidad inicial de $^{14}\text{C}$.
+Debe subrayarse que las incertidumbres obtenidas corresponden únicamente a la contribución estadística asociada al carácter aleatorio de la desintegración dentro del modelo ideal considerado. Por ejemplo, para una edad de $40\,000$ años se obtiene una incertidumbre absoluta del orden de $0{,}4$ años. Aunque este resultado es correcto dentro del modelo, no debe interpretarse como la precisión que podría alcanzarse en una datación experimental real.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.7\textwidth]{TAREA8/E2_comparacion_incertidumbre.png}
-  \caption{Comparación de incertidumbres teóricas y muestrales para una muestra de $1\ \text{g}$ de carbono.}
-  \label{fig:comp_incertidumbres_1g_C14}
-\end{figure}
+El reducido valor de la incertidumbre se debe al elevado número inicial de núcleos considerado, $N_0\simeq 5{,}0\times10^{10}$, y a que la simulación supone conocidos sin error tanto el número inicial como el número de núcleos supervivientes. Por tanto, únicamente se tienen en cuenta las fluctuaciones intrínsecas de la desintegración radiactiva. En una datación experimental intervendrían además otras fuentes de incertidumbre, como la contaminación de la muestra, el fondo instrumental, la eficiencia de detección, la calibración y la estimación de la cantidad inicial de $^{14}\text{C}$. En consecuencia, los resultados obtenidos deben interpretarse como un límite estadístico ideal y no como una estimación de la precisión total de una datación real.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.75\textwidth]{TAREA8/E2_comparacion_incertidumbre_relativa.png}
-  \caption{Comparación de incertidumbres teóricas y muestrales relativas para una muestra de $1\ \text{g}$ de carbono.}
-  \label{fig:comp_incertidumbres_relativas_1g_C14}
+  \includegraphics[width=\textwidth]
+  {TAREA8/E2_comparacion_incertidumbres.png}
+  \caption{Comparación entre las incertidumbres teóricas y muestrales para una muestra idealizada que contiene $1\ \text{g}$ de carbono. A la izquierda se representan las incertidumbres absolutas y, a la derecha, las incertidumbres relativas.}
+  \label{fig:comparacion_incertidumbres_1g_C14}
 \end{figure}
 
-En la figura \ref{fig:comp_incertidumbres_relativas_1g_C14} se representa la evolución de la incertidumbre relativa, comparando el valor muestral $s_t/\overline{t}_{\mathrm{est}}$ con el valor analítico $\sigma_t/t_{\mathrm{real}}$. Se observa una muy buena concordancia entre ambas curvas, lo que confirma que la dispersión obtenida mediante las simulaciones Monte Carlo reproduce adecuadamente la predicción analítica del modelo binomial.
+En la figura~\ref{fig:comparacion_incertidumbres_1g_C14} se comparan las incertidumbres muestrales y analíticas obtenidas para la muestra de referencia. En el panel izquierdo se representan la desviación típica muestral, $s_t$, y la incertidumbre analítica, $\sigma_t$, mientras que en el panel derecho se muestran sus correspondientes valores relativos, $s_t/\overline{t}_{\mathrm{est}}$ y $\sigma_t/t_{\mathrm{real}}$. En ambos casos se observa una buena concordancia entre los resultados muestrales y la predicción analítica, lo que confirma que la dispersión obtenida mediante las simulaciones de Monte Carlo reproduce adecuadamente el comportamiento previsto por el modelo binomial y la propagación de incertidumbres.
 
-La figura permite distinguir tres regiones. En la primera región, correspondiente a tiempos pequeños frente a la vida media del $^{14}\text{C}$, la incertidumbre relativa es mayor. Aunque la incertidumbre absoluta en la edad no es elevada, el tiempo que se está estimando también es pequeño, por lo que el cociente $s_t/\overline{t}_{\mathrm{est}}$ o $\sigma_t/t_{\mathrm{real}}$ toma un valor relativamente mayor.
+La ecuación~\ref{eq:incertidumbre_relativa} predice tres regiones bien diferenciadas en la evolución temporal de la incertidumbre relativa, que pueden observarse en el panel derecho de la figura~\ref{fig:comparacion_incertidumbres_1g_C14}. Para un valor fijo de $N_0$, esta evolución está determinada por el cociente entre el término creciente $\sqrt{e^{\lambda t}-1}$ y el factor $\lambda t$.
 
-En una segunda región, para tiempos del orden de unas pocas vidas medias, la incertidumbre relativa alcanza sus valores mínimos. Esto se debe a la compensación entre dos efectos opuestos. Por un lado, el tiempo real ya no es tan pequeño, por lo que el cociente $\sigma_t/t_{\mathrm{real}}$ disminuye respecto a la región inicial. Por otro lado, todavía queda un número suficientemente elevado de núcleos supervivientes, de modo que las fluctuaciones estadísticas asociadas al número de núcleos restantes siguen siendo reducidas. 
+En la primera región, correspondiente a tiempos pequeños en comparación con la semivida del $^{14}\text{C}$, la incertidumbre relativa es mayor. Aunque la incertidumbre absoluta en la edad no es elevada, el tiempo estimado también es pequeño, por lo que tanto $s_t/\overline{t}_{\mathrm{est}}$ como $\sigma_t/t_{\mathrm{real}}$ toman valores relativamente elevados.
 
-Desde el punto de vista analítico, la incertidumbre relativa viene dada por la ecuación \ref{eq:incertidumbre_relativa}. Por tanto, para un valor fijo de $N_0$, su dependencia temporal está determinada por el cociente entre el término creciente $\sqrt{e^{\lambda t}-1}$ y el factor $\lambda t$. 
+En una segunda región, para tiempos del orden de unas pocas semividas, la incertidumbre relativa alcanza sus valores mínimos. Esto se debe a la compensación entre dos efectos opuestos. Por un lado, el tiempo real ya no es tan pequeño, por lo que el cociente $\sigma_t/t_{\mathrm{real}}$ disminuye respecto a la región inicial. Por otro lado, todavía queda un número suficientemente elevado de núcleos supervivientes, de modo que las fluctuaciones estadísticas asociadas al número de núcleos restantes siguen siendo reducidas.
 
-Finalmente, en la tercera región, para tiempos más grandes, la incertidumbre relativa vuelve a aumentar. En este caso, el número de núcleos de $^{14}\text{C}$ supervivientes disminuye de forma significativa debido a la desintegración radiactiva. Esto se refleja en el crecimiento del término $e^{\lambda t}-1$ de la expresión analítica.
+Finalmente, en la tercera región, correspondiente a tiempos más grandes, la incertidumbre relativa vuelve a aumentar. En este caso, el número de núcleos de $^{14}\text{C}$ supervivientes disminuye de forma significativa debido a la desintegración radiactiva. Este comportamiento se refleja en el crecimiento del término $e^{\lambda t}-1$ de la expresión analítica.
 
 Una vez estudiada la muestra de $1\ \text{g}$ de carbono, conviene comparar los resultados con otros tamaños de muestra.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{TAREA8/E3_sigma_t_vs_treal.png}
-  \caption{Comparación entre incertidumbres teóricas y muestrales para tres muestras de carbono.}
-  \label{fig:sigma_t_tres_muestras_C14}
+  \includegraphics[width=\textwidth]
+  {TAREA8/E3_comparacion_incertidumbres_masas.png}
+  \caption{Comparación entre las incertidumbres teóricas y muestrales para muestras de $0{,}1\ \text{g}$, $1\ \text{g}$ y $10\ \text{g}$ de carbono. A la izquierda se representan las incertidumbres absolutas y, a la derecha, las incertidumbres relativas.}
+  \label{fig:comparacion_incertidumbres_masas_C14}
 \end{figure}
 
-En las figuras \ref{fig:sigma_t_tres_muestras_C14} y \ref{fig:sigma_relativa_tres_muestras_C14} se comparan las incertidumbres obtenidas para tres masas distintas de carbono: $0.1\ \text{g}$, $1\ \text{g}$ y $10\ \text{g}$. En todos los casos se observa una buena concordancia entre los valores muestrales y los valores analíticos, lo que confirma que las simulaciones Monte Carlo reproducen correctamente la predicción analítica del modelo binomial.
+En la figura~\ref{fig:comparacion_incertidumbres_masas_C14} se comparan las incertidumbres obtenidas para tres masas distintas de carbono: $0{,}1\ \text{g}$, $1\ \text{g}$ y $10\ \text{g}$. En todos los casos se observa una buena concordancia entre los valores muestrales y los valores analíticos, lo que confirma que las simulaciones de Monte Carlo reproducen correctamente la predicción analítica del modelo binomial.
 
-La diferencia principal entre las tres muestras se encuentra en la escala de las incertidumbres. La muestra de $0.1\ \text{g}$ presenta las incertidumbres más grandes, mientras que la muestra de $10\ \text{g}$ presenta las más pequeñas. Este comportamiento se debe a que el número inicial de núcleos de $^{14}\text{C}$ es proporcional a la masa total de carbono de la muestra (\ref{eq:N_C1}, \ref{eq:N_C2}, \ref{eq:N_0C14}). Por tanto, al aumentar la masa, aumenta también $N_0$, y las fluctuaciones estadísticas relativas disminuyen.
+La diferencia principal entre las tres muestras se encuentra en la escala de las incertidumbres. La muestra de $0{,}1\ \text{g}$ presenta los valores más elevados, mientras que la muestra de $10\ \text{g}$ presenta los más pequeños. Este comportamiento se debe a que el número inicial de núcleos de $^{14}\text{C}$ es proporcional a la masa total de carbono de la muestra, como se deduce de las ecuaciones~\ref{eq:N_C1}, \ref{eq:N_C2} y~\ref{eq:N_0C14}. Por tanto, al aumentar la masa, aumenta también $N_0$ y disminuyen las fluctuaciones estadísticas relativas.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.85\textwidth]{TAREA8/E3_sigma_relativa_vs_treal.png}
-  \caption{Comparación entre incertidumbres teóricas y muestrales relativas para tres muestras de carbono.}
-  \label{fig:sigma_relativa_tres_muestras_C14}
-\end{figure}
+Este resultado se deduce directamente de la expresión analítica de la incertidumbre relativa, dada en la ecuación~\ref{eq:incertidumbre_relativa}. Para un tiempo fijo, el término temporal $e^{\lambda t}-1$ es el mismo para todas las muestras, de modo que la dependencia con el tamaño de la muestra viene determinada por el factor $1/\sqrt{N_0}$. Puesto que $N_0$ es proporcional a la masa de carbono, tanto la incertidumbre absoluta como la relativa disminuyen como $1/\sqrt{m}$. Así, una muestra de $10\ \text{g}$ presenta una incertidumbre aproximadamente $\sqrt{10}$ veces menor que una muestra de $1\ \text{g}$, mientras que una muestra de $0{,}1\ \text{g}$ presenta una incertidumbre aproximadamente $\sqrt{10}$ veces mayor.
 
+En el panel izquierdo se observa que las incertidumbres absolutas aumentan con el tiempo para las tres masas. No obstante, las muestras de mayor masa se mantienen siempre por debajo debido a su mayor número inicial de núcleos radiactivos.
 
-Este resultado se deduce directamente de la expresión analítica de la incertidumbre (\ref{eq:incertidumbre_relativa}).
+En el panel derecho, las tres curvas presentan la misma dependencia temporal: la incertidumbre relativa es mayor para tiempos pequeños, alcanza un mínimo en una región intermedia y vuelve a aumentar para tiempos más grandes. La masa no modifica la forma general de la curva, sino únicamente su escala vertical, ya que su influencia aparece mediante el factor multiplicativo $1/\sqrt{N_0}$. Esta dependencia temporal es consecuencia del comportamiento estadístico binomial del número de núcleos supervivientes y de la posterior propagación de la incertidumbre a la edad estimada. Por tanto, aumentar la masa no modifica la región temporal en la que la incertidumbre relativa es mínima, pero sí reduce su valor en todo el intervalo estudiado.
 
-Para un tiempo fijo, el término temporal $e^{\lambda t}-1$ es el mismo en todas las muestras, de modo que la dependencia con el tamaño de la muestra viene determinada por el factor $1/\sqrt{N_0}$. Como $N_0$ es proporcional a la masa de carbono, se obtiene que la incertidumbre disminuye como $1/\sqrt{m}$. Así, una muestra de $10\ \text{g}$ presenta una incertidumbre aproximadamente $\sqrt{10}$ veces menor que una muestra de $1\ \text{g}$, mientras que una muestra de $0.1\ \text{g}$ presenta una incertidumbre aproximadamente $\sqrt{10}$ veces mayor. 
-
-En la figura \ref{fig:sigma_t_tres_muestras_C14}, aunque todas las curvas crecen con el tiempo, las muestras de mayor masa se mantienen siempre por debajo, debido a su mayor número inicial de núcleos radiactivos.
-
-En la figura \ref{fig:sigma_relativa_tres_muestras_C14} se aprecia que la forma de las curvas relativas es similar para las tres masas: la incertidumbre relativa es mayor a tiempos pequeños, alcanza un mínimo en una región intermedia y vuelve a aumentar para tiempos más grandes. La diferencia entre las muestras no cambia la forma general de la curva, sino su escala vertical. Por ello, aumentar la masa de la muestra no modifica el régimen temporal en el que la datación es más precisa, pero sí reduce el valor de la incertidumbre relativa en todo el intervalo estudiado.
-
-Para finalizar, en la tabla \ref{tab:umbrales_error_relativo_C14} se muestran los tiempos umbral asociados a los errores relativos del $5\%$, $10\%$ y $20\%$ para las tres masas de carbono consideradas.
-
+Para finalizar, en la tabla~\ref{tab:umbrales_error_relativo_C14} se muestran los tiempos umbral asociados a incertidumbres relativas del $5\%$, $10\%$ y $20\%$ para las tres masas de carbono consideradas.
 
 \begin{table}[H]
 \centering
@@ -1899,27 +1979,28 @@ Para finalizar, en la tabla \ref{tab:umbrales_error_relativo_C14} se muestran lo
 \label{tab:umbrales_error_relativo_C14}
 \end{table}
 
-Como era esperable, para una misma masa, el tiempo umbral aumenta al relajar el criterio de precisión: el umbral del $5\%$ se alcanza antes que el del $10\%$, y este antes que el del $20\%$. Esto indica que, cuanto mayor es el error relativo admisible, mayor es el intervalo temporal en el que la datación puede considerarse aceptable bajo ese criterio.
+Como era esperable, para una misma masa, el tiempo umbral aumenta al relajar el criterio de precisión: el umbral del $5\%$ se alcanza antes que el del $10\%$, y este antes que el del $20\%$. Esto indica que, cuanto mayor es la incertidumbre relativa admisible, mayor es el intervalo temporal en el que la datación puede considerarse aceptable bajo ese criterio.
 
-También se observa que, para un mismo umbral, el tiempo umbral aumenta con la masa de la muestra. Este comportamiento se debe a que una masa mayor contiene un número inicial más elevado de núcleos de $^{14}\text{C}$, de modo que las fluctuaciones estadísticas relativas son menores. 
+También se observa que, para un mismo umbral, el tiempo umbral aumenta con la masa de la muestra. Una masa mayor contiene un número inicial más elevado de núcleos de $^{14}\text{C}$, por lo que las fluctuaciones estadísticas relativas son menores y el umbral se alcanza a edades más avanzadas.
 
-En particular, al pasar de $0.1\ \text{g}$ a $10\ \text{g}$ de carbono, los tiempos umbral aumentan para los tres criterios considerados. Esto enseña que una muestra con mayor masa permite mantener una misma incertidumbre relativa hasta edades más avanzadas. No obstante, la mejora no es lineal con la masa, ya que la incertidumbre relativa depende del número inicial de núcleos como $1/\sqrt{N_0}$.
+En particular, al pasar de $0{,}1\ \text{g}$ a $10\ \text{g}$ de carbono, los tiempos umbral aumentan para los tres criterios considerados. Esto indica que una muestra de mayor masa permite mantener una misma incertidumbre relativa hasta edades más elevadas. Sin embargo, esta mejora no es proporcional a la masa, ya que la incertidumbre relativa no depende de $N_0$ como $1/N_0$, sino como $1/\sqrt{N_0}$. Por tanto, para reducir la incertidumbre en un determinado factor es necesario aumentar el número inicial de núcleos, y por extensión la masa de la muestra, en el cuadrado de dicho factor.
 
-\subsubsection{Conclusiones datación con Carbono-14}
+\subsubsection{Conclusiones de la datación con carbono-14}
 
-Los resultados obtenidos muestran que el método permite recuperar correctamente la edad de la muestra a partir del número de núcleos supervivientes. En particular, para la muestra de referencia de $1\ \text{g}$ de carbono, la edad media estimada $\overline{t}_{\mathrm{est}}$ reproduce prácticamente el tiempo real impuesto en las simulaciones. Además, la buena concordancia entre la desviación típica muestral $s_t$ y la incertidumbre analítica $\sigma_t$ confirma que el modelo binomial describe adecuadamente las fluctuaciones estadísticas asociadas al proceso de desintegración.
+La concordancia entre la edad media estimada y el tiempo real impuesto muestra que, dentro del modelo ideal considerado, la inversión de la ley exponencial permite recuperar la edad de la muestra sin introducir un sesgo sistemático apreciable. Asimismo, el acuerdo entre la desviación típica muestral, $s_t$, y la incertidumbre analítica, $\sigma_t$, confirma que la dispersión observada tiene su origen en las fluctuaciones binomiales del número de núcleos supervivientes y no en el procedimiento numérico empleado.
 
-Desde el punto de vista de la precisión, se observa que la incertidumbre relativa no es constante con el tiempo. Para tiempos pequeños, el error relativo es mayor porque la edad que se intenta estimar todavía es pequeña. Para tiempos intermedios, del orden de unas pocas vidas medias, la incertidumbre relativa alcanza un mínimo, ya que el tiempo estimado es suficientemente grande y todavía queda un número elevado de núcleos supervivientes. Finalmente, para tiempos más grandes, la incertidumbre relativa vuelve a aumentar debido a la disminución progresiva del número de núcleos de $^{14}\text{C}$.
+La evolución temporal de la incertidumbre relativa refleja la existencia de dos mecanismos contrapuestos. Para edades pequeñas, la incertidumbre absoluta también es reducida, pero representa una fracción relativamente elevada del tiempo que se desea estimar. En cambio, para edades grandes, el número de núcleos supervivientes disminuye y la estimación temporal se vuelve cada vez más sensible a pequeñas fluctuaciones en dicho número. Entre ambos regímenes aparece una región intermedia en la que la incertidumbre relativa alcanza un mínimo. Por tanto, incluso dentro de un modelo ideal, la precisión relativa de la datación no es uniforme con la edad.
 
-También se ha comprobado que el tamaño de la muestra tiene un papel importante. Al aumentar la masa de carbono, aumenta el número inicial de núcleos $N_0$ y, por tanto, disminuyen las fluctuaciones estadísticas relativas. Esta dependencia se refleja en la expresión analítica de la incertidumbre, donde el error relativo escala como $1/\sqrt{N_0}$. Por ello, muestras más grandes permiten mantener una misma precisión relativa hasta edades más avanzadas.
+El aumento de la masa de carbono mejora la precisión estadística porque incrementa el número inicial de núcleos de $^{14}\text{C}$. Sin embargo, esta mejora presenta rendimientos decrecientes, ya que la incertidumbre disminuye como $1/\sqrt{N_0}$ y, por tanto, como $1/\sqrt{m}$. En consecuencia, para reducir la incertidumbre en un factor determinado es necesario aumentar la masa en el cuadrado de dicho factor. Una muestra mayor amplía el intervalo temporal en el que puede mantenerse una precisión dada, pero no elimina la pérdida de sensibilidad asociada a la disminución progresiva del número de núcleos supervivientes.
 
-En cuanto a los tiempos umbral obtenidos para los errores relativos del $5\%$, $10\%$ y $20\%$, se observa que el intervalo útil de datación aumenta tanto al permitir un error relativo mayor como al incrementar la masa de la muestra. Sin embargo, estos tiempos deben interpretarse como estimaciones estadísticas ideales dentro del modelo considerado, ya que en una aplicación experimental real también intervienen otros factores, como la contaminación de la muestra, el fondo instrumental o las hipótesis sobre la cantidad inicial de $^{14}\text{C}$.
+Los tiempos umbral obtenidos son muy elevados porque el modelo supone que se conocen sin error tanto la cantidad inicial de $^{14}\text{C}$ como el número de núcleos supervivientes. Los resultados representan, por tanto, un límite estadístico ideal asociado exclusivamente al carácter aleatorio de la desintegración. Esto indica que, para las cantidades de carbono estudiadas, las fluctuaciones intrínsecas del proceso no serían por sí solas el principal factor limitante de una datación real. En condiciones experimentales, la precisión y el intervalo útil estarían determinados principalmente por otras fuentes de incertidumbre, como el fondo instrumental, la contaminación, la eficiencia de detección, la calibración y la estimación de la concentración inicial de $^{14}\text{C}$.
 
 \subsection{Datación radiométrica del Uranio}
 
 La datación radiométrica mediante uranio se aplica principalmente a materiales geológicos, como rocas y minerales, y no a muestras orgánicas recientes como ocurre en la datación con $^{14}\text{C}$. Esta diferencia se debe a que los isótopos de uranio presentan semividas mucho mayores, del orden de cientos o miles de millones de años, por lo que son adecuados para estudiar escalas temporales geológicas.
 
-Una de las aplicaciones más importantes es la datación uranio-plomo. En este método, los isótopos radiactivos del uranio actúan como núcleos padre y se transforman, a través de cadenas de desintegración, en isótopos estables de plomo. En particular, las cadenas más relevantes son
+
+Uno de los métodos más importantes es la datación uranio-plomo. En esta técnica, los isótopos radiactivos del uranio actúan como núcleos padre y se transforman, a través de sucesivas cadenas de desintegración, en isótopos estables de plomo. En particular, las cadenas más relevantes son
 
 \begin{equation}
 {}^{238}\text{U} \longrightarrow {}^{206}\text{Pb},
@@ -1931,9 +2012,9 @@ y
 {}^{235}\text{U} \longrightarrow {}^{207}\text{Pb}.
 \end{equation}
 
-A diferencia del caso del carbono-14, donde se estudia la desaparición de un isótopo radiactivo en una muestra orgánica tras la muerte del organismo, en la datación con uranio se analiza un sistema mineral que debe haber permanecido cerrado desde su formación. Bajo esta hipótesis, la disminución del número de núcleos padre de uranio y la acumulación de núcleos hijo de plomo permiten estimar la edad del material.
+A diferencia de la datación mediante carbono-14, que se aplica a materia orgánica una vez que cesa el intercambio de carbono con el entorno, la datación uranio-plomo se utiliza en minerales que deben haber permanecido cerrados desde su formación. Esto significa que, durante el intervalo estudiado, el material no ha ganado ni perdido cantidades apreciables de uranio o plomo. Bajo esta hipótesis, la disminución del número de núcleos padre de uranio y el aumento del número de núcleos hijo de plomo se deben únicamente a la desintegración radiactiva. Por tanto, la relación entre las cantidades actuales de ambos elementos contiene información sobre el tiempo transcurrido desde la formación o el cierre del mineral.
 
-En este trabajo no se simula explícitamente toda la cadena de desintegración hasta el plomo, sino la evolución estadística del número de núcleos de uranio supervivientes. Esta simplificación permite aplicar directamente el modelo binomial desarrollado en las secciones anteriores y estudiar cómo las fluctuaciones en el número de núcleos padre se propagan a la estimación temporal. Por tanto, el tratamiento realizado debe entenderse como una idealización del proceso de datación uranio-plomo centrada en la desintegración del núcleo padre.
+En este trabajo no se simula explícitamente la cadena completa de desintegración ni la acumulación de los isótopos de plomo, sino únicamente la evolución estadística del número de núcleos de uranio supervivientes. Esta simplificación permite aplicar directamente el modelo binomial desarrollado en las secciones anteriores y estudiar cómo las fluctuaciones en el número de núcleos padre se propagan a la edad estimada. Por tanto, el tratamiento realizado debe entenderse como una idealización de la datación uranio-plomo centrada en la desintegración del isótopo padre.
 
 Para el isótopo $^{238}\text{U}$ se toma una semivida
 
@@ -2000,13 +2081,13 @@ En el análisis numérico se toma como referencia el isótopo $^{238}\text{U}$, 
 
 \subsubsection{Evolución temporal de una muestra de referencia}
 
-En primer lugar, se simula la evolución temporal de una muestra mineral idealizada que contiene $1\ \text{mg}$ de uranio natural. Como el análisis se centra en el isótopo $^{238}\text{U}$, el número inicial de núcleos considerado es
+En primer lugar, se simula la evolución temporal de una muestra mineral idealizada que contiene $1\ \text{mg}$ de uranio natural. Esta cantidad se elige como un valor de referencia sencillo para fijar la escala del problema y facilitar la comparación posterior con muestras de distinta masa. La elección no posee un significado físico particular, ya que el número inicial de núcleos es directamente proporcional a la masa de uranio considerada. Como el análisis se centra en el isótopo $^{238}\text{U}$, el número inicial de núcleos es
 
 \begin{equation}
 N_0({}^{238}\text{U}) \simeq 2{,}5\times 10^{18}.
 \end{equation}
 
-Se emplea un paso temporal $\Delta t = 1{,}0\times 10^8~\text{años}$ y un tiempo total de simulación $T = 1{,}0\times 10^{10}~\text{años}$. Este intervalo corresponde aproximadamente a $2{,}24$ semividas del $^{238}\text{U}$, por lo que permite observar una disminución apreciable del número de núcleos supervivientes en una escala temporal geológica.
+Se emplea un paso temporal $\Delta t = 1{,}0\times 10^8\ \text{años}$ y un tiempo total de simulación $T = 1{,}0\times 10^{10}\ \text{años}$. Este intervalo corresponde aproximadamente a $2{,}24$ semividas del $^{238}\text{U}$, por lo que permite observar una disminución apreciable del número de núcleos supervivientes en una escala temporal geológica.
 
 \begin{figure}[H]
   \centering
@@ -2015,9 +2096,11 @@ Se emplea un paso temporal $\Delta t = 1{,}0\times 10^8~\text{años}$ y un tiemp
   \label{fig:trayectoria_temporal_U238}
 \end{figure}
 
-En la Figura~\ref{fig:trayectoria_temporal_U238} se observa que la trayectoria simulada se superpone prácticamente con la ley teórica de desintegración exponencial. Al igual que ocurría en el caso del carbono-14, esta concordancia se debe al elevado número inicial de núcleos considerado, que hace que las fluctuaciones estadísticas relativas sean muy pequeñas.
+En la figura~\ref{fig:trayectoria_temporal_U238} se observa que la trayectoria simulada reproduce prácticamente la ley exponencial de desintegración. Esta concordancia confirma que el procedimiento de simulación empleado para el carbono-14 puede aplicarse también al $^{238}\text{U}$, una vez adaptadas la constante de desintegración y la escala temporal características del isótopo.
 
-La diferencia principal aparece en la escala temporal. Mientras que en el caso del $^{14}\text{C}$ la evolución se apreciaba en intervalos de miles o decenas de miles de años, en el caso del $^{238}\text{U}$ la disminución del número de núcleos supervivientes se produce en escalas de miles de millones de años. Esto refleja directamente la gran semivida del isótopo y explica su utilidad para la datación de materiales geológicos antiguos.
+La principal diferencia entre ambos sistemas de datación no se limita a la escala temporal. La datación mediante $^{14}\text{C}$ se aplica a materia orgánica y estima el tiempo transcurrido desde que cesa el intercambio de carbono con el entorno. En cambio, la datación uranio-plomo se aplica a minerales y determina el tiempo transcurrido desde su formación o desde el cierre del sistema, mediante la evolución de los núcleos padre de uranio y la acumulación de los isótopos hijo de plomo. Además, la semivida mucho mayor del $^{238}\text{U}$ permite estudiar edades del orden de miles de millones de años, mientras que el $^{14}\text{C}$ resulta adecuado para escalas temporales mucho menores.
+
+Debe recordarse, no obstante, que en este trabajo únicamente se simula la disminución del número de núcleos padre de $^{238}\text{U}$. Por tanto, el modelo reproduce la contribución estadística asociada a su desintegración, pero no incluye explícitamente la acumulación de plomo ni los posibles procesos geológicos que puedan alterar la condición de sistema cerrado.
 
 \subsubsection{Comparación entre incertidumbres teóricas y muestrales}
 
@@ -2030,40 +2113,26 @@ Los tiempos reales considerados son representativos de escalas geológicas y se 
 \resizebox{\textwidth}{!}{%
 \input{TAREA9/U_tabla_E2_estimacion_edad.tex}
 }
-\caption{Incertidumbres muestrales y teóricas para la edad de una muestra de $1\ \text{mg}$ de uranio natural, considerando la desintegración de $^{238}\text{U}$. Las edades se expresan en unidades de $10^8$ años y las incertidumbres relativas en unidades de $10^{-6}\%$.}
+\caption{Incertidumbres muestrales y teóricas para la edad de una muestra de $1\ \text{mg}$ de uranio natural, considerando la desintegración de $^{238}\text{U}$.}
 \label{tab:comparacion_incertidumbres_U238}
 \end{table}
 
-
-En la Tabla~\ref{tab:comparacion_incertidumbres_U238} se observa que la edad media estimada $\overline{t}_{\mathrm{est}}$ reproduce prácticamente el valor real impuesto en la simulación para todos los tiempos considerados. Esto confirma que el procedimiento de estimación basado en la ley exponencial permite recuperar correctamente la edad de la muestra a partir del número de núcleos supervivientes de $^{238}\text{U}$.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.75\textwidth]{TAREA9/U_E2_comparacion_incertidumbre.png}
-  \caption{Comparación entre incertidumbres teóricas y muestrales para una muestra de $1\ \text{mg}$ de uranio natural, considerando $^{238}\text{U}$.}
-  \label{fig:comp_incertidumbres_U238}
-\end{figure}
-
-También se aprecia una buena concordancia entre la desviación típica muestral $s_t$ y la incertidumbre analítica $\sigma_t$. Las diferencias entre ambas son pequeñas y compatibles con las fluctuaciones propias de un número finito de simulaciones Monte Carlo. Por tanto, la propagación de incertidumbres aplicada al modelo binomial describe adecuadamente la dispersión estadística de las edades estimadas.
-
-En la Figura~\ref{fig:comp_incertidumbres_U238} se observa que la incertidumbre absoluta aumenta con el tiempo. Este comportamiento es esperable, ya que a edades mayores queda un número menor de núcleos padre de $^{238}\text{U}$ sin desintegrar, por lo que una misma fluctuación relativa en el número de núcleos supervivientes se traduce en una mayor dispersión en la edad estimada.
-
-No obstante, aunque la incertidumbre absoluta aumenta, sus valores siguen siendo muy pequeños en comparación con las edades geológicas consideradas. En el intervalo estudiado, las incertidumbres son del orden de unos pocos años, mientras que las edades analizadas son del orden de $10^8$--$10^9$ años.
-
-Estos valores tan reducidos no deben interpretarse como la precisión alcanzable en una datación uranio-plomo experimental real. En este análisis solo se considera la incertidumbre estadística asociada a las fluctuaciones del número de núcleos padre de $^{238}\text{U}$ supervivientes. Dado que incluso una muestra de $1\ \text{mg}$ de uranio natural contiene un número inicial muy elevado de núcleos de $^{238}\text{U}$, del orden de $10^{18}$, las fluctuaciones relativas debidas al proceso de desintegración son extremadamente pequeñas, ya que escalan como $1/\sqrt{N_0}$.
-
-Por tanto, dentro del modelo idealizado considerado, la contribución estadística a la incertidumbre temporal resulta muy pequeña frente a las edades geológicas estimadas. En una aplicación real, la precisión estaría dominada por otros factores no incluidos en la simulación, como la medida de las relaciones isotópicas, la posible pérdida o incorporación de uranio o plomo, la presencia de plomo inicial y la validez de la hipótesis de sistema cerrado.
+En la tabla~\ref{tab:comparacion_incertidumbres_U238} se observa que la edad media estimada, $\overline{t}_{\mathrm{est}}$, reproduce prácticamente el valor real impuesto en la simulación para todos los tiempos considerados. Esto confirma que el procedimiento de estimación basado en la ley exponencial permite recuperar correctamente la edad de la muestra a partir del número de núcleos supervivientes de $^{238}\text{U}$.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.75\textwidth]{TAREA9/U_E2_comparacion_incertidumbre_relativa.png}
-  \caption{Comparación entre incertidumbres teóricas y muestrales relativas para una muestra de $1\ \text{mg}$ de uranio natural, considerando $^{238}\text{U}$.}
-  \label{fig:comp_incertidumbres_relativas_U238}
+  \includegraphics[width=\textwidth]{TAREA9/U_E2_comparacion_incertidumbres.png}
+  \caption{Comparación entre las incertidumbres teóricas y muestrales para una muestra de $1\ \text{mg}$ de uranio natural, considerando $^{238}\text{U}$. A la izquierda se representan las incertidumbres absolutas y, a la derecha, las incertidumbres relativas.}
+  \label{fig:comparacion_incertidumbres_U238}
 \end{figure}
 
-En la Figura~\ref{fig:comp_incertidumbres_relativas_U238} se representa la evolución de la incertidumbre relativa. A diferencia de lo observado en el caso del carbono-14, en el intervalo temporal considerado no se distinguen claramente las tres regiones características. En este caso, la incertidumbre relativa disminuye de forma progresiva dentro del rango representado.
+En la figura~\ref{fig:comparacion_incertidumbres_U238} se comparan las incertidumbres muestrales y analíticas obtenidas para la muestra de referencia. En el panel izquierdo se representan la desviación típica muestral, $s_t$, y la incertidumbre analítica, $\sigma_t$, mientras que en el panel derecho se muestran sus correspondientes valores relativos, $s_t/\overline{t}_{\mathrm{est}}$ y $\sigma_t/t_{\mathrm{real}}$. En ambos casos se observa una buena concordancia entre los resultados muestrales y la predicción analítica. Las pequeñas diferencias entre ambas curvas son compatibles con las fluctuaciones propias de un número finito de simulaciones de Monte Carlo.
 
-Esta diferencia se debe a la gran semivida del $^{238}\text{U}$. La escala temporal en la que se produce el mínimo de la incertidumbre relativa se desplaza hacia edades mucho mayores que en el caso del $^{14}\text{C}$. Por ello, para edades geológicas del orden de cientos o miles de millones de años, el uranio permite mantener incertidumbres relativas extremadamente pequeñas dentro del modelo estadístico considerado.
+En el panel izquierdo se observa que la incertidumbre absoluta aumenta con el tiempo. A edades mayores queda un número menor de núcleos padre de $^{238}\text{U}$ sin desintegrar, por lo que las fluctuaciones en el número de núcleos supervivientes producen una dispersión mayor en la edad estimada. No obstante, sus valores siguen siendo muy pequeños en comparación con las edades geológicas consideradas: las incertidumbres son del orden de unos pocos años, mientras que las edades analizadas son del orden de $10^8$--$10^9$ años.
+
+En el panel derecho, la incertidumbre relativa disminuye de forma progresiva en todo el intervalo representado. La ecuación~\ref{eq:incertidumbre_relativa} predice también para el $^{238}\text{U}$ las tres regiones observadas en el caso del carbono-14, pero la gran semivida del uranio desplaza el mínimo hacia edades mayores. Por ello, el intervalo estudiado se encuentra principalmente en la región decreciente de la curva.
+
+Estos valores tan reducidos no deben interpretarse como la precisión alcanzable en una datación uranio-plomo experimental real. El análisis considera únicamente la incertidumbre estadística asociada a las fluctuaciones del número de núcleos padre supervivientes. Dado que una muestra de $1\ \text{mg}$ de uranio natural contiene del orden de $10^{18}$ núcleos de $^{238}\text{U}$, las fluctuaciones relativas intrínsecas son extremadamente pequeñas. En una aplicación real, la precisión estaría dominada por otros factores, como la medida de las relaciones isotópicas, la posible pérdida o incorporación de uranio o plomo, la presencia de plomo inicial y la validez de la hipótesis de sistema cerrado.
 
 Este resultado muestra que la elección del isótopo radiactivo determina la escala temporal accesible para la datación. El $^{14}\text{C}$ resulta adecuado para muestras relativamente recientes, mientras que el $^{238}\text{U}$ permite estudiar materiales mucho más antiguos, propios de procesos geológicos.
 
@@ -2071,47 +2140,41 @@ Este resultado muestra que la elección del isótopo radiactivo determina la esc
 
 Una vez estudiada la muestra de referencia de $1\ \text{mg}$ de uranio natural, se analiza cómo cambia la incertidumbre al modificar la cantidad de uranio presente en la muestra. Para ello se consideran tres masas de uranio natural: $0{,}1\ \text{mg}$, $1\ \text{mg}$ y $3\ \text{mg}$.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{TAREA9/U_E3_comparacion_incertidumbres_masas.png}
+  \caption{Comparación entre las incertidumbres teóricas y muestrales para muestras de $0{,}1\ \text{mg}$, $1\ \text{mg}$ y $3\ \text{mg}$ de uranio natural, considerando la desintegración de $^{238}\text{U}$. A la izquierda se representan las incertidumbres absolutas y, a la derecha, las incertidumbres relativas.}
+  \label{fig:comparacion_incertidumbres_masas_U238}
+\end{figure}
+
 Como el número inicial de núcleos de $^{238}\text{U}$ es proporcional a la masa de uranio, al aumentar la masa aumenta también $N_0$. De acuerdo con la expresión analítica de la incertidumbre temporal, ecuación~\eqref{eq:sigma_t_propagacion}, para un tiempo fijo la incertidumbre disminuye como $1/\sqrt{N_0}$. Por tanto, se espera que las muestras con mayor cantidad de uranio presenten menores incertidumbres.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.8\textwidth]{TAREA9/U_E3_sigma_t_vs_treal.png}
-  \caption{Comparación entre incertidumbres teóricas y muestrales para distintas masas de uranio natural, considerando la desintegración de $^{238}\text{U}$.}
-  \label{fig:sigma_t_tres_muestras_U238}
-\end{figure}
+En la figura~\ref{fig:comparacion_incertidumbres_masas_U238} se observa una buena concordancia entre los valores muestrales y analíticos para las tres masas consideradas. Esto confirma que el modelo binomial y la propagación de incertidumbres describen correctamente la dispersión estadística de las edades estimadas también al variar la cantidad de uranio de la muestra.
 
-En la Figura~\ref{fig:sigma_t_tres_muestras_U238} se observa que, para todas las masas consideradas, la incertidumbre absoluta aumenta con el tiempo. Sin embargo, las muestras con mayor masa presentan incertidumbres menores en todo el intervalo estudiado. Este comportamiento se debe a que contienen un mayor número inicial de núcleos de $^{238}\text{U}$, reduciendo así la importancia relativa de las fluctuaciones estadísticas.
+En el panel izquierdo, las incertidumbres absolutas aumentan con el tiempo para todas las masas. Sin embargo, las muestras con mayor masa se mantienen siempre por debajo debido a su mayor número inicial de núcleos de $^{238}\text{U}$. En el panel derecho se observa el mismo comportamiento para las incertidumbres relativas: la muestra de $0{,}1\ \text{mg}$ presenta los valores más elevados, mientras que la muestra de $3\ \text{mg}$ presenta los más pequeños.
 
-La concordancia entre los valores muestrales y analíticos vuelve a ser buena para las tres masas consideradas. Esto confirma que el modelo binomial y la propagación de incertidumbres describen correctamente la dispersión estadística de las edades estimadas también al variar la cantidad de uranio de la muestra.
+Las tres curvas relativas muestran la misma dependencia temporal y únicamente difieren en su escala vertical. Esto se debe a que, para un tiempo fijo, la influencia de la masa aparece mediante el factor multiplicativo $1/\sqrt{N_0}$. Por tanto, aumentar la cantidad de uranio no modifica la forma general de la curva ni la región temporal en la que la incertidumbre relativa es mínima, sino que reduce su valor en todo el intervalo estudiado. Este comportamiento es característico de las fluctuaciones binomiales del número de núcleos supervivientes y de su propagación a la edad estimada.
 
-En la Figura~\ref{fig:sigma_relativa_tres_muestras_U238} se observa que la incertidumbre relativa disminuye al aumentar la masa de uranio. La muestra de $0{,}1\ \text{mg}$ presenta las incertidumbres relativas más elevadas, mientras que la muestra de $3\ \text{mg}$ presenta las más pequeñas.
+\subsubsection{Conclusiones de la datación con uranio}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.8\textwidth]{TAREA9/U_E3_sigma_relativa_vs_treal.png}
-  \caption{Comparación entre incertidumbres teóricas y muestrales relativas para distintas masas de uranio natural, considerando la desintegración de $^{238}\text{U}$.}
-  \label{fig:sigma_relativa_tres_muestras_U238}
-\end{figure}
+La concordancia entre la edad media estimada y el tiempo real impuesto indica que, dentro del modelo ideal considerado, la inversión de la ley exponencial permite recuperar la edad de la muestra sin introducir un sesgo sistemático apreciable. Asimismo, el acuerdo entre la desviación típica muestral, $s_t$, y la incertidumbre analítica, $\sigma_t$, confirma que la dispersión observada procede de las fluctuaciones binomiales del número de núcleos supervivientes y no del procedimiento numérico utilizado.
+
+En el intervalo temporal analizado, comprendido entre $10^8$ y $8\times10^9\ \text{años}$, la incertidumbre relativa disminuye progresivamente. Este comportamiento se debe a que las edades consideradas se encuentran todavía en la región decreciente de la función que describe la incertidumbre relativa. Debido a la pequeña constante de desintegración del $^{238}\text{U}$, el mínimo de dicha función se alcanza a edades muy elevadas.
+
+La elevada cantidad inicial de núcleos de $^{238}\text{U}$ hace que las fluctuaciones relativas debidas exclusivamente al carácter aleatorio de la desintegración sean extremadamente pequeñas. Esto indica que, para las masas consideradas, la aleatoriedad intrínseca del proceso nuclear no constituye el principal límite de precisión de una datación uranio-plomo real. En la práctica, la incertidumbre estaría dominada por la medida de las relaciones isotópicas, la presencia de plomo inicial, la posible pérdida o incorporación de uranio o plomo y la validez de la hipótesis de sistema cerrado.
+
+El aumento de la masa de uranio reduce la incertidumbre estadística al incrementar el número inicial de núcleos. Sin embargo, esta mejora presenta rendimientos decrecientes, ya que la incertidumbre disminuye como $1/\sqrt{N_0}$ y, por tanto, como $1/\sqrt{m}$. Una muestra de mayor masa mejora la precisión estadística, pero no modifica la dependencia temporal general del proceso ni compensa posibles alteraciones geológicas del sistema.
+
+Por último, debe señalarse que el modelo desarrollado no reproduce una datación uranio-plomo completa, puesto que únicamente considera la disminución del número de núcleos padre de $^{238}\text{U}$. No se simulan explícitamente las cadenas intermedias de desintegración ni la acumulación de $^{206}\text{Pb}$. Por tanto, los resultados obtenidos deben interpretarse como una estimación de la contribución estadística ideal asociada a la desintegración del núcleo padre, y no como una evaluación completa de la precisión experimental del método uranio-plomo.
 
 
-La forma de las curvas es similar para las tres masas, de modo que el aumento de la cantidad de uranio no modifica la dependencia temporal general de la incertidumbre relativa, sino su escala vertical. Este resultado es análogo al obtenido en la datación con carbono-14: una mayor masa implica un mayor número inicial de núcleos radiactivos y, por tanto, una menor incertidumbre relativa.
+\subsection{Comparación entre ambos métodos de datación}
 
-Sin embargo, en el caso del uranio las escalas temporales son mucho mayores. La disminución de la incertidumbre relativa se mantiene en el intervalo representado porque el $^{238}\text{U}$ posee una semivida muy grande. Por ello, incluso para edades del orden de miles de millones de años, la muestra conserva una cantidad significativa de núcleos padre.
+Los sistemas basados en $^{14}\text{C}$ y $^{238}\text{U}$ comparten el mismo fundamento estadístico. En ambos casos, el número de núcleos supervivientes se describe mediante una distribución binomial cuyo valor medio sigue la ley exponencial de desintegración, y la edad se obtiene invirtiendo dicha relación. La concordancia entre las simulaciones de Monte Carlo y las predicciones analíticas confirma que el mismo modelo probabilístico puede aplicarse a ambos isótopos. De hecho, al expresar el tiempo mediante la variable adimensional $\lambda t$, la dependencia temporal de la incertidumbre relativa presenta la misma forma general; las diferencias observadas proceden principalmente de los distintos valores de la constante de desintegración y del número inicial de núcleos.
 
-\subsubsection{Conclusiones datación con uranio}
+La principal diferencia entre ambos métodos reside en el tipo de material analizado y en la escala temporal accesible. La datación mediante $^{14}\text{C}$ se aplica a materia orgánica y permite estimar el tiempo transcurrido desde que cesó el intercambio de carbono con el entorno. Su semivida, de $5730\ \text{años}$, la hace adecuada para muestras relativamente recientes. En cambio, la datación uranio-plomo se aplica a minerales que deben haber permanecido como sistemas cerrados desde su formación. La elevada semivida del $^{238}\text{U}$, del orden de $10^9\ \text{años}$, permite estudiar edades propias de procesos geológicos. No obstante, el tratamiento realizado en este trabajo constituye una idealización, ya que solo se simula la desaparición de los núcleos padre de uranio y no la cadena completa ni la acumulación de los isótopos de plomo.
 
-La datación mediante uranio se diferencia de la datación con $^{14}\text{C}$ tanto por el tipo de muestra al que se aplica como por la escala temporal que permite estudiar. Mientras que el carbono-14 resulta adecuado para materia orgánica relativamente reciente, el $^{238}\text{U}$ presenta una semivida mucho mayor y permite analizar edades propias de materiales geológicos.
-
-En este trabajo se ha considerado una idealización del método uranio-plomo, centrada en la evolución estadística del número de núcleos supervivientes de $^{238}\text{U}$. Bajo esta aproximación, el modelo binomial permite simular la desintegración del núcleo padre y estudiar cómo las fluctuaciones estadísticas se propagan a la estimación de la edad.
-
-Los resultados obtenidos muestran que la edad media estimada reproduce correctamente el tiempo real impuesto en la simulación. Además, la buena concordancia entre la desviación típica muestral $s_t$ y la incertidumbre analítica $\sigma_t$ confirma que la propagación de incertidumbres describe adecuadamente la dispersión estadística de las edades estimadas.
-
-La principal diferencia respecto al carbono-14 aparece en la evolución de la incertidumbre relativa. En el intervalo temporal analizado, correspondiente a escalas geológicas, no se observan claramente las tres regiones presentes en el caso del $^{14}\text{C}$. La gran semivida del $^{238}\text{U}$ desplaza la evolución de la incertidumbre hacia tiempos mucho mayores, permitiendo mantener incertidumbres relativas muy pequeñas durante miles de millones de años.
-
-También se ha comprobado que la cantidad de uranio presente en la muestra influye en la precisión estadística. Al aumentar la masa de uranio, aumenta el número inicial de núcleos de $^{238}\text{U}$ y disminuye la incertidumbre relativa, de acuerdo con la dependencia $1/\sqrt{N_0}$ obtenida analíticamente.
-
-Finalmente, los tiempos umbral asociados a errores relativos del $5\%$, $10\%$ y $20\%$ son muy elevados dentro del modelo estadístico ideal. Esto confirma que, desde el punto de vista de las fluctuaciones nucleares consideradas en este trabajo, el $^{238}\text{U}$ es adecuado para la datación de edades geológicas muy grandes. En una situación experimental real, estos límites estarían condicionados además por factores geológicos y analíticos propios del método uranio-plomo.
-
+En los dos casos, la incertidumbre estadística intrínseca disminuye como $1/\sqrt{N_0}$, por lo que el aumento de la cantidad de material mejora la precisión, aunque con rendimientos decrecientes. Para las masas estudiadas, estas fluctuaciones resultan muy pequeñas frente a las fuentes de incertidumbre que aparecerían en una aplicación experimental. En la datación con carbono-14 serían relevantes, entre otros factores, la contaminación, el fondo instrumental, la calibración y la estimación de la proporción inicial de $^{14}\text{C}$. En el método uranio-plomo adquirirían especial importancia la medida de las relaciones isotópicas, la presencia de plomo inicial y las posibles pérdidas o incorporaciones de uranio o plomo. Por tanto, los resultados obtenidos representan un límite estadístico ideal y muestran que la elección del sistema de datación depende tanto de la escala temporal como del tipo de muestra y de las hipótesis físicas y geoquímicas que puedan garantizarse.
 
 % --------------------------------------------------
 
@@ -2119,12 +2182,42 @@ Finalmente, los tiempos umbral asociados a errores relativos del $5\%$, $10\%$ y
 \newpage
 \section{Conclusiones}
 
+En este trabajo se ha estudiado la desintegración radiactiva desde un punto de vista probabilístico mediante simulaciones de Monte Carlo. El análisis ha permitido relacionar el carácter aleatorio de la desintegración de los núcleos individuales con el comportamiento macroscópico descrito por la ley exponencial. Al promediar un número suficientemente elevado de simulaciones independientes, el número medio de núcleos supervivientes reproduce la evolución teórica esperada, mientras que las trayectorias individuales presentan fluctuaciones alrededor de dicha ley.
+
+La comparación entre los distintos procedimientos de simulación muestra que el modelo núcleo a núcleo y el modelo binomial presentan el mismo comportamiento estadístico. La diferencia entre ambos reside únicamente en la forma de generar las desintegraciones: el primero analiza individualmente cada núcleo, mientras que el segundo obtiene directamente el número total de desintegraciones en cada intervalo temporal. Por tanto, el modelo binomial permite conservar la descripción estadística del proceso con un coste computacional considerablemente menor. La aproximación de Poisson también puede emplearse, pero su validez queda limitada a los casos en los que la probabilidad del suceso contado es pequeña. Cuando esta condición deja de cumplirse, la aproximación continúa reproduciendo aproximadamente el valor medio, pero introduce discrepancias en la varianza.
+
+El estudio de las distribuciones del número de núcleos supervivientes y desintegrados confirma que el modelo binomial describe correctamente tanto los valores medios como la dispersión de los resultados simulados. La comparación mediante el estadístico $\chi^2$ muestra que las simulaciones son compatibles con la distribución binomial en los casos estudiados. Por el contrario, la aproximación de Poisson solo resulta compatible cuando el número de sucesos contados corresponde a una probabilidad pequeña, como ocurre con las desintegraciones a tiempos cortos o con los supervivientes a tiempos avanzados.
+
+También se ha analizado la dependencia de las fluctuaciones con el número inicial de núcleos. La desviación típica absoluta aumenta como $\sqrt{N_0}$, mientras que la desviación típica relativa disminuye como $1/\sqrt{N_0}$. En consecuencia, los sistemas con mayor número de núcleos presentan fluctuaciones absolutas más grandes, pero estas representan una fracción menor del valor medio. Este comportamiento se transmite a la estimación temporal, cuya incertidumbre estadística disminuye igualmente como $1/\sqrt{N_0}$. La concordancia entre las incertidumbres obtenidas mediante las simulaciones y las predicciones analíticas confirma que la propagación de incertidumbres empleada describe adecuadamente la dispersión de las edades estimadas.
+
+La aplicación del modelo a la datación mediante $^{14}\text{C}$ y $^{238}\text{U}$ muestra que un mismo fundamento estadístico puede utilizarse para estudiar escalas temporales muy diferentes. En ambos casos, la edad media estimada reproduce el tiempo impuesto en la simulación y las incertidumbres muestrales concuerdan con las incertidumbres analíticas. La diferencia principal entre ambos sistemas reside en la semivida del isótopo y, por tanto, en la escala temporal accesible. El carbono-14 resulta adecuado para muestras orgánicas relativamente recientes, mientras que el uranio-238 permite estudiar materiales geológicos con edades del orden de miles de millones de años.
+
+El aumento de la cantidad de material mejora la precisión estadística porque incrementa el número inicial de núcleos. Sin embargo, esta mejora presenta rendimientos decrecientes, ya que la incertidumbre disminuye como $1/\sqrt{N_0}$ y, cuando el número de núcleos es proporcional a la masa, como $1/\sqrt{m}$. Por tanto, reducir la incertidumbre en un factor determinado requiere aumentar la masa de la muestra en el cuadrado de dicho factor.
+
+Finalmente, debe señalarse que los resultados obtenidos corresponden a un modelo idealizado que considera únicamente las fluctuaciones intrínsecas asociadas al carácter aleatorio de la desintegración. No se incluyen otras fuentes de incertidumbre presentes en una datación experimental, como la contaminación, el fondo instrumental, la eficiencia de detección, la calibración, la estimación de la cantidad inicial del isótopo o las posibles alteraciones del sistema. Además, en el caso del uranio únicamente se simula la disminución del número de núcleos padre de $^{238}\text{U}$, sin reproducir explícitamente la cadena completa de desintegración ni la acumulación de $^{206}\text{Pb}$. Por tanto, las incertidumbres calculadas representan un límite estadístico ideal y no la precisión total alcanzable en una datación real.
+
+
 % --------------------------------------------------
 \newpage
 \section{Conclusions}
 
-% --------------------------------------------------
+This work has studied radioactive decay from a probabilistic perspective by means of Monte Carlo simulations. The analysis has made it possible to relate the random behaviour of individual nuclear decays to the macroscopic behaviour described by the exponential decay law. When a sufficiently large number of independent simulations is averaged, the mean number of surviving nuclei reproduces the expected theoretical evolution, whereas individual trajectories fluctuate around this law.
 
+The comparison between the different simulation procedures shows that the nucleus-by-nucleus and binomial models exhibit the same statistical behaviour. Their difference lies only in the way decay events are generated: the first model examines each nucleus individually, whereas the second directly generates the total number of decays in each time interval. Therefore, the binomial model preserves the statistical description of the process while considerably reducing the computational cost. The Poisson approximation may also be used, but its validity is restricted to cases in which the probability of the counted event is small. When this condition is not satisfied, the approximation may still reproduce the mean value approximately, but it introduces discrepancies in the variance.
+
+The analysis of the distributions of surviving and decayed nuclei confirms that the binomial model correctly describes both the mean values and the dispersion of the simulated results. The comparison based on the $\chi^2$ statistic shows that the simulations are compatible with the binomial distribution in the cases studied. In contrast, the Poisson approximation is only compatible when the number of counted events is associated with a small probability, as occurs for decays at short times or for surviving nuclei at advanced times.
+
+The dependence of the fluctuations on the initial number of nuclei has also been analysed. The absolute standard deviation increases as $\sqrt{N_0}$, whereas the relative standard deviation decreases as $1/\sqrt{N_0}$. Consequently, systems containing more nuclei exhibit larger absolute fluctuations, but these represent a smaller fraction of the mean value. This behaviour is transferred to the time estimate, whose statistical uncertainty also decreases as $1/\sqrt{N_0}$. The agreement between the uncertainties obtained from the simulations and the analytical predictions confirms that the uncertainty propagation procedure adequately describes the dispersion of the estimated ages.
+
+The application of the model to dating based on $^{14}\text{C}$ and $^{238}\text{U}$ shows that the same statistical framework can be used to study very different timescales. In both cases, the mean estimated age reproduces the imposed simulation time, and the sample uncertainties agree with the analytical uncertainties. The main difference between the two systems lies in the half-life of the isotope and, therefore, in the accessible timescale. Carbon-14 is suitable for relatively recent organic samples, whereas uranium-238 makes it possible to study geological materials with ages of the order of billions of years.
+
+Increasing the amount of material improves the statistical precision because it increases the initial number of nuclei. However, this improvement exhibits diminishing returns, since the uncertainty decreases as $1/\sqrt{N_0}$ and, when the number of nuclei is proportional to the sample mass, as $1/\sqrt{m}$. Therefore, reducing the uncertainty by a given factor requires increasing the sample mass by the square of that factor.
+
+Finally, the results obtained correspond to an idealised model that only considers the intrinsic fluctuations associated with the random nature of radioactive decay. Other sources of uncertainty present in experimental dating procedures are not included, such as contamination, instrumental background, detection efficiency, calibration, estimation of the initial isotope content, or possible alterations of the system. Furthermore, in the uranium case, only the decrease in the number of $^{238}\text{U}$ parent nuclei is simulated, without explicitly reproducing the complete decay chain or the accumulation of $^{206}\text{Pb}$. Therefore, the calculated uncertainties represent an ideal statistical limit rather than the overall precision achievable in an actual dating experiment.
+
+% --------------------------------------------------
+\newpage
+\printbibliography
 
 % ==================================================
 % ANEXOS
@@ -2133,6 +2226,7 @@ Finalmente, los tiempos umbral asociados a errores relativos del $5\%$, $10\%$ y
 \appendix
 
 \section{Desarrollos probabilísticos auxiliares}
+
 \subsection{Propiedad de ausencia de memoria}
 \label{ap:ausencia_memoria}
 
@@ -2705,8 +2799,6 @@ Esta definición describe un proceso de Poisson homogéneo, en el que la tasa $\
   \caption{Histogramas de núcleos desintegrados.}
 \end{figure}
 
-\newpage
-\printbibliography
 
 
 \end{document}
